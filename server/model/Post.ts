@@ -12,7 +12,7 @@ interface POST extends Document {
 }
 
 const postSchema = new Schema({
-	user: { type: Schema.Types.ObjectId, ref: "user" },
+	user: { type: Schema.Types.ObjectId, ref: "users" },
 	title: {
 		type: String,
 		required: true,

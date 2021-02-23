@@ -20,7 +20,7 @@ const CreateProject = () => {
 		if (name === "") {
 			return setError(true);
 		}
-		const newProject = { name };
+		const newProject = { name } as any;
 		mutation.mutate(newProject);
 	};
 

@@ -16,12 +16,15 @@
 	& > .title:hover {
 		color: hsl(249, 92%, 30%);
 	}
-	& > p {
-		font-size: 0.875rem;
-		font-weight: 600;
-		text-transform: capitalize;
-	}
-	& > p + p {
-		margin-top: -0.5em;
+	& > .project__info {
+		display: flex;
+		& > p {
+			font-size: 0.875rem;
+			font-weight: 600;
+			text-transform: capitalize;
+		}
+		& > p + p {
+			margin-left: 1.5em;
+		}
 	}
 }

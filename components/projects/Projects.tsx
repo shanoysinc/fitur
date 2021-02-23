@@ -16,8 +16,10 @@ const Projects = () => {
 					>
 						<a className={styles.title}>{name}</a>
 					</Link>
-					<p>Feature request: 12</p>
-					<p>Bug Report: 7</p>
+					<div className={styles.project__info}>
+						<p>Feature request: 12</p>
+						<p>Bug Report: 7</p>
+					</div>
 				</div>
 			))}
 		</div>

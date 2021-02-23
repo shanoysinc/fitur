@@ -1,3 +1,11 @@
 .main__container {
 	margin: 2em 2em;
 }
+
+.dashboard__container {
+	display: flex;
+	flex-direction: column;
+	& > * + * {
+		margin-top: 1.5em;
+	}
+}

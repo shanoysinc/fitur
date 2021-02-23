@@ -1,0 +1,52 @@
+.container {
+	// border: 2px solid rgb(9, 2, 51);
+	background-color: hsl(0, 0%, 88%);
+	padding: 1em;
+	border-radius: 4px;
+}
+
+.status__container {
+	display: flex;
+	& > .status__color {
+		width: 9px;
+		height: 9px;
+		border-radius: 50%;
+		background-color: #1fa0ff;
+		margin-top: 0.4em;
+	}
+
+	& > h4 {
+		margin-top: auto;
+		padding-left: 0.4em;
+	}
+}
+
+// .task__container + .task__container {
+// 	margin-top: 0.1em;
+// }
+
+.task__container {
+	display: flex;
+	margin-top: -0.8em;
+	// justify-content: space-between;
+	& > .task__priority {
+		width: 25px;
+		margin-top: 1em;
+		font-size: 22px;
+		margin-right: 0.6em;
+	}
+	& > .task__info {
+		// padding-right: 2em;
+		& > h3 {
+			text-align: left;
+			font-size: 1.1rem;
+		}
+		& > P {
+			margin-top: -0.8em;
+			text-transform: capitalize;
+			font-weight: 600;
+			font-size: 0.8rem;
+			color: hsl(249, 92%, 75%);
+		}
+	}
+}

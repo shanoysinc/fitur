@@ -5,6 +5,8 @@ import { useMutation, useQueryClient } from "react-query";
 import Link from "next/link";
 import axios from "axios";
 import { toast } from "react-toastify";
+import ReactLoading from "react-loading";
+
 const Projects = () => {
 	const { data, isLoading } = useProject();
 	const queryClient = useQueryClient();
@@ -24,7 +26,17 @@ const Projects = () => {
 			});
 		},
 	});
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading) {
+		return (
+			<ReactLoading
+				type={"bars"}
+				color="black"
+				height={"15%"}
+				width={"15%"}
+				className={styles.loader}
+			/>
+		);
+	}
 	const projects = data?.data.projects;
 	const deleteProject = (currentID: any) => {
 		return () => mutation.mutate(currentID);

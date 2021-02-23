@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "next-auth/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AppProps } from "next/app";

@@ -5,26 +5,59 @@
 	border-top: 1.9px solid rgb(9, 2, 51);
 	border-right: 3px solid rgb(9, 2, 51);
 	border-bottom: 3px solid rgb(9, 2, 51);
-	padding: 0.6em 1em;
+	padding: 1em;
 	border-radius: 4px;
+
 	& > .title {
 		font-size: 1.5rem;
 		font-weight: 600;
 
-		text-transform: uppercase;
+		text-transform: capitalize;
 	}
 	& > .title:hover {
 		color: hsl(249, 92%, 30%);
 	}
-	& > .project__info {
+	& > .info__container {
 		display: flex;
-		& > p {
-			font-size: 0.875rem;
-			font-weight: 600;
-			text-transform: capitalize;
+		justify-content: space-between;
+		& > .project__info {
+			display: flex;
+			& > p {
+				font-size: 0.875rem;
+				font-weight: 600;
+				text-transform: capitalize;
+			}
+			& > p + p {
+				margin-left: 1.5em;
+			}
 		}
-		& > p + p {
-			margin-left: 1.5em;
+	}
+}
+
+.option__container {
+	display: flex;
+	position: relative;
+
+	& > .option__btn {
+		border: none;
+		background: none;
+		cursor: pointer;
+		outline: none;
+	}
+
+	& > .options {
+		position: absolute;
+		bottom: 35px;
+		right: 5px;
+		& > div {
+			cursor: pointer;
+		}
+		& > div:hover {
+			background-color: rgb(9, 2, 51);
+			color: white;
+		}
+		& > * + * {
+			margin-top: 0.2em;
 		}
 	}
 }

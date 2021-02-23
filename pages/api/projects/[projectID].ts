@@ -14,18 +14,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 	await dbConnect();
 	const userID = "6033f95180c3fb0718bf563c";
+	const { projectID } = query;
 	switch (method) {
-		case "GET":
-			const projects = await Project.find({ user: userID });
-			res.json({ projects });
-			break;
-		case "POST":
-			const project = { ...req.body, user: userID };
-			const newProject = new Project(project);
-			await newProject.save();
-
-			res.json({ project: newProject });
-			break;
 		case "PATCH":
 			const updatedProject = await Project.findOneAndUpdate(
 				{ user: userID },
@@ -37,7 +27,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			res.json({ project: updatedProject });
 			break;
 		case "DELETE":
-			res.send("delete");
+			try {
+				await Project.findOneAndDelete({ _id: projectID });
+				res.json({ message: "project was successfully deleted!" });
+			} catch (err) {
+				res.json({ error: err.message });
+			}
+
 			break;
 		default:
 			res.status(404).send({ message: "page not found!" });

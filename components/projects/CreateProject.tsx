@@ -1,13 +1,20 @@
 import React from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import styles from "../../styles/projects/createProject.module.scss";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const CreateProject = () => {
-	const mutation = useMutation((newProject) =>
-		axios.post("/api/projects", newProject)
+	const queryClient = useQueryClient();
+
+	const mutation = useMutation(
+		(newProject) => axios.post("/api/projects", newProject),
+		{
+			onSuccess: (response) => {
+				const { data } = response;
+				queryClient.invalidateQueries("projects");
+			},
+		}
 	);
 	const [name, setName] = React.useState("");
 	const [error, setError] = React.useState(false);

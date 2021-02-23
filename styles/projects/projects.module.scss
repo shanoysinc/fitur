@@ -1,0 +1,27 @@
+.projects__container {
+	background-color: hsl(0, 0%, 98%);
+	margin-top: 1.5em;
+	border-left: 1.9px solid rgb(9, 2, 51);
+	border-top: 1.9px solid rgb(9, 2, 51);
+	border-right: 3px solid rgb(9, 2, 51);
+	border-bottom: 3px solid rgb(9, 2, 51);
+	padding: 0.6em 1em;
+	border-radius: 4px;
+	& > .title {
+		font-size: 1.5rem;
+		font-weight: 600;
+
+		text-transform: uppercase;
+	}
+	& > .title:hover {
+		color: hsl(249, 92%, 30%);
+	}
+	& > p {
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-transform: capitalize;
+	}
+	& > p + p {
+		margin-top: -0.5em;
+	}
+}

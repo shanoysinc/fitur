@@ -1,0 +1,28 @@
+.nav {
+	background-color: hsl(0, 0%, 98%);
+
+	display: flex;
+	padding: 1em 1.5em;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 3px solid rgb(9, 2, 51);
+}
+
+.nav__items_left {
+	& > .logo {
+		font-size: 2rem;
+		font-weight: 700;
+		color: rgb(9, 2, 51);
+	}
+}
+
+.nav__items_right {
+	& > .btn {
+		border: 0;
+		cursor: pointer;
+		font-size: 0.7rem;
+		background: none;
+		font-weight: 800;
+		color: rgb(9, 2, 51);
+	}
+}

@@ -12,7 +12,7 @@
 		height: 9px;
 		border-radius: 50%;
 		background-color: #1fa0ff;
-		margin-top: 0.4em;
+		margin-top: 0.3em;
 	}
 
 	& > h4 {
@@ -21,14 +21,9 @@
 	}
 }
 
-// .task__container + .task__container {
-// 	margin-top: 0.1em;
-// }
-
 .task__container {
 	display: flex;
 	margin-top: -0.8em;
-	// justify-content: space-between;
 	& > .task__priority {
 		width: 25px;
 		margin-top: 1em;
@@ -36,7 +31,6 @@
 		margin-right: 0.6em;
 	}
 	& > .task__info {
-		// padding-right: 2em;
 		& > h3 {
 			text-align: left;
 			font-size: 1.1rem;

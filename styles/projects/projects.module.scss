@@ -47,10 +47,11 @@
 
 	& > .options {
 		position: absolute;
-		bottom: 35px;
+		bottom: 30px;
 		right: 5px;
 		& > div {
 			cursor: pointer;
+			padding: 0.2em;
 		}
 		& > div:hover {
 			background-color: rgb(9, 2, 51);
@@ -64,4 +65,8 @@
 
 .loader {
 	margin: 3em auto;
+}
+
+.showOptions {
+	display: block;
 }

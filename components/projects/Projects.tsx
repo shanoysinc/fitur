@@ -9,7 +9,9 @@ import ReactLoading from "react-loading";
 
 const Projects = () => {
 	const { data, isLoading } = useProject();
+	const [showOptions, setShowOptions] = React.useState("");
 	const queryClient = useQueryClient();
+
 	const mutation = useMutation((id) => axios.delete(`/api/projects/${id}`), {
 		onSuccess: (response) => {
 			const { data } = response;
@@ -26,6 +28,7 @@ const Projects = () => {
 			});
 		},
 	});
+
 	if (isLoading) {
 		return (
 			<ReactLoading
@@ -41,14 +44,18 @@ const Projects = () => {
 	const deleteProject = (currentID: any) => {
 		return () => mutation.mutate(currentID);
 	};
+	const toggleOptions = (id: string) => {
+		if (showOptions == id) {
+			return setShowOptions("");
+		}
+		setShowOptions(id);
+	};
 
 	return (
 		<div className={styles.container}>
 			{projects.map(({ name, _id }: { name: string; _id: string }) => (
 				<div className={styles.projects__container} key={_id}>
-					<Link
-						href={`${process.env.NEXT_PUBLIC_DOMAIN}/projects/dashboard/${_id}`}
-					>
+					<Link href={`/projects/dashboard/${_id}`}>
 						<a className={styles.title}>{name}</a>
 					</Link>
 					<div className={styles.info__container}>
@@ -57,7 +64,10 @@ const Projects = () => {
 							<p>Bug Report: 7</p>
 						</div>
 						<div className={styles.option__container}>
-							<button className={styles.option__btn}>
+							<button
+								className={styles.option__btn}
+								onClick={() => toggleOptions(_id)}
+							>
 								<img
 									src="/svg/options.svg"
 									alt="options btn"
@@ -65,10 +75,14 @@ const Projects = () => {
 									width={23}
 								/>
 							</button>
-							<div className={styles.options}>
-								<div>Edit</div>
-								<div onClick={deleteProject(_id)}>Delete</div>
-							</div>
+							{showOptions === _id && (
+								<div className={styles.options}>
+									<div>Edit</div>
+									<div onClick={deleteProject(_id)}>
+										Delete
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>

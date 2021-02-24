@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/dashboard/dashboard.module.scss";
 
-interface Tasks {
+interface Task {
 	createAt: string;
 	project: string;
 	status: string;
@@ -13,7 +13,7 @@ interface Tasks {
 }
 interface AppProps {
 	status: "Planned" | "In Progress" | "Complete";
-	tasks: Tasks[];
+	tasks: Task[];
 	color: string;
 }
 
@@ -27,31 +27,16 @@ const Dashboard = ({ status, tasks, color }: AppProps) => {
 				></div>
 				<h4 className={styles.status__title}>{status}</h4>
 			</div>
-			<div className={styles.task__container}>
-				<div className={styles.task__priority}>🔥</div>
-				<div className={styles.task__info}>
-					<h3 className={styles.task__title}>
-						Dark mode flash screen
-					</h3>
-					<p className={styles.task__type}>feature request</p>
+
+			{tasks.map((task) => (
+				<div className={styles.task__container} key={task._id}>
+					<div className={styles.task__priority}>🔥</div>
+					<div className={styles.task__info}>
+						<h3 className={styles.task__title}>{task.title}</h3>
+						<p className={styles.task__type}>{task.type}</p>
+					</div>
 				</div>
-			</div>
-			<div className={styles.task__container}>
-				<div className={styles.task__priority}>🥺</div>
-				<div className={styles.task__info}>
-					<h3 className={styles.task__title}>
-						Dark mode flash screen
-					</h3>
-					<p className={styles.task__type}>feature request</p>
-				</div>
-			</div>
-			<div className={styles.task__container}>
-				<div className={styles.task__priority}>😃</div>
-				<div className={styles.task__info}>
-					<h3 className={styles.task__title}>In App Purchases </h3>
-					<p className={styles.task__type}>Bug Fix</p>
-				</div>
-			</div>
+			))}
 		</div>
 	);
 };

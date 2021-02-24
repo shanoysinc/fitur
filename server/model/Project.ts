@@ -1,12 +1,12 @@
 import { Schema, model, models } from "mongoose";
 
 const projectSchema = new Schema({
-	user: { type: Schema.Types.ObjectId, ref: "users" },
+	user: { type: Schema.Types.ObjectId, ref: "User" },
 	name: {
 		type: String,
 		required: true,
 	},
-	// tasks: [{ type: Schema.Types.ObjectId, ref: "tasks" }],
+	tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
 });
 
 export default models.Project || model("Project", projectSchema);

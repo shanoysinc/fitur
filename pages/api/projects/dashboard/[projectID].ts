@@ -2,7 +2,7 @@ import dbConnect from "../../../../server/db/db";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import Task from "../../../../server/model/Task";
-
+import mongoose from "mongoose";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { method, query } = req;
 	const session = await getSession({ req });
@@ -21,10 +21,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	switch (method) {
 		case "GET":
 			try {
+				if (!projectID) {
+					res.status(400).json({
+						message: "cannot proceed please try again",
+					});
+				}
 				const tasks = await Task.find({ project: projectID });
 				res.json({ tasks });
 			} catch (err) {
-				res.send(err);
+				res.status(400).send({ message: "page not found!" });
 			}
 			break;
 		case "POST":
@@ -36,7 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				await newTask.save();
 				res.json({ task: newTask });
 			} catch (err) {
-				res.send(err);
+				res.status(404).send({ message: "page not found!" });
 			}
 			break;
 

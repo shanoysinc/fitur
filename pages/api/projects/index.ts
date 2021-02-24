@@ -10,14 +10,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	// if(session){
 
 	// }
-	console.log(query);
+	// console.log(query);
 
 	await dbConnect();
-	const userID = "6033f95180c3fb0718bf563c";
+	const userID = "6036ab7107157722d84369fe";
 	switch (method) {
 		case "GET":
-			const projects = await Project.find({ user: userID });
-			res.json({ projects });
+			try {
+				const projects = await Project.find({
+					user: userID,
+				});
+				res.json({ projects });
+			} catch (err) {
+				res.status(401).json({ err: err.message });
+			}
+
 			break;
 		case "POST":
 			const project = { ...req.body, user: userID };

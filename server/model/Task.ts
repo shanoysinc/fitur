@@ -2,7 +2,7 @@ import { Schema, Document, model, models, Model } from "mongoose";
 import { Task } from "../../types/Task";
 
 const taskSchema = new Schema({
-	project: { type: Schema.Types.ObjectId, ref: "projects" },
+	project: { type: Schema.Types.ObjectId, ref: "Project" },
 
 	title: {
 		type: String,

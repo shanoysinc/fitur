@@ -18,6 +18,7 @@
     "react-hook-form": "^6.15.3",
     "react-loading": "^2.0.3",
     "react-query": "^3.9.6",
+    "react-select": "^4.1.0",
     "react-toastify": "^7.0.3",
     "sass": "^1.32.8"
   },

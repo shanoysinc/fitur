@@ -29,7 +29,11 @@ const Dashboard = ({ status, tasks, color }: AppProps) => {
 			</div>
 
 			{tasks.map((task) => (
-				<div className={styles.task__container} key={task._id}>
+				<div
+					className={styles.task__container}
+					key={task._id}
+					onClick={() => {}}
+				>
 					<div className={styles.task__priority}>🔥</div>
 					<div className={styles.task__info}>
 						<h3 className={styles.task__title}>{task.title}</h3>

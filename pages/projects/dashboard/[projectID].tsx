@@ -1,6 +1,5 @@
 import React from "react";
-import { useTasks } from "../../../hooks/task";
-import { useRouter } from "next/router";
+
 import Navbar from "../../../components/navbar/Navbar";
 import Dashboard from "../../../components/dashboard/Dashboard";
 import styles from "../../../styles/Home.module.scss";
@@ -10,6 +9,11 @@ import { useQuery } from "react-query";
 import { fetcher } from "../../../utils/fetcher";
 import { distributeTask } from "../../../utils/distributeTask";
 import { GetServerSideProps } from "next";
+import CreateTask from "../../../components/tasks/CreateTask";
+
+interface AppProps {
+	query: { projectID: string };
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { query } = context;
@@ -17,10 +21,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		props: { query },
 	};
 };
-
-interface AppProps {
-	query: { projectID: string };
-}
 
 const projectTask = (props: AppProps) => {
 	const { query } = props;
@@ -43,6 +43,7 @@ const projectTask = (props: AppProps) => {
 		<div>
 			<Navbar />
 			<div className={styles.main__container}>
+				<CreateTask currentProjectID={projectID} />
 				<div className={styles.dashboard__container}>
 					<>
 						<Dashboard

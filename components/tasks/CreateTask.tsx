@@ -1,18 +1,40 @@
 import React from "react";
+import styles from "../../styles/tasks/createTask.module.scss";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import styles from "../../styles/projects/createProject.module.scss";
 import { ToastContainer, toast } from "react-toastify";
+import Select from "react-select";
 
-const CreateProject = () => {
+interface AppProps {
+	currentProjectID: string;
+}
+const TypeOptions = [
+	{ value: "Feature Request", label: "Feature Request" },
+	{ value: "Bug Fix", label: "Bug Fix" },
+];
+
+const StatusOptions = [
+	{ value: "Planned", label: "Planned" },
+	{ value: "In Progress", label: "In Progress" },
+	{ value: "Complete", label: "Complete" },
+];
+// const customStyles = {
+// 	container: () => ({
+// 		width: 200,
+// 	}),
+// 	input: () => ({
+// 		width: 200,
+// 	}),
+// };
+
+const CreateTask = ({ currentProjectID }: AppProps) => {
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation(
 		(newProject) => axios.post("/api/projects", newProject),
 		{
 			onSuccess: (response) => {
-				// const { data } = response;
-				queryClient.invalidateQueries("projects");
+				queryClient.invalidateQueries("tasks");
 			},
 		}
 	);
@@ -50,17 +72,28 @@ const CreateProject = () => {
 	return (
 		<>
 			<form onSubmit={onSubmit} className={styles.form__container}>
-				<input
-					type="text"
-					name="name"
-					placeholder="Create a project..."
-					onChange={inputHandler}
-					className={styles.input}
-				/>
-				<button type="submit" className={styles.submit__btn}>
-					create
-				</button>
+				<div>
+					<input
+						type="text"
+						name="name"
+						placeholder="Create a Task..."
+						onChange={inputHandler}
+						className={styles.input}
+					/>
+					<div className={styles.selectOptions}>
+						<div>
+							<Select options={TypeOptions} />
+						</div>
+						<div>
+							<Select options={StatusOptions} />
+						</div>
+						<button type="submit" className={styles.submit__btn}>
+							create
+						</button>
+					</div>
+				</div>
 			</form>
+
 			<ToastContainer
 				position="top-right"
 				autoClose={2000}
@@ -76,4 +109,4 @@ const CreateProject = () => {
 	);
 };
 
-export default CreateProject;
+export default CreateTask;

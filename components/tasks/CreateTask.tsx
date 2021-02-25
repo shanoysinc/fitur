@@ -8,54 +8,67 @@ import Select from "react-select";
 interface AppProps {
 	currentProjectID: string;
 }
-const TypeOptions = [
-	{ value: "Feature Request", label: "Feature Request" },
+
+interface optionValue {
+	value: string;
+	label: string;
+}
+const TypeOptions: optionValue[] = [
+	{ value: "Feature Request", label: " Feature Request" },
 	{ value: "Bug Fix", label: "Bug Fix" },
 ];
 
-const StatusOptions = [
+const StatusOptions: optionValue[] = [
 	{ value: "Planned", label: "Planned" },
 	{ value: "In Progress", label: "In Progress" },
 	{ value: "Complete", label: "Complete" },
 ];
-// const customStyles = {
-// 	container: () => ({
-// 		width: 200,
-// 	}),
-// 	input: () => ({
-// 		width: 200,
-// 	}),
-// };
 
 const CreateTask = ({ currentProjectID }: AppProps) => {
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation(
-		(newProject) => axios.post("/api/projects", newProject),
+		(newProject) =>
+			axios.post(
+				`/api/projects/dashboard/${currentProjectID}`,
+				newProject
+			),
 		{
 			onSuccess: (response) => {
 				queryClient.invalidateQueries("tasks");
 			},
 		}
 	);
-	const [name, setName] = React.useState("");
+	const [taskName, setTaskName] = React.useState("");
+	const [type, setType] = React.useState<string | null>(null);
+	const [status, setStatus] = React.useState<string | null>(null);
 	const [error, setError] = React.useState(false);
 
 	const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setName(e.target.value);
+		setTaskName(e.target.value);
 	};
 	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		if (name === "") {
+		const checkToSubmit = taskName === "" || type == null || status == null;
+		if (checkToSubmit) {
 			return setError(true);
 		}
-		const newProject = { name } as any;
-		mutation.mutate(newProject);
+		const newTask = { title: taskName, type, status };
+		mutation.mutate(newTask) as any;
+		setTaskName("");
+		setType(null);
+		setStatus(null);
+	};
+	const selectType = ({ value }: optionValue) => {
+		setType(value);
+	};
+	const selectStatus = ({ value }: optionValue) => {
+		setStatus(value);
 	};
 
 	React.useEffect(() => {
 		if (error) {
-			toast.error("A Project name is required!", {
+			toast.error("Please enter all fields", {
 				position: "top-right",
 				autoClose: 2000,
 				hideProgressBar: true,
@@ -82,10 +95,18 @@ const CreateTask = ({ currentProjectID }: AppProps) => {
 					/>
 					<div className={styles.selectOptions}>
 						<div>
-							<Select options={TypeOptions} />
+							<Select
+								onChange={selectType}
+								options={TypeOptions}
+								placeholder="Type"
+							/>
 						</div>
 						<div>
-							<Select options={StatusOptions} />
+							<Select
+								onChange={selectStatus}
+								options={StatusOptions}
+								placeholder="Status"
+							/>
 						</div>
 						<button type="submit" className={styles.submit__btn}>
 							create

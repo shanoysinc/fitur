@@ -34,7 +34,13 @@ const Dashboard = ({ status, tasks, color }: AppProps) => {
 					key={task._id}
 					onClick={() => {}}
 				>
-					<div className={styles.task__priority}>🔥</div>
+					<div className={styles.task__priority}>
+						{task.type === "Bug Fix" ? (
+							<span>🤢</span>
+						) : (
+							<span>💡</span>
+						)}
+					</div>
 					<div className={styles.task__info}>
 						<h3 className={styles.task__title}>{task.title}</h3>
 						<p className={styles.task__type}>{task.type}</p>

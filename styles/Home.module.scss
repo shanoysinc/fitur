@@ -4,8 +4,6 @@
 
 .dashboard__container {
 	display: flex;
-	flex-direction: column;
-	& > * + * {
-		margin-top: 1.5em;
-	}
+	flex-wrap: wrap;
+	justify-content: center;
 }

@@ -25,6 +25,7 @@ const StatusOptions: optionValue[] = [
 ];
 
 const CreateTask = ({ currentProjectID }: AppProps) => {
+	const formRef = React.useRef(null);
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation(
@@ -56,8 +57,8 @@ const CreateTask = ({ currentProjectID }: AppProps) => {
 		const newTask = { title: taskName, type, status };
 		mutation.mutate(newTask) as any;
 		setTaskName("");
-		setType(null);
-		setStatus(null);
+
+		formRef.current.reset();
 	};
 	const selectType = ({ value }: optionValue) => {
 		setType(value);
@@ -84,7 +85,11 @@ const CreateTask = ({ currentProjectID }: AppProps) => {
 
 	return (
 		<>
-			<form onSubmit={onSubmit} className={styles.form__container}>
+			<form
+				onSubmit={onSubmit}
+				className={styles.form__container}
+				ref={formRef}
+			>
 				<div>
 					<input
 						type="text"

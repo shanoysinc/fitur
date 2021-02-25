@@ -9,7 +9,7 @@ const Modal = ({ children }: ModalProps) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.backdrop}></div>
-			<div className={styles.model__body}> {children}</div>
+			<div className={styles.modal__body}> {children}</div>
 		</div>
 	);
 };

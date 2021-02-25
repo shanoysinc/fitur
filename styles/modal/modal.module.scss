@@ -1,0 +1,29 @@
+.container {
+	// position: absolute;
+	// top: 0;
+	// bottom: 0;
+	// left: 0;
+	// right: 0;
+	// left: 20px;
+	// right: 20px;
+
+	& > .backdrop {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 700;
+
+		background-color: rgba(33, 34, 33, 0.178);
+	}
+	& > .modal__body {
+		position: fixed;
+		top: 30px;
+		bottom: 30px;
+		left: 20px;
+		right: 20px;
+		background-color: red;
+		z-index: 800;
+	}
+}

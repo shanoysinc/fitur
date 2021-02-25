@@ -23,8 +23,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const projectTask = (props: AppProps) => {
+	const [currentTaskID, setCurrentTaskID] = React.useState<string | null>(
+		null
+	);
 	const { query } = props;
-
 	const projectID = query.projectID as string;
 	const url = `/api/projects/dashboard/${projectID}`;
 
@@ -35,6 +37,13 @@ const projectTask = (props: AppProps) => {
 			return distributeTask(res.data.tasks);
 		}
 	);
+
+	const SelectedTask = (id: string) => {
+		if (currentTaskID == id) {
+			return setCurrentTaskID(null);
+		}
+		setCurrentTaskID(id);
+	};
 
 	if (isLoading) return <Loading />;
 	if (isError) return <span>Error: {error.message}</span>;
@@ -50,16 +59,22 @@ const projectTask = (props: AppProps) => {
 							status="Planned"
 							tasks={data?.planned}
 							color="#1fa0ff"
+							currentTaskID={currentTaskID}
+							setCurrentTaskID={setCurrentTaskID}
 						/>
 						<Dashboard
 							status="In Progress"
 							tasks={data?.inProgress}
 							color="#c17aff"
+							currentTaskID={currentTaskID}
+							setCurrentTaskID={setCurrentTaskID}
 						/>
 						<Dashboard
 							status="Complete"
 							tasks={data?.complete}
 							color="#6dd345"
+							currentTaskID={currentTaskID}
+							setCurrentTaskID={setCurrentTaskID}
 						/>
 					</>
 				</div>

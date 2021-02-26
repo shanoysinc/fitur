@@ -8,17 +8,16 @@ import Select from "react-select";
 interface AppProps {
 	currentProjectID: string;
 }
-
 interface optionValue {
 	value: string;
 	label: string;
 }
-const TypeOptions: optionValue[] = [
+export const TypeOptions: optionValue[] = [
 	{ value: "Feature Request", label: " Feature Request" },
 	{ value: "Bug Fix", label: "Bug Fix" },
 ];
 
-const StatusOptions: optionValue[] = [
+export const StatusOptions: optionValue[] = [
 	{ value: "Planned", label: "Planned" },
 	{ value: "In Progress", label: "In Progress" },
 	{ value: "Complete", label: "Complete" },

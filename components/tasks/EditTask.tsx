@@ -1,12 +1,28 @@
 import React from "react";
 import styles from "../../styles/tasks/edit.module.scss";
 import { Task } from "../../types/Task";
+import Select from "react-select";
+import { StatusOptions, TypeOptions } from "../tasks/CreateTask";
 
 interface TaskProps {
 	currentTask: Task;
 }
+interface optionValue {
+	value: string;
+	label: string;
+}
+
 const EditTask = ({ currentTask }: TaskProps) => {
-	const { title, status } = currentTask;
+	const { title, status, type } = currentTask;
+	const [currentType, setType] = React.useState<string | null>(null);
+	const [currentStatus, setStatus] = React.useState<string | null>(null);
+
+	const selectType = ({ value }: optionValue) => {
+		setType(value);
+	};
+	const selectStatus = ({ value }: optionValue) => {
+		setStatus(value);
+	};
 	return (
 		<div className={styles.container}>
 			<div className={styles.task_title}>
@@ -17,6 +33,26 @@ const EditTask = ({ currentTask }: TaskProps) => {
 				<p>
 					in board <span>{status}</span>
 				</p>
+			</div>
+
+			<div className={styles.selectOptions}>
+				<div>
+					<Select
+						onChange={selectType}
+						options={TypeOptions}
+						placeholder="Type"
+						defaultInputValue={type}
+					/>
+				</div>
+				<div>
+					<Select
+						isClearable
+						onChange={selectStatus}
+						options={StatusOptions}
+						placeholder="Status"
+						defaultInputValue={status}
+					/>
+				</div>
 			</div>
 
 			<div className={styles.description__container}>

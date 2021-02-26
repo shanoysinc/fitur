@@ -25,7 +25,7 @@
 	}
 
 	.description__container {
-		margin-top: 3.5em;
+		margin-top: 1.5em;
 		& > .description__title {
 			display: flex;
 			align-items: flex-start;
@@ -40,6 +40,7 @@
 
 		& > .input__container {
 			margin-left: 2em;
+			margin-bottom: 2em;
 			& > .discription__input {
 				outline: none;
 				border: 0;
@@ -62,6 +63,30 @@
 				font-weight: 500;
 				border-radius: 4px;
 			}
+		}
+	}
+}
+
+.selectOptions {
+	margin-top: 0.5em;
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+
+	& > div {
+		width: 140px;
+	}
+
+	& > * + * {
+		margin-top: 0.5em;
+	}
+}
+
+@media screen and (min-width: 25em) {
+	.selectOptions {
+		& > * + * {
+			margin-left: 1em;
 		}
 	}
 }

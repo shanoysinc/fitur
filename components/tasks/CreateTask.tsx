@@ -2,8 +2,8 @@ import React from "react";
 import styles from "../../styles/tasks/createTask.module.scss";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import Select from "react-select";
+import { toastNotification } from "../../utils/toastNotification";
 
 interface AppProps {
 	currentProjectID: string;
@@ -34,8 +34,9 @@ const CreateTask = ({ currentProjectID }: AppProps) => {
 				newProject
 			),
 		{
-			onSuccess: (response) => {
+			onSuccess: (res) => {
 				queryClient.invalidateQueries("tasks");
+				toastNotification(res.data.message, "success");
 			},
 		}
 	);
@@ -68,16 +69,7 @@ const CreateTask = ({ currentProjectID }: AppProps) => {
 
 	React.useEffect(() => {
 		if (error) {
-			toast.error("Please enter all fields", {
-				position: "top-right",
-				autoClose: 2000,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: false,
-				progress: undefined,
-				className: styles.toast,
-			});
+			toastNotification("Please enter all fields", "error");
 			setError(false);
 		}
 	}, [error]);
@@ -118,18 +110,6 @@ const CreateTask = ({ currentProjectID }: AppProps) => {
 					</div>
 				</div>
 			</form>
-
-			<ToastContainer
-				position="top-right"
-				autoClose={2000}
-				hideProgressBar={true}
-				newestOnTop
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable={false}
-				pauseOnHover
-			/>
 		</>
 	);
 };

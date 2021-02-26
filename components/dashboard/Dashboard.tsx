@@ -58,7 +58,7 @@ const Dashboard = ({
 				</div>
 			))}
 			{currentTask?._id && (
-				<Modal>
+				<Modal setCurrentTask={setCurrentTask}>
 					<EditTask currentTask={currentTask} />
 				</Modal>
 			)}

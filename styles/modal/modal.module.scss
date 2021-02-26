@@ -18,12 +18,13 @@
 		background-color: rgba(33, 34, 33, 0.178);
 	}
 	& > .modal__body {
+		border-radius: 4px;
 		position: fixed;
 		top: 30px;
 		bottom: 30px;
-		left: 20px;
-		right: 20px;
-		background-color: red;
+		left: 30px;
+		right: 30px;
+		background-color: #f4f5f7;
 		z-index: 800;
 	}
 }

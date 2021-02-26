@@ -29,7 +29,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const tasks = await Task.find({ project: projectID });
 				res.json({ tasks });
 			} catch (err) {
-				res.status(400).send({ message: "page not found!" });
+				res.status(400).send({
+					message:
+						"There seems to me a problem please reload browser",
+				});
 			}
 			break;
 		case "POST":
@@ -39,9 +42,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 				const newTask = new Task(task);
 				await newTask.save();
-				res.json({ task: newTask });
+				res.json({ message: "Task was successfully created!" });
 			} catch (err) {
-				res.status(404).send({ message: "page not found!" });
+				res.status(404).send({
+					message: "Unable to create task please try again!",
+				});
 			}
 			break;
 
@@ -63,7 +68,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				res.json({ message: "Task successfully updated" });
 			} catch (err) {
 				res.status(404).send({
-					message: "unable to update task try again!",
+					message: "Unable to update task try again!",
 				});
 			}
 			break;

@@ -28,7 +28,10 @@ const EditTask = ({ currentTask, projectID }: TaskProps) => {
 
 	const mutation = useMutation(
 		(updatedTask) =>
-			axios.patch(`/api/projects/dashboard/${projectID}`, updatedTask),
+			axios.patch(
+				`/api/projects/${projectID}/${currentTask._id}`,
+				updatedTask
+			),
 		{
 			onSuccess: (res) => {
 				queryClient.invalidateQueries("tasks");

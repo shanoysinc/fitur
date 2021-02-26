@@ -38,7 +38,7 @@ const Projects = () => {
 		<div className={styles.container}>
 			{projects.map(({ name, _id }: { name: string; _id: string }) => (
 				<div className={styles.projects__container} key={_id}>
-					<Link href={`/projects/dashboard/${_id}`}>
+					<Link href={`/projects/${_id}`}>
 						<a className={styles.title}>{name}</a>
 					</Link>
 					<div className={styles.info__container}>

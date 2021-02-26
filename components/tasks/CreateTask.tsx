@@ -29,10 +29,7 @@ const CreateTask = ({ currentProjectID }: AppProps) => {
 
 	const mutation = useMutation(
 		(newProject) =>
-			axios.post(
-				`/api/projects/dashboard/${currentProjectID}`,
-				newProject
-			),
+			axios.post(`/api/projects/${currentProjectID}`, newProject),
 		{
 			onSuccess: (res) => {
 				queryClient.invalidateQueries("tasks");

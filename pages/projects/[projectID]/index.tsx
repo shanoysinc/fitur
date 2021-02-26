@@ -27,7 +27,7 @@ const projectTask = (props: AppProps) => {
 
 	const { query } = props;
 	const projectID = query.projectID as string;
-	const url = `/api/projects/dashboard/${projectID}`;
+	const url = `/api/projects/${projectID}`;
 
 	const { data, isLoading, isError, error } = useQuery(
 		["tasks", projectID],

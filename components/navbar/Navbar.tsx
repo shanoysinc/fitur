@@ -8,9 +8,6 @@ interface NavBarProps {
 	session?: Session;
 }
 const Navbar = ({ session }: NavBarProps) => {
-	// const { user } = session;
-	// console.log(user);
-
 	return (
 		<div className={styles.nav}>
 			<div className={styles.nav__items_left}>
@@ -22,14 +19,17 @@ const Navbar = ({ session }: NavBarProps) => {
 			<div className={styles.nav__items_right}>
 				{session ? (
 					<div className={styles.items__container}>
-						<img
-							src="/svg/notification.svg"
-							alt="notification icon"
-							height={18}
-							width={18}
-						/>
+						<div className={styles.notification}>
+							<img
+								src="/svg/notification.svg"
+								alt="notification icon"
+								height={16}
+								width={16}
+							/>
+						</div>
+
 						<div className={styles.user__name}>
-							{/* <p>{extractUserInitials(user.name)}</p> */}
+							<p>{extractUserInitials(session.user.name)}</p>
 						</div>
 						<button
 							className={styles.btn}

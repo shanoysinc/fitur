@@ -1,6 +1,6 @@
 .nav {
-	background-color: hsl(218, 54%, 40%);
-
+	background-color: hsla(202, 98%, 33%, 0.884);
+	position: relative;
 	display: flex;
 	padding: 0.3em 1.5em;
 	justify-content: space-between;
@@ -18,10 +18,35 @@
 
 .nav__items_right {
 	& > .items__container {
-		& > .user__image {
+		display: flex;
+		align-items: center;
+		& > * + * {
+			margin-left: 0.4em;
+		}
+
+		& > .notification {
+			background-color: hsla(0, 0%, 100%, 0.308);
+			border-radius: 4px;
+			padding: 0.4em 0.6em;
+			position: absolute;
+			right: 16%;
+			cursor: pointer;
+		}
+		& > .notification:hover {
+			background-color: hsla(0, 0%, 100%, 0.185);
+		}
+		& > .user__name {
+			display: flex;
 			border-radius: 50%;
+			background-color: rgb(255, 174, 0);
 			width: 35px;
 			height: 35px;
+			align-items: center;
+			justify-content: center;
+			& > p {
+				font-weight: 500;
+				font-size: 0.875rem;
+			}
 		}
 		& > .btn {
 			border: 0;

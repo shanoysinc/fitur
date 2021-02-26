@@ -4,6 +4,7 @@ import { Provider } from "next-auth/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
+
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {

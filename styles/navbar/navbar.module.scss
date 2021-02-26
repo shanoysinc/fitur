@@ -1,28 +1,35 @@
 .nav {
-	background-color: hsl(0, 0%, 98%);
+	background-color: hsl(218, 54%, 40%);
 
 	display: flex;
-	padding: 1em 1.5em;
+	padding: 0.3em 1.5em;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 3px solid rgb(9, 2, 51);
+	// border-bottom: 3px solid rgb(9, 2, 51);
 }
 
 .nav__items_left {
 	& > .logo {
 		font-size: 2rem;
-		font-weight: 700;
-		color: rgb(9, 2, 51);
+		font-weight: 600;
+		color: hsl(218, 54%, 90%);
 	}
 }
 
 .nav__items_right {
-	& > .btn {
-		border: 0;
-		cursor: pointer;
-		font-size: 0.7rem;
-		background: none;
-		font-weight: 800;
-		color: rgb(9, 2, 51);
+	& > .items__container {
+		& > .user__image {
+			border-radius: 50%;
+			width: 35px;
+			height: 35px;
+		}
+		& > .btn {
+			border: 0;
+			cursor: pointer;
+			font-size: 0.7rem;
+			background: none;
+			font-weight: 800;
+			color: rgb(9, 2, 51);
+		}
 	}
 }

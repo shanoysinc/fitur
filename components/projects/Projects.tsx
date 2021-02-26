@@ -4,8 +4,9 @@ import { useProject } from "../../hooks/project";
 import { useMutation, useQueryClient } from "react-query";
 import Link from "next/link";
 import axios from "axios";
-import { toast } from "react-toastify";
 import Loading from "../loading/Loading";
+import { toastNotification } from "../../utils/toastNotification";
+
 const Projects = () => {
 	const { data, isLoading } = useProject();
 	const [showOptions, setShowOptions] = React.useState("");
@@ -15,16 +16,7 @@ const Projects = () => {
 		onSuccess: (response) => {
 			const { data } = response;
 			queryClient.invalidateQueries("projects");
-			toast.success(data.message, {
-				position: "top-right",
-				autoClose: 2000,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: false,
-				progress: undefined,
-				className: styles.toast,
-			});
+			toastNotification(data.message, "success");
 		},
 	});
 

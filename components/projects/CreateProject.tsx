@@ -2,7 +2,7 @@ import React from "react";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import styles from "../../styles/projects/createProject.module.scss";
-import { ToastContainer, toast } from "react-toastify";
+import { toastNotification } from "../../utils/toastNotification";
 
 const CreateProject = () => {
 	const queryClient = useQueryClient();
@@ -33,16 +33,8 @@ const CreateProject = () => {
 
 	React.useEffect(() => {
 		if (error) {
-			toast.error("A Project name is required!", {
-				position: "top-right",
-				autoClose: 2000,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: false,
-				progress: undefined,
-				className: styles.toast,
-			});
+			toastNotification("A Project name is required!", "error");
+
 			setError(false);
 		}
 	}, [error]);
@@ -61,17 +53,6 @@ const CreateProject = () => {
 					create
 				</button>
 			</form>
-			<ToastContainer
-				position="top-right"
-				autoClose={2000}
-				hideProgressBar={true}
-				newestOnTop
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable={false}
-				pauseOnHover
-			/>
 		</>
 	);
 };

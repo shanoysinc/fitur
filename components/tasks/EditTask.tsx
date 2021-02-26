@@ -6,6 +6,7 @@ import { StatusOptions, TypeOptions } from "../tasks/CreateTask";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
+
 interface TaskProps {
 	currentTask: Task;
 	projectID: string;

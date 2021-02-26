@@ -10,9 +10,10 @@ const CreateProject = () => {
 	const mutation = useMutation(
 		(newProject) => axios.post("/api/projects", newProject),
 		{
-			onSuccess: (response) => {
-				// const { data } = response;
+			onSuccess: (res) => {
+				const { data } = res;
 				queryClient.invalidateQueries("projects");
+				toastNotification(data.message, "success");
 			},
 		}
 	);

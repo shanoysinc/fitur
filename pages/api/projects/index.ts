@@ -28,11 +28,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 			break;
 		case "POST":
-			const project = { ...req.body, user: userID };
-			const newProject = new Project(project);
-			await newProject.save();
+			try {
+				const project = { ...req.body, user: userID };
+				const newProject = new Project(project);
+				await newProject.save();
 
-			res.json({ project: newProject });
+				res.json({ message: "Project was successfully created!" });
+			} catch (err) {
+				res.json({
+					message:
+						"Unable to create project try again or reload browser",
+				});
+			}
+
 			break;
 
 		default:

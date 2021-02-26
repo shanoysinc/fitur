@@ -45,6 +45,29 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			}
 			break;
 
+		case "PATCH":
+			try {
+				const task = {
+					type: req.body.type,
+					status: req.body.status,
+					description: req.body.description,
+				};
+				const id = req.body.id;
+
+				const updatedTask = await Task.findOneAndUpdate(
+					{ _id: id },
+					{ ...task },
+					{ new: true }
+				);
+				await updatedTask?.save();
+				res.json({ message: "Task successfully updated" });
+			} catch (err) {
+				res.status(404).send({
+					message: "unable to update task try again!",
+				});
+			}
+			break;
+
 		default:
 			res.status(404).send({ message: "page not found!" });
 			break;

@@ -10,6 +10,7 @@ interface DashboardProps {
 	color: string;
 	currentTask: Task | null;
 	setCurrentTask: React.Dispatch<React.SetStateAction<Task | null>>;
+	projectID: string;
 }
 
 const Dashboard = ({
@@ -18,10 +19,9 @@ const Dashboard = ({
 	color,
 	currentTask,
 	setCurrentTask,
+	projectID,
 }: DashboardProps) => {
 	const SelectedTask = (task: Task) => {
-		console.log("click");
-
 		if (currentTask?._id == task._id) {
 			return setCurrentTask(null);
 		}
@@ -59,7 +59,7 @@ const Dashboard = ({
 			))}
 			{currentTask?._id && (
 				<Modal setCurrentTask={setCurrentTask}>
-					<EditTask currentTask={currentTask} />
+					<EditTask currentTask={currentTask} projectID={projectID} />
 				</Modal>
 			)}
 		</div>

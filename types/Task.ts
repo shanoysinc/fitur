@@ -6,7 +6,7 @@ type TaskType = "Bug Fix" | "Feature Request";
 export interface Task extends Document {
 	user: string;
 	title: string;
-	details: string;
+	description: string;
 	type: TaskType;
 	status: Status;
 	createAt: Date;

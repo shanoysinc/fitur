@@ -8,9 +8,8 @@ const taskSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	details: {
+	description: {
 		type: String,
-		// required: true,
 	},
 	type: {
 		type: String,
@@ -25,12 +24,6 @@ const taskSchema = new Schema({
 		default: new Date(),
 	},
 	upVotes: { type: Number, default: 1 },
-	// comments: [
-	// 	{
-	// 		comment: String,
-	// 		task: { type: Schema.Types.ObjectId, ref: "tasks" },
-	// 	},
-	// ],
 });
 
 const task: Model<Task> = models.Task || model("Task", taskSchema);

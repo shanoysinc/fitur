@@ -53,6 +53,7 @@ const projectTask = (props: AppProps) => {
 							color="#1fa0ff"
 							currentTask={currentTask}
 							setCurrentTask={setCurrentTask}
+							projectID={projectID}
 						/>
 						<Dashboard
 							status="In Progress"
@@ -60,6 +61,7 @@ const projectTask = (props: AppProps) => {
 							color="#c17aff"
 							currentTask={currentTask}
 							setCurrentTask={setCurrentTask}
+							projectID={projectID}
 						/>
 						<Dashboard
 							status="Complete"
@@ -67,6 +69,7 @@ const projectTask = (props: AppProps) => {
 							color="#6dd345"
 							currentTask={currentTask}
 							setCurrentTask={setCurrentTask}
+							projectID={projectID}
 						/>
 					</>
 				</div>

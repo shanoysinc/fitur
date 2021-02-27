@@ -1,42 +1,48 @@
 .container {
-	margin-top: 4em;
+	// margin-top: 4em;
+	padding: 0.8em 0.8em 2em 0.8em;
 }
 
 .form__container {
-	margin-top: 2em;
+	// margin-top: 2em;
 	display: flex;
-	justify-content: center;
-	& > .project__color {
-		height: 40px;
-		width: 36px;
-		border-radius: 2px;
-		margin-right: 1em;
-		background-color: rgb(243, 247, 16);
-	}
+	gap: 1em;
+	flex-direction: column;
+	// & > .project__color {
+	// 	height: 40px;
+	// 	width: 36px;
+	// 	border-radius: 2px;
+	// 	margin-right: 1em;
+	// 	background-color: rgb(243, 247, 16);
+	// }
 }
 .input {
-	width: 55%;
+	// max-width: 252px;
+	height: 35px;
 	padding: 0.8em;
 	border-radius: 4px;
-	background-color: hsla(202, 98%, 33%, 0.123);
+	background-color: rgba(26, 27, 26, 0.185);
 	outline: none;
 	border: 0;
-	color: hsl(202, 98%, 23%);
+	color: white;
 }
 .input::placeholder {
-	color: hsla(202, 98%, 33%, 0.753);
+	color: white;
 }
 
 .submit__btn {
-	margin-left: 1.5em;
-	background-color: rgb(75, 191, 107);
+	// margin-left: 1.5em;
+	background-color: rgba(26, 27, 26, 0.185);
 	color: white;
 	border: 0;
-	padding: 0.7em 1.5em;
+	width: fit-content;
+	cursor: pointer;
+	padding: 0.7em 1em;
 	text-transform: capitalize;
-	font-size: 1rem;
+	outline: none;
 	font-weight: 600;
 	border-radius: 4px;
+	height: 30px;
 }
 
 @media screen and (min-width: 60em) {

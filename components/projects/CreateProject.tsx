@@ -4,6 +4,10 @@ import axios from "axios";
 import styles from "../../styles/projects/createProject.module.scss";
 import { toastNotification } from "../../utils/toastNotification";
 
+interface AppProps {
+	projectColor: string;
+}
+
 const CreateProject = () => {
 	const queryClient = useQueryClient();
 
@@ -43,12 +47,12 @@ const CreateProject = () => {
 	return (
 		<div className={styles.container}>
 			<form onSubmit={onSubmit} className={styles.form__container}>
-				<div className={styles.project__color}></div>
+				{/* <div className={styles.project__color}></div> */}
 
 				<input
 					type="text"
 					name="name"
-					placeholder="Create a project..."
+					placeholder="Create a project title..."
 					onChange={inputHandler}
 					className={styles.input}
 				/>

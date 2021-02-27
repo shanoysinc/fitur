@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../../styles/projects/projects.module.scss";
+import modalStyles from "../../styles/modal/createProjectModal.module.scss";
+import { CirclePicker, CirclePickerProps } from "react-color";
 import { useProject } from "../../hooks/project";
 import { useMutation, useQueryClient } from "react-query";
 import Link from "next/link";
@@ -9,9 +11,21 @@ import { toastNotification } from "../../utils/toastNotification";
 import CreateProject from "./CreateProject";
 import Modal from "../modal/Modal";
 
+const colors = [
+	"#FF6900",
+	"#FCB900",
+	"#7BDCB5",
+	"#00D084",
+	"#0693E3",
+	"#EB144C",
+	"#F78DA7",
+	"#9900EF",
+];
+
 const Projects = () => {
 	const { data, isLoading } = useProject();
 	const [openModal, setOpenModal] = React.useState(false);
+	const [projectColor, setProjectColor] = React.useState<string>("#9900EF");
 	const [showOptions, setShowOptions] = React.useState("");
 	const queryClient = useQueryClient();
 
@@ -38,6 +52,7 @@ const Projects = () => {
 	};
 
 	const createProjectHandler = () => setOpenModal(!openModal);
+	const projectColorHandler = (color: any) => setProjectColor(color.hex);
 
 	return (
 		<div className={styles.outer__container}>
@@ -95,8 +110,20 @@ const Projects = () => {
 				</div>
 			</div>
 			{openModal && (
-				<Modal setOpenModal={setOpenModal}>
+				<Modal
+					setOpenModal={setOpenModal}
+					modalStyles={modalStyles}
+					projectColor={projectColor}
+				>
 					<CreateProject />
+					<CirclePicker
+						colors={colors}
+						onChange={projectColorHandler}
+						width="100%"
+						circleSize={25}
+						circleSpacing={10}
+						className={modalStyles.color__picker}
+					/>
 				</Modal>
 			)}
 		</div>

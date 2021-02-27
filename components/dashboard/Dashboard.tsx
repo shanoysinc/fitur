@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../../styles/dashboard/dashboard.module.scss";
+import modalStyles from "../../styles/modal/taskModal.module.scss";
+
 import Modal from "../modal/Modal";
 import EditTask from "../tasks/EditTask";
 import { Task } from "../../types/Task";
@@ -63,6 +65,7 @@ const Dashboard = ({
 				<Modal
 					setOpenModal={setOpenModal}
 					setCurrentTask={setCurrentTask}
+					modalStyles={modalStyles}
 				>
 					<EditTask currentTask={currentTask} projectID={projectID} />
 				</Modal>

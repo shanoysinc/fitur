@@ -1,0 +1,43 @@
+.container {
+	& > .backdrop {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 700;
+
+		background-color: rgba(3, 3, 3, 0.404);
+	}
+	& > .modal__body {
+		max-width: 300px;
+		height: fit-content;
+		border-radius: 4px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		position: fixed;
+		top: 15%;
+		left: 30px;
+		right: 30px;
+
+		background-color: white;
+		z-index: 800;
+	}
+}
+
+.color__picker {
+	padding: 0.5em;
+	position: absolute;
+	background-color: rgba(41, 41, 41, 0.842);
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+@media screen and (min-width: 43em) {
+	.container {
+		& > .modal__body {
+			top: 15%;
+			left: 35%;
+		}
+	}
+}

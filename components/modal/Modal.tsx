@@ -1,14 +1,23 @@
 import React from "react";
-import styles from "../../styles/modal/modal.module.scss";
 import { Task } from "../../types/Task";
 
 interface ModalProps {
 	children: React.ReactNode;
 	setOpenModal: React.Dispatch<React.SetStateAction<true | false>>;
 	setCurrentTask?: React.Dispatch<React.SetStateAction<Task | null>>;
+	modalStyles: {
+		readonly [key: string]: string;
+	};
+	projectColor?: string;
 }
 
-const Modal = ({ children, setOpenModal, setCurrentTask }: ModalProps) => {
+const Modal = ({
+	children,
+	setOpenModal,
+	setCurrentTask,
+	modalStyles,
+	projectColor,
+}: ModalProps) => {
 	const modalHandler = () => {
 		setOpenModal(false);
 		if (setCurrentTask) {
@@ -16,9 +25,14 @@ const Modal = ({ children, setOpenModal, setCurrentTask }: ModalProps) => {
 		}
 	};
 	return (
-		<div className={styles.container}>
-			<div className={styles.backdrop} onClick={modalHandler}></div>
-			<div className={styles.modal__body}> {children}</div>
+		<div className={modalStyles.container}>
+			<div className={modalStyles.backdrop} onClick={modalHandler}></div>
+			<div
+				className={modalStyles.modal__body}
+				style={{ backgroundColor: projectColor }}
+			>
+				{children}
+			</div>
 		</div>
 	);
 };

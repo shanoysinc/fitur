@@ -24,11 +24,10 @@
 	height: 100px;
 	padding: 1em;
 	border-radius: 4px;
-
 	& > .title {
-		font-size: 1.2rem;
-		font-weight: 500;
-		color: hsl(0, 0%, 98%);
+		font-size: 1.125rem;
+		font-weight: 400;
+		color: hsl(0, 0%, 100%);
 		text-transform: capitalize;
 	}
 
@@ -52,18 +51,18 @@
 	}
 
 	& > .options {
-		background-color: white;
-		border: 1px solid hsl(0, 0%, 96%);
-		border-radius: 2px;
+		background-color: rgba(20, 20, 20, 0.651);
+		border-radius: 1px;
 		position: absolute;
 		bottom: 35px;
 		right: 5px;
 		& > div {
 			cursor: pointer;
-			padding: 0.2em;
+			padding: 0.5em;
+			color: rgba(235, 235, 235, 0.815);
 		}
 		& > div:hover {
-			background-color: rgb(9, 2, 51);
+			background-color: rgba(20, 20, 20, 0.836);
 			color: white;
 		}
 		& > * + * {

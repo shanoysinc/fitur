@@ -1,23 +1,13 @@
 .container {
-	// margin-top: 4em;
-	padding: 0.8em 0.8em 2em 0.8em;
+	padding: 2em 1.5em;
 }
 
 .form__container {
-	// margin-top: 2em;
 	display: flex;
 	gap: 1em;
 	flex-direction: column;
-	// & > .project__color {
-	// 	height: 40px;
-	// 	width: 36px;
-	// 	border-radius: 2px;
-	// 	margin-right: 1em;
-	// 	background-color: rgb(243, 247, 16);
-	// }
 }
 .input {
-	// max-width: 252px;
 	height: 35px;
 	padding: 0.8em;
 	border-radius: 4px;
@@ -31,7 +21,6 @@
 }
 
 .submit__btn {
-	// margin-left: 1.5em;
 	background-color: rgba(26, 27, 26, 0.185);
 	color: white;
 	border: 0;

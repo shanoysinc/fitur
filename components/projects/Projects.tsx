@@ -14,13 +14,19 @@ import Modal from "../modal/Modal";
 const colors = [
 	"#FF6900",
 	"#FCB900",
-	"#7BDCB5",
+	"rgb(75, 191, 107)",
 	"#00D084",
 	"#0693E3",
 	"#EB144C",
 	"#F78DA7",
-	"#9900EF",
+	"rgb(205, 90, 145)",
 ];
+
+interface projectProps {
+	name: string;
+	_id: string;
+	color: string;
+}
 
 const Projects = () => {
 	const { data, isLoading } = useProject();
@@ -66,42 +72,40 @@ const Projects = () => {
 				<h3>Personal Projects</h3>
 			</div>
 			<div className={styles.inner__container}>
-				{projects.map(
-					({ name, _id }: { name: string; _id: string }) => (
-						<div
-							className={styles.projects__container}
-							key={_id}
-							style={{ backgroundColor: "rgb(75, 191, 107)" }}
-						>
-							<Link href={`/projects/${_id}`}>
-								<a className={styles.title}>{name}</a>
-							</Link>
-							<div className={styles.info__container}>
-								<div className={styles.option__container}>
-									<button
-										className={styles.option__btn}
-										onClick={() => toggleOptions(_id)}
-									>
-										<img
-											src="/svg/options.svg"
-											alt="options btn"
-											height={23}
-											width={23}
-										/>
-									</button>
-									{showOptions === _id && (
-										<div className={styles.options}>
-											<div>Edit</div>
-											<div onClick={deleteProject(_id)}>
-												Delete
-											</div>
+				{projects.map(({ name, _id, color }: projectProps) => (
+					<div
+						className={styles.projects__container}
+						key={_id}
+						style={{ backgroundColor: color }}
+					>
+						<Link href={`/projects/${_id}`}>
+							<a className={styles.title}>{name}</a>
+						</Link>
+						<div className={styles.info__container}>
+							<div className={styles.option__container}>
+								<button
+									className={styles.option__btn}
+									onClick={() => toggleOptions(_id)}
+								>
+									<img
+										src="/svg/options.svg"
+										alt="options btn"
+										height={23}
+										width={23}
+									/>
+								</button>
+								{showOptions === _id && (
+									<div className={styles.options}>
+										<div>Edit</div>
+										<div onClick={deleteProject(_id)}>
+											Delete
 										</div>
-									)}
-								</div>
+									</div>
+								)}
 							</div>
 						</div>
-					)
-				)}
+					</div>
+				))}
 				<div
 					className={styles.create__project}
 					onClick={createProjectHandler}
@@ -115,7 +119,7 @@ const Projects = () => {
 					modalStyles={modalStyles}
 					projectColor={projectColor}
 				>
-					<CreateProject />
+					<CreateProject projectColor={projectColor} />
 					<CirclePicker
 						colors={colors}
 						onChange={projectColorHandler}

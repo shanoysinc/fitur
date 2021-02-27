@@ -8,7 +8,7 @@ interface AppProps {
 	projectColor: string;
 }
 
-const CreateProject = () => {
+const CreateProject = ({ projectColor }: AppProps) => {
 	const queryClient = useQueryClient();
 
 	const mutation = useMutation(
@@ -32,7 +32,7 @@ const CreateProject = () => {
 		if (name === "") {
 			return setError(true);
 		}
-		const newProject = { name } as any;
+		const newProject = { name, color: projectColor } as any;
 		mutation.mutate(newProject);
 	};
 

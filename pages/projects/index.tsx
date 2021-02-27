@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Projects from "../../components/projects/Projects";
 import styles from "../../styles/Home.module.scss";
-import CreateProject from "../../components/projects/CreateProject";
 import { useSession } from "next-auth/client";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Redirect from "../../components/redirect/Redirect";
@@ -19,7 +18,6 @@ const index = () => {
 		<div className={styles.container}>
 			<Navbar session={session} />
 			<div className={styles.main__container}>
-				{/* <CreateProject /> */}
 				<div className={styles.sidebar__container}>
 					<Sidebar
 						currentTab={currentTab}
@@ -28,7 +26,11 @@ const index = () => {
 				</div>
 				<div className={styles.projects__container}>
 					{currentTab == "Projects" && <Projects />}
-					{currentTab == "Tasks" && <h1>task</h1>}
+					{currentTab == "Tasks" && (
+						<div>
+							<h1>task</h1>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

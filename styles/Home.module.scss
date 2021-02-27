@@ -2,24 +2,31 @@
 	// margin: 2em;
 	margin-top: 3em;
 
-	margin-left: 2em;
-	display: flex;
-	align-items: center;
-	gap: 3em;
+	// margin-left: 2em;
+	// display: flex;
+	// align-items: center;
+	// gap: 3em;
 
 	& > .sidebar__container {
 		display: none;
+		width: 230px;
+		position: fixed;
+		z-index: 1;
+		// top: 20px;
+		left: 60px;
 	}
-	// & > .projects__container {
-	// }
+	& > .projects__container {
+		margin-left: 3em;
+	}
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 37.5em) {
 	.main__container {
 		& > .sidebar__container {
 			display: block;
-			margin-left: 7em;
-			width: 230px;
+		}
+		& > .projects__container {
+			margin-left: 20em;
 		}
 	}
 }

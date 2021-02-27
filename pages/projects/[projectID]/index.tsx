@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/navbar/Navbar";
 import Dashboard from "../../../components/dashboard/Dashboard";
-import styles from "../../../styles/Home.module.scss";
+import styles from "../../../styles/tasks/task_home.module.scss";
 import Loading from "../../../components/loading/Loading";
 import { Task } from "../../../types/Task";
 import { useQuery } from "react-query";

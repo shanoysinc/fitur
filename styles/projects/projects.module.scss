@@ -1,44 +1,50 @@
+.outer__container {
+	& > .project__label {
+		display: flex;
+		align-items: center;
+		& > h3 {
+			font-size: 1.1rem;
+			margin-left: 0.5em;
+			font-size: 500;
+			margin-top: 1.3em;
+			color: hsl(202, 98%, 15%);
+		}
+	}
+}
+
+.inner__container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5em;
+}
+
 .projects__container {
-	background-color: hsl(0, 0%, 98%);
-	margin-top: 1.5em;
-	border-left: 1.9px solid rgb(9, 2, 51);
-	border-top: 1.9px solid rgb(9, 2, 51);
-	border-right: 3px solid rgb(9, 2, 51);
-	border-bottom: 3px solid rgb(9, 2, 51);
+	position: relative;
+	width: 210px;
+	height: 100px;
 	padding: 1em;
 	border-radius: 4px;
 
 	& > .title {
-		font-size: 1.5rem;
-		font-weight: 600;
-
+		font-size: 1.2rem;
+		font-weight: 500;
+		color: hsl(0, 0%, 98%);
 		text-transform: capitalize;
 	}
-	& > .title:hover {
-		color: hsl(249, 92%, 30%);
-	}
+
 	& > .info__container {
 		display: flex;
 		justify-content: space-between;
-		& > .project__info {
-			display: flex;
-			& > p {
-				font-size: 0.875rem;
-				font-weight: 600;
-				text-transform: capitalize;
-			}
-			& > p + p {
-				margin-left: 1.5em;
-			}
-		}
 	}
 }
 
 .option__container {
 	display: flex;
-	position: relative;
 
 	& > .option__btn {
+		position: absolute;
+		bottom: 0;
+		right: 10px;
 		border: none;
 		background: none;
 		cursor: pointer;
@@ -46,6 +52,9 @@
 	}
 
 	& > .options {
+		background-color: white;
+		border: 1px solid hsl(0, 0%, 96%);
+		border-radius: 2px;
 		position: absolute;
 		bottom: 35px;
 		right: 5px;
@@ -63,6 +72,16 @@
 	}
 }
 
-.showOptions {
-	display: block;
+.create__project {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 210px;
+	height: 100px;
+	border-radius: 4px;
+	text-transform: capitalize;
+	background-color: hsl(0, 0%, 93%);
+	color: hsl(0, 0%, 40%);
+	font-size: 0.875rem;
 }

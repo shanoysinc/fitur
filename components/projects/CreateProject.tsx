@@ -41,8 +41,10 @@ const CreateProject = () => {
 	}, [error]);
 
 	return (
-		<>
+		<div className={styles.container}>
 			<form onSubmit={onSubmit} className={styles.form__container}>
+				<div className={styles.project__color}></div>
+
 				<input
 					type="text"
 					name="name"
@@ -54,7 +56,7 @@ const CreateProject = () => {
 					create
 				</button>
 			</form>
-		</>
+		</div>
 	);
 };
 

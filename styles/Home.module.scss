@@ -1,9 +1,27 @@
 .main__container {
-	margin: 2em 2em;
+	// margin: 2em;
+	margin-top: 3em;
+
+	margin-left: 2em;
+	display: flex;
+	align-items: center;
+	gap: 3em;
+
+	& > .sidebar__container {
+		display: none;
+	}
+	& > .projects__container {
+	}
 }
 
-.dashboard__container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+@media screen and (min-width: 60em) {
+	.main__container {
+		// 	margin: 2em 15em;
+		//
+		& > .sidebar__container {
+			display: block;
+			margin-left: 7em;
+			width: 230px;
+		}
+	}
 }

@@ -35,41 +35,57 @@ const Projects = () => {
 	};
 
 	return (
-		<div className={styles.container}>
-			{projects.map(({ name, _id }: { name: string; _id: string }) => (
-				<div className={styles.projects__container} key={_id}>
-					<Link href={`/projects/${_id}`}>
-						<a className={styles.title}>{name}</a>
-					</Link>
-					<div className={styles.info__container}>
-						<div className={styles.project__info}>
-							<p>Feature request: 12</p>
-							<p>Bug Report: 7</p>
-						</div>
-						<div className={styles.option__container}>
-							<button
-								className={styles.option__btn}
-								onClick={() => toggleOptions(_id)}
-							>
-								<img
-									src="/svg/options.svg"
-									alt="options btn"
-									height={23}
-									width={23}
-								/>
-							</button>
-							{showOptions === _id && (
-								<div className={styles.options}>
-									<div>Edit</div>
-									<div onClick={deleteProject(_id)}>
-										Delete
-									</div>
+		<div className={styles.outer__container}>
+			<div className={styles.project__label}>
+				<img
+					src="/svg/person.svg"
+					alt="options btn"
+					height={20}
+					width={20}
+				/>
+				<h3>Personal Projects</h3>
+			</div>
+			<div className={styles.inner__container}>
+				{projects.map(
+					({ name, _id }: { name: string; _id: string }) => (
+						<div
+							className={styles.projects__container}
+							key={_id}
+							style={{ backgroundColor: "rgb(75, 191, 107)" }}
+						>
+							<Link href={`/projects/${_id}`}>
+								<a className={styles.title}>{name}</a>
+							</Link>
+							<div className={styles.info__container}>
+								<div className={styles.option__container}>
+									<button
+										className={styles.option__btn}
+										onClick={() => toggleOptions(_id)}
+									>
+										<img
+											src="/svg/options.svg"
+											alt="options btn"
+											height={23}
+											width={23}
+										/>
+									</button>
+									{showOptions === _id && (
+										<div className={styles.options}>
+											<div>Edit</div>
+											<div onClick={deleteProject(_id)}>
+												Delete
+											</div>
+										</div>
+									)}
 								</div>
-							)}
+							</div>
 						</div>
-					</div>
+					)
+				)}
+				<div className={styles.create__project} onClick={() => {}}>
+					<p>create new project</p>
 				</div>
-			))}
+			</div>
 		</div>
 	);
 };

@@ -1,23 +1,35 @@
+.container {
+	margin-top: 4em;
+}
+
 .form__container {
-	// width: 100%;
-	// background-color: aqua;
+	margin-top: 2em;
 	display: flex;
 	justify-content: center;
+	& > .project__color {
+		height: 40px;
+		width: 36px;
+		border-radius: 2px;
+		margin-right: 1em;
+		background-color: rgb(243, 247, 16);
+	}
 }
 .input {
 	width: 55%;
 	padding: 0.8em;
 	border-radius: 4px;
-	border-left: 1.9px solid rgb(9, 2, 51);
-	border-top: 1.9px solid rgb(9, 2, 51);
-	border-right: 3px solid rgb(9, 2, 51);
-	border-bottom: 3px solid rgb(9, 2, 51);
+	background-color: hsla(202, 98%, 33%, 0.123);
 	outline: none;
+	border: 0;
+	color: hsl(202, 98%, 23%);
+}
+.input::placeholder {
+	color: hsla(202, 98%, 33%, 0.753);
 }
 
 .submit__btn {
 	margin-left: 1.5em;
-	background-color: rgb(9, 2, 51);
+	background-color: rgb(75, 191, 107);
 	color: white;
 	border: 0;
 	padding: 0.7em 1.5em;
@@ -27,9 +39,11 @@
 	border-radius: 4px;
 }
 
-.toast {
-	margin-top: 0.5em;
-	// margin-left: 7em;
-	// margin-right: 1em;
-	// width: fit-content;
+@media screen and (min-width: 60em) {
+	.container {
+		& > h1 {
+			font-size: 3em;
+			color: hsl(202, 98%, 13%);
+		}
+	}
 }

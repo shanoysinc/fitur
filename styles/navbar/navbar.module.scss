@@ -2,7 +2,7 @@
 	background-color: hsla(202, 98%, 33%, 0.884);
 	position: relative;
 	display: flex;
-	padding: 0.3em 1.5em;
+	padding: 0.5em 1.5em;
 	justify-content: space-between;
 	align-items: center;
 	// border-bottom: 3px solid rgb(9, 2, 51);
@@ -12,7 +12,7 @@
 	& > .logo {
 		font-size: 2rem;
 		font-weight: 600;
-		color: hsl(218, 54%, 90%);
+		color: hsl(202, 98%, 96%);
 	}
 }
 
@@ -54,7 +54,14 @@
 			font-size: 0.7rem;
 			background: none;
 			font-weight: 800;
-			color: rgb(9, 2, 51);
+			color: hsl(202, 98%, 96%);
 		}
+	}
+}
+
+@media screen and (min-width: 60em) {
+	.nav {
+		padding: 0.5em 15em;
+		justify-content: space-between;
 	}
 }

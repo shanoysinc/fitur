@@ -21,6 +21,8 @@ const Dashboard = ({
 	setCurrentTask,
 	projectID,
 }: DashboardProps) => {
+	const [openModal, setOpenModal] = React.useState(false);
+
 	const SelectedTask = (task: Task) => {
 		if (currentTask?._id == task._id) {
 			return setCurrentTask(null);
@@ -58,7 +60,10 @@ const Dashboard = ({
 				</div>
 			))}
 			{currentTask?._id && (
-				<Modal setCurrentTask={setCurrentTask}>
+				<Modal
+					setOpenModal={setOpenModal}
+					setCurrentTask={setCurrentTask}
+				>
 					<EditTask currentTask={currentTask} projectID={projectID} />
 				</Modal>
 			)}

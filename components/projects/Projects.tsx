@@ -6,9 +6,12 @@ import Link from "next/link";
 import axios from "axios";
 import Loading from "../loading/Loading";
 import { toastNotification } from "../../utils/toastNotification";
+import CreateProject from "./CreateProject";
+import Modal from "../modal/Modal";
 
 const Projects = () => {
 	const { data, isLoading } = useProject();
+	const [openModal, setOpenModal] = React.useState(false);
 	const [showOptions, setShowOptions] = React.useState("");
 	const queryClient = useQueryClient();
 
@@ -33,6 +36,8 @@ const Projects = () => {
 		}
 		setShowOptions(id);
 	};
+
+	const createProjectHandler = () => setOpenModal(!openModal);
 
 	return (
 		<div className={styles.outer__container}>
@@ -82,10 +87,18 @@ const Projects = () => {
 						</div>
 					)
 				)}
-				<div className={styles.create__project} onClick={() => {}}>
+				<div
+					className={styles.create__project}
+					onClick={createProjectHandler}
+				>
 					<p>create new project</p>
 				</div>
 			</div>
+			{openModal && (
+				<Modal setOpenModal={setOpenModal}>
+					<CreateProject />
+				</Modal>
+			)}
 		</div>
 	);
 };

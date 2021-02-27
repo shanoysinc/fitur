@@ -4,16 +4,20 @@ import { Task } from "../../types/Task";
 
 interface ModalProps {
 	children: React.ReactNode;
-	setCurrentTask: React.Dispatch<React.SetStateAction<Task | null>>;
+	setOpenModal: React.Dispatch<React.SetStateAction<true | false>>;
+	setCurrentTask?: React.Dispatch<React.SetStateAction<Task | null>>;
 }
 
-const Modal = ({ children, setCurrentTask }: ModalProps) => {
+const Modal = ({ children, setOpenModal, setCurrentTask }: ModalProps) => {
+	const modalHandler = () => {
+		setOpenModal(false);
+		if (setCurrentTask) {
+			setCurrentTask(null);
+		}
+	};
 	return (
 		<div className={styles.container}>
-			<div
-				className={styles.backdrop}
-				onClick={() => setCurrentTask(null)}
-			></div>
+			<div className={styles.backdrop} onClick={modalHandler}></div>
 			<div className={styles.modal__body}> {children}</div>
 		</div>
 	);

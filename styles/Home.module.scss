@@ -10,14 +10,12 @@
 	& > .sidebar__container {
 		display: none;
 	}
-	& > .projects__container {
-	}
+	// & > .projects__container {
+	// }
 }
 
 @media screen and (min-width: 60em) {
 	.main__container {
-		// 	margin: 2em 15em;
-		//
 		& > .sidebar__container {
 			display: block;
 			margin-left: 7em;

@@ -7,7 +7,7 @@ const projectSchema = new Schema({
 		required: true,
 	},
 	color: String,
-	tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
+	// tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
 });
 
 export default models.Project || model("Project", projectSchema);

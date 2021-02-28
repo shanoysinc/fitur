@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/projects/projects.module.scss";
 import modalStyles from "../../styles/modal/createProjectModal.module.scss";
-import { CirclePicker, CirclePickerProps } from "react-color";
+import { CirclePicker } from "react-color";
 import { useProject } from "../../hooks/project";
 import { useMutation, useQueryClient } from "react-query";
 import Link from "next/link";
@@ -79,7 +79,12 @@ const Projects = () => {
 						style={{ backgroundColor: color }}
 					>
 						<Link href={`/projects/${_id}`}>
-							<a className={styles.title}>{name}</a>
+							<a
+								className={styles.title}
+								onClick={() => setDashboardColor(color)}
+							>
+								{name}
+							</a>
 						</Link>
 						<div className={styles.info__container}>
 							<div className={styles.option__container}>

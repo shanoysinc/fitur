@@ -5,6 +5,7 @@ import modalStyles from "../../styles/modal/taskModal.module.scss";
 import Modal from "../modal/Modal";
 import EditTask from "../tasks/EditTask";
 import { Task } from "../../types/Task";
+import { Project } from "../../types/Project";
 
 interface DashboardProps {
 	status: "Planned" | "In Progress" | "Complete";
@@ -13,6 +14,7 @@ interface DashboardProps {
 	currentTask: Task | null;
 	setCurrentTask: React.Dispatch<React.SetStateAction<Task | null>>;
 	projectID: string;
+	project: Project;
 }
 
 const Dashboard = ({
@@ -21,9 +23,10 @@ const Dashboard = ({
 	color,
 	currentTask,
 	setCurrentTask,
-	projectID,
+	project,
 }: DashboardProps) => {
 	const [openModal, setOpenModal] = React.useState(false);
+	const { name, _id: projectID } = project;
 
 	const SelectedTask = (task: Task) => {
 		if (currentTask?._id == task._id) {

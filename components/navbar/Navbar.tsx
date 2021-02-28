@@ -6,10 +6,11 @@ import { extractUserInitials } from "../../utils/extractUserIntials";
 
 interface NavBarProps {
 	session?: Session;
+	navBgColor?: string;
 }
-const Navbar = ({ session }: NavBarProps) => {
+const Navbar = ({ session, navBgColor }: NavBarProps) => {
 	return (
-		<div className={styles.nav}>
+		<div className={styles.nav} style={{ backgroundColor: navBgColor }}>
 			<div className={styles.nav__items_left}>
 				<div className={styles.nav__icons}>
 					<img

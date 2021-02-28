@@ -83,7 +83,11 @@
 	height: 100px;
 	border-radius: 4px;
 	text-transform: capitalize;
-	background-color: hsl(0, 0%, 93%);
+	background-color: rgba(9, 30, 66, 0.04);
 	color: hsl(0, 0%, 40%);
 	font-size: 0.875rem;
+}
+
+.create__project:hover {
+	background-color: rgba(9, 30, 66, 0.065);
 }

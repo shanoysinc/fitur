@@ -11,7 +11,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: hsla(0, 0%, 100%, 0.233);
+	background-color: hsla(0, 0%, 13%, 0.133);
+
 	border-radius: 4px;
 	padding: 0.5em 0.6em;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -19,13 +20,13 @@
 	& > P {
 		margin: 0;
 		margin-left: 0.5em;
-
+		font-weight: 500;
 		font-size: 0.9rem;
 		color: white;
 	}
 }
 .nav__icons:hover {
-	background-color: hsla(0, 0%, 100%, 0.096);
+	background-color: hsla(0, 0%, 13%, 0.333);
 }
 
 .nav__items_left {

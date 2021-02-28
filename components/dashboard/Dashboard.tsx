@@ -6,6 +6,7 @@ import Modal from "../modal/Modal";
 import EditTask from "../tasks/EditTask";
 import { Task } from "../../types/Task";
 import { Project } from "../../types/Project";
+import CreateTask from "../tasks/CreateTask";
 
 interface DashboardProps {
 	status: "Planned" | "In Progress" | "Complete";
@@ -64,6 +65,7 @@ const Dashboard = ({
 					</div>
 				</div>
 			))}
+			<CreateTask />
 			{currentTask?._id && (
 				<Modal
 					setOpenModal={setOpenModal}

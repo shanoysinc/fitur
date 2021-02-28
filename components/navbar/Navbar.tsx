@@ -22,7 +22,7 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 				</div>{" "}
 				<div className={styles.nav__icons}>
 					<img
-						src="/svg/project-white.svg"
+						src="/svg/project.svg"
 						alt="notification icon"
 						height={16}
 						width={16}

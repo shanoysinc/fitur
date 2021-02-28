@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/tasks/edit.module.scss";
 import { Task } from "../../types/Task";
 import Select from "react-select";
-import { StatusOptions, TypeOptions } from "../tasks/CreateTask";
+// import { StatusOptions, TypeOptions } from "../tasks/CreateTask";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";

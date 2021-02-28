@@ -66,8 +66,8 @@ const Projects = () => {
 				<img
 					src="/svg/person.svg"
 					alt="options btn"
-					height={20}
-					width={20}
+					height={17}
+					width={17}
 				/>
 				<h3>Personal Projects</h3>
 			</div>

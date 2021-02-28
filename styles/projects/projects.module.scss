@@ -22,7 +22,7 @@
 	position: relative;
 	width: 195px;
 	height: 100px;
-	box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0, 0.062),
+	box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0, 0.072),
 		rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
 		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 	padding: 1em;
@@ -38,6 +38,12 @@
 		display: flex;
 		justify-content: space-between;
 	}
+}
+
+.projects__container:hover {
+	box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0, 0.184),
+		rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .option__container {

@@ -1,18 +1,26 @@
 import { Task } from "../types/Task";
+import { Project } from "../types/Project";
 
 interface TaskState {
 	planned: Task[];
 	inProgress: Task[];
 	complete: Task[];
+	project: Project;
 }
-export const distributeTask = (tasks: Task[]) => {
+interface resData {
+	project: Project;
+	tasks: Task[];
+}
+
+export const distributeTask = (data: resData) => {
 	const taskState: TaskState = {
 		planned: [],
 		inProgress: [],
 		complete: [],
+		project: data.project,
 	};
 
-	tasks.map((task) => {
+	data.tasks.map((task) => {
 		switch (task.status) {
 			case "Planned":
 				return taskState.planned.push(task);

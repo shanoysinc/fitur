@@ -2,17 +2,51 @@
 	background-color: hsla(202, 98%, 33%, 0.884);
 	position: relative;
 	display: flex;
-	padding: 0.5em 1.5em;
+	padding: 0.2em 0;
 	justify-content: space-between;
 	align-items: center;
-	// border-bottom: 3px solid rgb(9, 2, 51);
+}
+
+.nav__icons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: hsla(0, 0%, 100%, 0.233);
+	border-radius: 4px;
+	padding: 0.5em 0.6em;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+		rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	cursor: pointer;
+	& > P {
+		margin: 0;
+		margin-left: 0.5em;
+
+		font-size: 0.9rem;
+		color: white;
+	}
+}
+.nav__icons:hover {
+	background-color: hsla(0, 0%, 100%, 0.096);
 }
 
 .nav__items_left {
+	display: flex;
+	align-items: center;
+
+	& > * + * {
+		margin-left: 0.5em;
+	}
+}
+
+.logo__container {
 	& > .logo {
-		font-size: 2rem;
+		font-size: 1.8rem;
 		font-weight: 600;
-		color: hsl(202, 98%, 96%);
+		color: hsla(202, 99%, 73%, 0.562);
+		justify-self: center;
+	}
+	& > .logo:hover {
+		color: hsla(202, 100%, 93%, 0.836);
 	}
 }
 
@@ -21,20 +55,9 @@
 		display: flex;
 		align-items: center;
 		& > * + * {
-			margin-left: 0.4em;
+			margin-left: 0.5em;
 		}
 
-		& > .notification {
-			background-color: hsla(0, 0%, 100%, 0.308);
-			border-radius: 4px;
-			padding: 0.4em 0.6em;
-			position: absolute;
-			right: 16%;
-			cursor: pointer;
-		}
-		& > .notification:hover {
-			background-color: hsla(0, 0%, 100%, 0.185);
-		}
 		& > .user__name {
 			display: flex;
 			border-radius: 50%;
@@ -61,7 +84,7 @@
 
 @media screen and (min-width: 60em) {
 	.nav {
-		padding: 0.5em 15em;
+		padding: 0.2em 0.5em;
 		justify-content: space-between;
 	}
 }

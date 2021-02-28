@@ -11,17 +11,51 @@ const Navbar = ({ session }: NavBarProps) => {
 	return (
 		<div className={styles.nav}>
 			<div className={styles.nav__items_left}>
+				<div className={styles.nav__icons}>
+					<img
+						src="/svg/home.svg"
+						alt="notification icon"
+						height={16}
+						width={16}
+					/>
+				</div>{" "}
+				<div className={styles.nav__icons}>
+					<img
+						src="/svg/project-white.svg"
+						alt="notification icon"
+						height={16}
+						width={16}
+					/>
+					<p>Project</p>
+				</div>
+			</div>
+			<div className={styles.logo__container}>
 				<Link href="/">
 					<a className={styles.logo}>Fitur</a>
 				</Link>
 			</div>
-
 			<div className={styles.nav__items_right}>
 				{session ? (
 					<div className={styles.items__container}>
-						<div className={styles.notification}>
+						<div className={styles.nav__icons}>
+							<img
+								src="/svg/add.svg"
+								alt="notification icon"
+								height={16}
+								width={16}
+							/>
+						</div>
+						<div className={styles.nav__icons}>
 							<img
 								src="/svg/notification.svg"
+								alt="notification icon"
+								height={16}
+								width={16}
+							/>
+						</div>
+						<div className={styles.nav__icons}>
+							<img
+								src="/svg/tips.svg"
 								alt="notification icon"
 								height={16}
 								width={16}

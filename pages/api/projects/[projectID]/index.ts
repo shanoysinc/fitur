@@ -28,7 +28,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					});
 				}
 				const tasks = await Task.find({ project: projectID });
-				res.json({ tasks });
+				const project = await Project.findOne({ _id: projectID });
+
+				res.json({ tasks, project });
 			} catch (err) {
 				res.status(400).send({
 					message:

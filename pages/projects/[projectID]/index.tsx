@@ -11,7 +11,7 @@ import { GetServerSideProps } from "next";
 import CreateTask from "../../../components/tasks/CreateTask";
 import { useSession, Session } from "next-auth/client";
 import Redirect from "../../../components/redirect/Redirect";
-
+import DashboardNavBar from "../../../components/dashboard/DashboardNavBar";
 interface AppProps {
 	query: { projectID: string };
 }
@@ -34,7 +34,8 @@ const projectTask = (props: AppProps) => {
 		["tasks", projectID],
 		async () => {
 			const res = await fetcher(url);
-			return distributeTask(res.data.tasks);
+
+			return distributeTask(res.data);
 		}
 	);
 
@@ -44,9 +45,13 @@ const projectTask = (props: AppProps) => {
 
 	return (
 		<div>
-			<Navbar session={session} />
-			<div className={styles.main__container}>
-				<CreateTask currentProjectID={projectID} />
+			<Navbar session={session} navBgColor={data?.project.color} />
+			<div
+				className={styles.main__container}
+				style={{ backgroundColor: data?.project.color }}
+			>
+				<DashboardNavBar project={data?.project} />
+				{/* <CreateTask currentProjectID={projectID} /> */}
 				<div className={styles.dashboard__container}>
 					<>
 						<Dashboard
@@ -55,7 +60,7 @@ const projectTask = (props: AppProps) => {
 							color="#1fa0ff"
 							currentTask={currentTask}
 							setCurrentTask={setCurrentTask}
-							projectID={projectID}
+							project={data?.project}
 						/>
 						<Dashboard
 							status="In Progress"
@@ -63,7 +68,7 @@ const projectTask = (props: AppProps) => {
 							color="#c17aff"
 							currentTask={currentTask}
 							setCurrentTask={setCurrentTask}
-							projectID={projectID}
+							project={data?.project}
 						/>
 						<Dashboard
 							status="Complete"
@@ -71,7 +76,7 @@ const projectTask = (props: AppProps) => {
 							color="#6dd345"
 							currentTask={currentTask}
 							setCurrentTask={setCurrentTask}
-							projectID={projectID}
+							project={data?.project}
 						/>
 					</>
 				</div>

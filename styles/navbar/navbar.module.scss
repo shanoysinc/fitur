@@ -14,8 +14,7 @@
 	background-color: hsla(0, 0%, 100%, 0.233);
 	border-radius: 4px;
 	padding: 0.5em 0.6em;
-	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-		rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	cursor: pointer;
 	& > P {
 		margin: 0;
@@ -43,11 +42,11 @@
 	& > .logo {
 		font-size: 1.8rem;
 		font-weight: 600;
-		color: hsla(202, 99%, 73%, 0.562);
+		color: hsla(0, 0%, 100%, 0.536);
 		justify-self: center;
 	}
 	& > .logo:hover {
-		color: hsla(202, 100%, 93%, 0.836);
+		color: hsla(0, 0%, 100%, 0.736);
 	}
 }
 

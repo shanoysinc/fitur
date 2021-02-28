@@ -1,0 +1,28 @@
+.container {
+	padding-top: 0.5em;
+}
+.container__left {
+	display: flex;
+	max-height: 35px;
+	gap: 0.4em;
+}
+
+.nav__items {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: hsla(0, 0%, 100%, 0.233);
+	border-radius: 4px;
+	padding: 0.5em 0.6em;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+	cursor: pointer;
+	& > h3 {
+		color: hsl(0, 0%, 100%);
+		font-weight: 500;
+		letter-spacing: 0.03em;
+	}
+}
+.nav__items:hover {
+	background-color: hsla(0, 0%, 100%, 0.096);
+}

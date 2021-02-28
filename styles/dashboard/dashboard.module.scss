@@ -2,11 +2,14 @@
 	// border: 2px solid rgb(9, 2, 51);
 	width: 330px;
 	height: fit-content;
-	margin-top: 3em;
+	margin-top: 0.5em;
 	background-color: hsl(0, 0%, 88%);
 	padding: 1em;
 	border-radius: 4px;
-	margin-left: 2em;
+}
+
+.container + .container {
+	margin-left: 0.6em;
 }
 
 .status__container {
@@ -34,6 +37,7 @@
 	border-radius: 4px;
 	margin-top: 0.8em;
 	padding-left: 1em;
+
 	& > .task__priority {
 		width: 25px;
 		margin-top: 1em;

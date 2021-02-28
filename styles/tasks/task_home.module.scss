@@ -1,9 +1,12 @@
 .main__container {
-	margin: 2em;
+	// margin: 2em;
+	height: 100vh;
+	opacity: 0.8;
+	filter: brightness(88%);
+	padding-left: 1em;
 }
 
 .dashboard__container {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
 }

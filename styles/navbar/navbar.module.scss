@@ -39,6 +39,7 @@
 }
 
 .logo__container {
+	display: none;
 	& > .logo {
 		font-size: 1.8rem;
 		font-weight: 600;
@@ -79,6 +80,12 @@
 			font-weight: 800;
 			color: hsl(202, 98%, 96%);
 		}
+	}
+}
+
+@media screen and (min-width: 40em) {
+	.logo__container {
+		display: block;
 	}
 }
 

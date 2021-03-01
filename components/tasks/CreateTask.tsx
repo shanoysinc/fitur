@@ -5,18 +5,66 @@ import axios from "axios";
 import Select from "react-select";
 import { toastNotification } from "../../utils/toastNotification";
 
-const CreateTask = () => {
+interface AppProps {
+	setShowCreateTaskInput: React.Dispatch<React.SetStateAction<boolean>>;
+	showCreateTaskInput: boolean;
+}
+
+const CreateTask = ({
+	setShowCreateTaskInput,
+	showCreateTaskInput,
+}: AppProps) => {
+	const [title, setTitle] = React.useState<string>("");
+
+	const changeTitleHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setTitle(e.target.value);
+	};
+	const showInputHandler = () => setShowCreateTaskInput(!showCreateTaskInput);
+
+	const createTaskHandler = () => {};
 	return (
 		<div className={styles.container}>
-			<div className={styles.add__task_btn}>
-				<img
-					src="/svg/add-dark.svg"
-					alt="add sign"
-					height={13}
-					width={13}
-				/>
-				<p>Add another task</p>
-			</div>
+			{!showCreateTaskInput && (
+				<div
+					className={styles.add__task_btn}
+					onClick={showInputHandler}
+				>
+					<img
+						src="/svg/add-dark.svg"
+						alt="add sign"
+						height={13}
+						width={13}
+					/>
+					<p>Add another task</p>
+				</div>
+			)}
+
+			{showCreateTaskInput && (
+				<div className={styles.input__container}>
+					<textarea
+						onChange={changeTitleHandler}
+						className={styles.discription__input}
+						name="title"
+						placeholder="Enter a title for this task..."
+					></textarea>
+					<div className={styles.input__btns}>
+						<button
+							onClick={createTaskHandler}
+							className={styles.btn__save}
+						>
+							Save
+						</button>
+						<img
+							onClick={showInputHandler}
+							src="/svg/close.svg"
+							alt="close button"
+							className={styles.btn__close}
+							height={15}
+							width={15}
+						/>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 };

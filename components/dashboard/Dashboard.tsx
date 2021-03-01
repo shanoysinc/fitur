@@ -27,6 +27,7 @@ const Dashboard = ({
 	project,
 }: DashboardProps) => {
 	const [openModal, setOpenModal] = React.useState(false);
+	const [showCreateTaskInput, setShowCreateTaskInput] = React.useState(false);
 	const { name, _id: projectID } = project;
 
 	const SelectedTask = (task: Task) => {
@@ -65,7 +66,10 @@ const Dashboard = ({
 					</div>
 				</div>
 			))}
-			<CreateTask />
+			<CreateTask
+				setShowCreateTaskInput={setShowCreateTaskInput}
+				showCreateTaskInput={showCreateTaskInput}
+			/>
 			{currentTask?._id && (
 				<Modal
 					setOpenModal={setOpenModal}

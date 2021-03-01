@@ -8,14 +8,15 @@
 	border-radius: 4px;
 	margin-top: 1em;
 	padding-left: 0.5em;
+	color: hsl(0, 0%, 60%);
+	font-size: 0.9rem;
 }
 .add__task_btn:hover {
-	background-color: rgba(0, 0, 0, 0.144);
+	background-color: rgba(48, 47, 47, 0.1);
+	color: hsl(0, 0%, 40%);
 }
 
 .input__container {
-	// display: flex;
-	// flex-direction: column;
 	margin-top: 1em;
 
 	& > .discription__input {

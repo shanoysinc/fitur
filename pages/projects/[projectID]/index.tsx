@@ -12,6 +12,8 @@ import CreateTask from "../../../components/tasks/CreateTask";
 import { useSession, Session } from "next-auth/client";
 import Redirect from "../../../components/redirect/Redirect";
 import DashboardNavBar from "../../../components/dashboard/DashboardNavBar";
+import tinyColor from "tinycolor2";
+
 interface AppProps {
 	query: { projectID: string };
 }
@@ -48,7 +50,9 @@ const projectTask = (props: AppProps) => {
 			<Navbar session={session} navBgColor={data?.project.color} />
 			<div
 				className={styles.main__container}
-				style={{ backgroundColor: data?.project.color }}
+				style={{
+					backgroundColor: data?.project.color,
+				}}
 			>
 				<DashboardNavBar project={data?.project} />
 				{/* <CreateTask currentProjectID={projectID} /> */}

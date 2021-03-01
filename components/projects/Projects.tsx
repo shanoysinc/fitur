@@ -79,12 +79,7 @@ const Projects = () => {
 						style={{ backgroundColor: color }}
 					>
 						<Link href={`/projects/${_id}`}>
-							<a
-								className={styles.title}
-								onClick={() => setDashboardColor(color)}
-							>
-								{name}
-							</a>
+							<a className={styles.title}>{name}</a>
 						</Link>
 						<div className={styles.info__container}>
 							<div className={styles.option__container}>

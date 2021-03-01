@@ -3,14 +3,20 @@ import Link from "next/link";
 import styles from "../../styles/navbar/navbar.module.scss";
 import { Session, signIn, signOut } from "next-auth/client";
 import { extractUserInitials } from "../../utils/extractUserIntials";
-
+import tinyColor from "tinycolor2";
 interface NavBarProps {
 	session?: Session;
 	navBgColor?: string;
 }
 const Navbar = ({ session, navBgColor }: NavBarProps) => {
 	return (
-		<div className={styles.nav} style={{ backgroundColor: navBgColor }}>
+		<div
+			className={styles.nav}
+			style={{
+				backgroundColor:
+					navBgColor && tinyColor(navBgColor).darken(6).toString(),
+			}}
+		>
 			<div className={styles.nav__items_left}>
 				<div className={styles.nav__icons}>
 					<img

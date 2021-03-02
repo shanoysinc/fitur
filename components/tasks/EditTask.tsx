@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/tasks/edit.module.scss";
-import { Task } from "../../types/Task";
+import { Task, CurrentTask } from "../../types/Task";
 import Select from "react-select";
 // import { StatusOptions, TypeOptions } from "../tasks/CreateTask";
 import { useMutation, useQueryClient } from "react-query";
@@ -8,33 +8,24 @@ import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 
 interface TaskProps {
-	currentTask: Task;
+	currentTask: CurrentTask;
 	projectID: string;
-}
-interface optionValue {
-	value: string;
-	label: string;
 }
 
 const EditTask = ({ currentTask, projectID }: TaskProps) => {
 	const [error, setError] = React.useState(false);
 	const queryClient = useQueryClient();
-	const { title, status, type } = currentTask;
-	const [updatedType, setUpdatedType] = React.useState<string>(type);
-	const [updatedStatus, setUpdatedStatus] = React.useState<string>(status);
+	const { title, projectCardName } = currentTask;
 	const [description, setDescription] = React.useState<string>(
 		currentTask.description || ""
 	);
 
 	const mutation = useMutation(
 		(updatedTask) =>
-			axios.patch(
-				`/api/projects/${projectID}/${currentTask._id}`,
-				updatedTask
-			),
+			axios.patch(`/api/tasks/${currentTask._id}`, updatedTask),
 		{
 			onSuccess: (res) => {
-				queryClient.invalidateQueries("tasks");
+				queryClient.invalidateQueries("projectCards");
 				toastNotification(res.data.message, "success");
 			},
 			onError: (error) => {
@@ -43,13 +34,6 @@ const EditTask = ({ currentTask, projectID }: TaskProps) => {
 		}
 	);
 
-	const selectType = ({ value }: optionValue) => {
-		setUpdatedType(value);
-	};
-	const selectStatus = ({ value }: optionValue) => {
-		setUpdatedStatus(value);
-	};
-
 	const updateDescriptionHandler = (
 		e: React.ChangeEvent<HTMLTextAreaElement>
 	) => {
@@ -57,15 +41,8 @@ const EditTask = ({ currentTask, projectID }: TaskProps) => {
 	};
 
 	const updateTaskHandler = () => {
-		const checkToSubmit = updatedType == null || updatedStatus == null;
-		if (checkToSubmit) {
-			return setError(true);
-		}
 		const updatedTask = {
-			status: updatedStatus,
-			type: updatedType,
 			description,
-			id: currentTask._id,
 		};
 		mutation.mutate(updatedTask);
 	};
@@ -84,27 +61,8 @@ const EditTask = ({ currentTask, projectID }: TaskProps) => {
 			</div>
 			<div className={styles.current__board}>
 				<p>
-					in board <span>{status}</span>
+					in board <span> {projectCardName}</span>
 				</p>
-			</div>
-
-			<div className={styles.selectOptions}>
-				<div>
-					<Select
-						onChange={selectType}
-						options={TypeOptions}
-						placeholder="Type"
-						defaultInputValue={type}
-					/>
-				</div>
-				<div>
-					<Select
-						onChange={selectStatus}
-						options={StatusOptions}
-						placeholder="Status"
-						defaultInputValue={status}
-					/>
-				</div>
 			</div>
 
 			<div className={styles.description__container}>

@@ -1,8 +1,8 @@
-import { Schema, Document, model, models, Model } from "mongoose";
-import { Task } from "../../types/Task";
+import { Schema, model, models } from "mongoose";
+// import { Task } from "../../types/Task";
 
 const taskSchema = new Schema({
-	project: { type: Schema.Types.ObjectId, ref: "Project" },
+	projectCardID: { type: Schema.Types.ObjectId, ref: "ProjectCard" },
 
 	title: {
 		type: String,
@@ -11,20 +11,10 @@ const taskSchema = new Schema({
 	description: {
 		type: String,
 	},
-	type: {
-		type: String,
-		default: "Feature Request",
-	},
-	status: {
-		type: String,
-		default: "Planned",
-	},
 	createAt: {
 		type: Date,
 		default: new Date(),
 	},
-	upVotes: { type: Number, default: 1 },
 });
 
-const task: Model<Task> = models.Task || model("Task", taskSchema);
-export default task;
+export default models.Task || model("Task", taskSchema);

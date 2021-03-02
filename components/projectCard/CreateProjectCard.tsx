@@ -1,24 +1,41 @@
 import React from "react";
 import styles from "../../styles/projectCard/createProjectCard.module.scss";
-
+import { useMutation } from "react-query";
+import axios from "axios";
+import { toastNotification } from "../../utils/toastNotification";
 interface AppProps {
 	setShowProjectCardInput: React.Dispatch<React.SetStateAction<boolean>>;
 	showProjectCardInput: boolean;
+	projectID: string;
 }
 
 const CreateProjectCard = ({
 	setShowProjectCardInput,
 	showProjectCardInput,
+	projectID,
 }: AppProps) => {
-	const [title, setTitle] = React.useState<string>("");
+	const [projectCardName, setProjectCardName] = React.useState<string>("");
+	const mutation = useMutation(
+		(newProjectCard) =>
+			axios.post(`/api/projectcards/${projectID}`, newProjectCard),
+		{
+			onSuccess: (res) => {
+				const { data } = res;
 
-	const changeTitleHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		setTitle(e.target.value);
+				toastNotification(data.message, "success");
+			},
+		}
+	);
+
+	const changeNameHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setProjectCardName(e.target.value);
 	};
 	const showInputHandler = () =>
 		setShowProjectCardInput(!showProjectCardInput);
 
-	const createTaskHandler = () => {};
+	const createProjectCardHandler = () => {
+		mutation.mutate({ name: projectCardName });
+	};
 	return (
 		<div className={styles.container}>
 			{!showProjectCardInput && (
@@ -39,14 +56,14 @@ const CreateProjectCard = ({
 			{showProjectCardInput && (
 				<div className={styles.input__container}>
 					<input
-						onChange={changeTitleHandler}
+						onChange={changeNameHandler}
 						className={styles.discription__input}
 						name="title"
 						placeholder="Enter a project card title..."
 					/>
 					<div className={styles.input__btns}>
 						<button
-							onClick={createTaskHandler}
+							onClick={createProjectCardHandler}
 							className={styles.btn__save}
 						>
 							Save

@@ -43,9 +43,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const { name } = req.body;
 				const newProjectCard = new ProjectCard({ name, projectID });
 				await newProjectCard.save();
-				res.json({ projectCard: newProjectCard });
+				res.json({ message: "Project Card was successfully created!" });
 			} catch (err) {
-				res.status(404).send({ err });
+				res.status(404).send({
+					message: "Unable to create Project Card",
+				});
 			}
 			break;
 

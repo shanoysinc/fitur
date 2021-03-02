@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const projectTask = (props: AppProps) => {
-	const [currentTask, setCurrentTask] = React.useState<Task | null>(null);
+	// const [currentTask, setCurrentTask] = React.useState<Task | null>(null);
 	const [showProjectCardInput, setShowProjectCardInput] = React.useState(
 		false
 	);
@@ -60,13 +60,11 @@ const projectTask = (props: AppProps) => {
 				<DashboardNavBar project={response?.data.project} />
 				<div className={styles.dashboard__container}>
 					<ProjectCards />
-					<ProjectCards />
-					<ProjectCards />
-					<ProjectCards />
 
 					<CreateProjectCard
 						showProjectCardInput={showProjectCardInput}
 						setShowProjectCardInput={setShowProjectCardInput}
+						projectID={projectID}
 					/>
 				</div>
 			</div>

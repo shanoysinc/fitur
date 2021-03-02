@@ -8,12 +8,10 @@
 		"start": "next start"
 	},
 	"dependencies": {
-		"@types/react-color": "^3.0.4",
-		"@types/tinycolor2": "^1.4.2",
 		"axios": "^0.21.1",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.11.16",
-		"next": "10.0.6",
+		"next": "10.0.7",
 		"next-auth": "^3.4.1",
 		"react": "17.0.1",
 		"react-color": "^2.19.3",
@@ -31,7 +29,9 @@
 		"@types/node": "^14.14.28",
 		"@types/react": "^17.0.2",
 		"@types/react-select": "^4.0.13",
-		"typescript": "^4.1.5"
+		"typescript": "^4.1.5",
+		"@types/react-color": "^3.0.4",
+		"@types/tinycolor2": "^1.4.2"
 	},
 	"peerOptionalDependencies": {
 		"mongodb": "^3.6.4"

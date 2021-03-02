@@ -35,11 +35,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 				await projectCard.save();
 
-				res.json({ newTask });
+				res.json({ message: "task successfully created!" });
 			} catch (err) {
-				res.status(404).send({
-					message: err.message,
-				});
+				res.status(404).send({ message: "Unable to create task!" });
 			}
 			break;
 

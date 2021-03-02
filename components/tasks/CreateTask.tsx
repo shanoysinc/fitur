@@ -6,22 +6,37 @@ import Select from "react-select";
 import { toastNotification } from "../../utils/toastNotification";
 
 interface AppProps {
-	setShowCreateTaskInput: React.Dispatch<React.SetStateAction<boolean>>;
-	showCreateTaskInput: boolean;
+	projectCardID: string;
 }
 
-const CreateTask = ({
-	setShowCreateTaskInput,
-	showCreateTaskInput,
-}: AppProps) => {
+const CreateTask = ({ projectCardID }: AppProps) => {
 	const [title, setTitle] = React.useState<string>("");
+	const queryClient = useQueryClient();
+	const [
+		showCreateTaskInput,
+		setShowCreateTaskInput,
+	] = React.useState<string>("");
+
+	const mutation = useMutation(
+		(newTask) => axios.post("/api/tasks", newTask),
+		{
+			onSuccess: (res) => {
+				const { data } = res;
+				toastNotification(data.message, "success");
+				queryClient.invalidateQueries("projectCards");
+			},
+		}
+	);
 
 	const changeTitleHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setTitle(e.target.value);
 	};
-	const showInputHandler = () => setShowCreateTaskInput(!showCreateTaskInput);
+	const showInputHandler = () => setShowCreateTaskInput(projectCardID);
+	const closeInputHanlder = () => setShowCreateTaskInput("");
 
-	const createTaskHandler = () => {};
+	const createTaskHandler = () => {
+		mutation.mutate({ title, projectCardID });
+	};
 	return (
 		<div className={styles.container}>
 			{!showCreateTaskInput && (
@@ -55,7 +70,7 @@ const CreateTask = ({
 							Save
 						</button>
 						<img
-							onClick={showInputHandler}
+							onClick={closeInputHanlder}
 							src="/svg/close.svg"
 							alt="close button"
 							className={styles.btn__close}

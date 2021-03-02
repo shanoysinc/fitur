@@ -1,17 +1,23 @@
 import React from "react";
 import styles from "../../styles/tasks/taskCard.module.scss";
-import { Task } from "../../types/Task";
+import { CurrentTask, Task } from "../../types/Task";
 
 interface AppProps {
 	tasks: Task[];
+	setCurrentTask: React.Dispatch<React.SetStateAction<CurrentTask | null>>;
+	projectCardName: string;
 }
 
-const TaskCard = ({ tasks }: AppProps) => {
+const TaskCard = ({ tasks, setCurrentTask, projectCardName }: AppProps) => {
 	return (
 		<>
-			{tasks.map(({ title, _id }) => (
-				<div className={styles.container} key={_id}>
-					<p>{title}</p>
+			{tasks.map((task) => (
+				<div
+					className={styles.container}
+					key={task._id}
+					onClick={() => setCurrentTask({ ...task, projectCardName })}
+				>
+					<p>{task.title}</p>
 				</div>
 			))}
 		</>

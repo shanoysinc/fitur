@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			try {
 				const projectCards = await ProjectCard.find({
 					projectID,
-				});
+				}).populate("tasks");
 
 				res.json({ projectCards });
 			} catch (err) {

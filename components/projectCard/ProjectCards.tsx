@@ -10,7 +10,6 @@ interface AppProps {
 }
 
 const ProjectCard = ({ projectID }: AppProps) => {
-	const [showCreateTaskInput, setShowCreateTaskInput] = React.useState(false);
 	const projectCardUrl = `/api/projectcards/${projectID}`;
 	const { data: res, isLoading } = useQuery("projectCards", () =>
 		fetcher(projectCardUrl)
@@ -19,7 +18,6 @@ const ProjectCard = ({ projectID }: AppProps) => {
 	if (isLoading) return <p>loading project cards....</p>;
 
 	const projectCardData = res?.data.projectCards;
-	// console.log(res?.data);
 
 	return (
 		<>
@@ -30,10 +28,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 					</div>
 					<TaskCard tasks={projectCard.tasks} />
 
-					<CreateTask
-						setShowCreateTaskInput={setShowCreateTaskInput}
-						showCreateTaskInput={showCreateTaskInput}
-					/>
+					<CreateTask projectCardID={projectCard._id} />
 				</div>
 			))}
 		</>

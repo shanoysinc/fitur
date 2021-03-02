@@ -1,0 +1,59 @@
+.container {
+	// max-width: 500px;
+	width: 272px;
+}
+.add__task_btn {
+	display: flex;
+	gap: 0.7em;
+	align-items: center;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.282);
+	border-radius: 4px;
+	padding-left: 1em;
+	height: 40px;
+	color: white;
+	font-size: 0.9rem;
+}
+.add__task_btn:hover {
+	background-color: rgba(255, 255, 255, 0.382);
+}
+
+.input__container {
+	background-color: #ebecf0;
+	padding: 0.5em;
+	border-radius: 4px;
+	& > .discription__input {
+		padding: 12px 20px;
+		box-shadow: inset 0 0 0 2px #0079bf;
+		border: 0;
+		background-color: white;
+		outline: none;
+		overflow: hidden;
+		padding: 10px;
+		border-radius: 4px;
+		width: 100%;
+		height: 40px;
+	}
+	& > .input__btns {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+		margin-top: 0.4em;
+
+		& > .btn__save {
+			cursor: pointer;
+			background-color: #5aac44;
+			color: white;
+			border: 0;
+			padding: 0.6em 1.4em;
+			text-transform: capitalize;
+			font-size: 0.9rem;
+			font-weight: 500;
+			border-radius: 4px;
+		}
+
+		& > .btn__close {
+			cursor: pointer;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+.container {
+	width: 272px;
+	height: fit-content;
+	background-color: #ebecf0;
+	padding: 0.5em;
+	border-radius: 4px;
+	& > .title__container {
+		margin-top: -1em;
+		& > h4 {
+			font-weight: 400;
+			color: hsl(228, 14%, 33%);
+			margin-left: 0.4em;
+			text-transform: capitalize;
+		}
+	}
+}

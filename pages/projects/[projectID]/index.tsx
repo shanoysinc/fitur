@@ -4,7 +4,7 @@ import Navbar from "../../../components/navbar/Navbar";
 import styles from "../../../styles/index/home__dashboard.module.scss";
 import Loading from "../../../components/loading/Loading";
 import { Task } from "../../../types/Task";
-import { useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
 import { fetcher } from "../../../utils/fetcher";
 // import { distributeTask } from "../../../utils/distributeTask";
 import { GetServerSideProps } from "next";
@@ -35,31 +35,31 @@ const projectTask = (props: AppProps) => {
 	const [session] = useSession();
 	const { query } = props;
 	const projectID = query.projectID as string;
-	const url = `/api/projects/${projectID}`;
-	const { data: response, isLoading, isError, error } = useQuery(
-		["project", projectID],
-		() => fetcher(url)
+	const projectUrl = `/api/projects/${projectID}`;
+	const projectQuery = useQuery(["project", projectID], () =>
+		fetcher(projectUrl)
 	);
 
-	if (isLoading) return <Loading />;
+	if (projectQuery.isLoading) return <Loading />;
 	if (!session) return <Redirect to="/" />;
-	if (isError) return <span>Error: {error.message}</span>;
+	if (projectQuery.isError)
+		return <span>Error: {projectQuery.error.message}</span>;
 
 	return (
 		<div>
 			<Navbar
 				session={session}
-				navBgColor={response?.data.project.color}
+				navBgColor={projectQuery.data?.data.project.color}
 			/>
 			<div
 				className={styles.main__container}
 				style={{
-					backgroundColor: response?.data.project.color,
+					backgroundColor: projectQuery.data?.data.project.color,
 				}}
 			>
-				<DashboardNavBar project={response?.data.project} />
+				<DashboardNavBar project={projectQuery.data?.data.project} />
 				<div className={styles.dashboard__container}>
-					<ProjectCards />
+					<ProjectCards projectID={projectID} />
 
 					<CreateProjectCard
 						showProjectCardInput={showProjectCardInput}

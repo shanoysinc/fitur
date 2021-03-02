@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/projectCard/createProjectCard.module.scss";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 interface AppProps {
@@ -15,13 +15,14 @@ const CreateProjectCard = ({
 	projectID,
 }: AppProps) => {
 	const [projectCardName, setProjectCardName] = React.useState<string>("");
+	const queryClient = useQueryClient();
 	const mutation = useMutation(
 		(newProjectCard) =>
 			axios.post(`/api/projectcards/${projectID}`, newProjectCard),
 		{
 			onSuccess: (res) => {
 				const { data } = res;
-
+				queryClient.invalidateQueries("projectCards");
 				toastNotification(data.message, "success");
 			},
 		}

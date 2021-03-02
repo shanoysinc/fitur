@@ -1,10 +1,20 @@
 import React from "react";
 import styles from "../../styles/tasks/taskCard.module.scss";
-const TaskCard = () => {
+import { Task } from "../../types/Task";
+
+interface AppProps {
+	tasks: Task[];
+}
+
+const TaskCard = ({ tasks }: AppProps) => {
 	return (
-		<div className={styles.container}>
-			<p>Learn to code </p>
-		</div>
+		<>
+			{tasks.map(({ title, _id }) => (
+				<div className={styles.container} key={_id}>
+					<p>{title}</p>
+				</div>
+			))}
+		</>
 	);
 };
 

@@ -2,9 +2,8 @@ import React from "react";
 import styles from "../../styles/tasks/createTask.module.scss";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import Select from "react-select";
 import { toastNotification } from "../../utils/toastNotification";
-
+import { useClickOutSide } from "../../hooks/clickOutSide";
 interface AppProps {
 	projectCardID: string;
 }
@@ -41,8 +40,11 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 		}
 		mutation.mutate({ title: modTitle, projectCardID });
 	};
+
+	const createTaskRef = useClickOutSide(() => setShowCreateTaskInput(""));
+
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} ref={createTaskRef}>
 			{!showCreateTaskInput && (
 				<div
 					className={styles.add__task_btn}

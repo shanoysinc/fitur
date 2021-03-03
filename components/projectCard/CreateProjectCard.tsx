@@ -3,6 +3,8 @@ import styles from "../../styles/projectCard/createProjectCard.module.scss";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
+import { useClickOutSide } from "../../hooks/clickOutSide";
+
 interface AppProps {
 	setShowProjectCardInput: React.Dispatch<React.SetStateAction<boolean>>;
 	showProjectCardInput: boolean;
@@ -41,8 +43,12 @@ const CreateProjectCard = ({
 		}
 		mutation.mutate({ name: modProjectCardName });
 	};
+
+	const projectCardInputRef = useClickOutSide(() => {
+		setShowProjectCardInput(false);
+	});
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} ref={projectCardInputRef}>
 			{!showProjectCardInput && (
 				<div
 					className={styles.add__task_btn}

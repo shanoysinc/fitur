@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 import { useClickOutSide } from "../../hooks/clickOutSide";
+import AddIcon from "../../assets/AddIcon";
 interface AppProps {
 	projectCardID: string;
 }
@@ -50,12 +51,7 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 					className={styles.add__task_btn}
 					onClick={showInputHandler}
 				>
-					<img
-						src="/svg/add-dark.svg"
-						alt="add sign"
-						height={13}
-						width={13}
-					/>
+					<AddIcon height={13} width={13} fill="grey" />
 					<p>Add another task</p>
 				</div>
 			)}

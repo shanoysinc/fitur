@@ -8,7 +8,7 @@ import Modal from "../modal/Modal";
 import { useQuery } from "react-query";
 import { fetcher } from "../../utils/fetcher";
 import { CurrentTask } from "../../types/Task";
-
+import OptionsIcon from "../../assets/OptionsIcon";
 interface AppProps {
 	projectID: string;
 }
@@ -34,6 +34,13 @@ const ProjectCard = ({ projectID }: AppProps) => {
 				<div className={styles.container} key={projectCard._id}>
 					<div className={styles.title__container}>
 						<h4>{projectCard.name}</h4>
+						<div className={styles.projectCard__options}>
+							<OptionsIcon
+								height={15}
+								width={15}
+								fill="#383838"
+							/>
+						</div>
 					</div>
 					<TaskCard
 						tasks={projectCard.tasks}

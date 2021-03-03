@@ -1,9 +1,22 @@
 import React from "react";
 import styles from "../../styles/dropdown/dropdown.module.scss";
 import CloseIcon from "../../assets/CloseIcon";
-const DropDown = (props: { children: React.ReactNode }) => {
+import { useClickOutSide } from "../../hooks/clickOutSide";
+interface AppProps {
+	children: React.ReactNode;
+	leftPosition?: string;
+	closeDropDown: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const DropDown = ({ leftPosition, children, closeDropDown }: AppProps) => {
+	const dropdownRef = useClickOutSide(() => closeDropDown(false));
+
 	return (
-		<div className={styles.container}>
+		<div
+			className={styles.container}
+			style={{ left: leftPosition }}
+			ref={dropdownRef}
+		>
 			<div className={styles.header}>
 				<p>Create</p>
 				<div className={styles.closeIcon}>
@@ -11,7 +24,7 @@ const DropDown = (props: { children: React.ReactNode }) => {
 				</div>
 			</div>
 			<hr />
-			{props.children}
+			{children}
 		</div>
 	);
 };

@@ -42,7 +42,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 								width={15}
 								fill="#383838"
 							/>
-							{/* <Dropdown>
+							{/* <Dropdown leftPosition={"0"}>
 								<p>hello</p>
 							</Dropdown> */}
 						</div>

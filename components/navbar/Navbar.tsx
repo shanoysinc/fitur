@@ -5,12 +5,14 @@ import { Session, signIn, signOut } from "next-auth/client";
 import { extractUserInitials } from "../../utils/extractUserIntials";
 import tinyColor from "tinycolor2";
 import ProjectIcon from "../../assets/ProjectIcon";
-import DropDown from "../dropdown/DropDown";
+import CreateItemsDropDown from "../dropdown/navbar/CreateItemsDropDown";
+
 interface NavBarProps {
 	session?: Session;
 	navBgColor?: string;
 }
 const Navbar = ({ session, navBgColor }: NavBarProps) => {
+	const [showCreateItems, setShowCreateItems] = React.useState(false);
 	return (
 		<div
 			className={styles.nav}
@@ -44,30 +46,46 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 			<div className={styles.nav__items_right}>
 				{session ? (
 					<div className={styles.items__container}>
-						<div className={styles.nav__icons}>
-							<img
-								src="/svg/add.svg"
-								alt="notification icon"
-								height={16}
-								width={16}
-							/>
-							<DropDown></DropDown>
+						<div className={styles.icon__container}>
+							<div
+								className={styles.nav__icons}
+								onClick={() =>
+									setShowCreateItems(!showCreateItems)
+								}
+							>
+								<img
+									src="/svg/add.svg"
+									alt="notification icon"
+									height={16}
+									width={16}
+								/>
+							</div>
+
+							{showCreateItems && (
+								<CreateItemsDropDown
+									setShowCreateItems={setShowCreateItems}
+								/>
+							)}
 						</div>
-						<div className={styles.nav__icons}>
-							<img
-								src="/svg/notification.svg"
-								alt="notification icon"
-								height={16}
-								width={16}
-							/>
+						<div className={styles.icon__container}>
+							<div className={styles.nav__icons}>
+								<img
+									src="/svg/notification.svg"
+									alt="notification icon"
+									height={16}
+									width={16}
+								/>
+							</div>
 						</div>
-						<div className={styles.nav__icons}>
-							<img
-								src="/svg/tips.svg"
-								alt="notification icon"
-								height={16}
-								width={16}
-							/>
+						<div className={styles.icon__container}>
+							<div className={styles.nav__icons}>
+								<img
+									src="/svg/tips.svg"
+									alt="notification icon"
+									height={16}
+									width={16}
+								/>
+							</div>
 						</div>
 
 						<div className={styles.user__name}>

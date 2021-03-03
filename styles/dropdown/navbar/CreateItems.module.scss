@@ -1,0 +1,21 @@
+.container {
+	width: 304px;
+	margin-top: -0.7em;
+	font-size: 0.875rem;
+
+	& > .header {
+		display: flex;
+		align-items: center;
+		& > p {
+			margin-left: 0.5em;
+			color: hsl(218, 17%, 40%);
+		}
+	}
+
+	& > p {
+		margin-top: -0.5em;
+		font-size: 0.79rem;
+		color: hsl(218, 17%, 49%);
+		line-height: 1.25;
+	}
+}

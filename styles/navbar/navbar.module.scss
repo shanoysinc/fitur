@@ -7,12 +7,16 @@
 	align-items: center;
 }
 
+.icon__container {
+	// position: relative;
+}
+
 .nav__icons {
 	display: flex;
 	justify-content: center;
+
 	align-items: center;
 	background-color: hsla(0, 0%, 100%, 0.253);
-	position: relative;
 	border-radius: 4px;
 	padding: 0.5em 0.6em;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

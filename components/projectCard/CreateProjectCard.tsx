@@ -35,7 +35,11 @@ const CreateProjectCard = ({
 		setShowProjectCardInput(!showProjectCardInput);
 
 	const createProjectCardHandler = () => {
-		mutation.mutate({ name: projectCardName });
+		const modProjectCardName = projectCardName.trim();
+		if (modProjectCardName === "") {
+			return toastNotification("Task require a title!", "error");
+		}
+		mutation.mutate({ name: modProjectCardName });
 	};
 	return (
 		<div className={styles.container}>

@@ -35,10 +35,11 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 	const closeInputHanlder = () => setShowCreateTaskInput("");
 
 	const createTaskHandler = () => {
-		if (title === "") {
+		const modTitle = title.trim();
+		if (modTitle === "") {
 			return toastNotification("Task require a title!", "error");
 		}
-		mutation.mutate({ title, projectCardID });
+		mutation.mutate({ title: modTitle, projectCardID });
 	};
 	return (
 		<div className={styles.container}>

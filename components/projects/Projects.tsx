@@ -10,6 +10,7 @@ import Loading from "../loading/Loading";
 import { toastNotification } from "../../utils/toastNotification";
 import CreateProject from "./CreateProject";
 import Modal from "../modal/Modal";
+import PersonIcon from "../../assets/PersonIcon";
 
 const colors = [
 	"#FF6900",
@@ -63,12 +64,8 @@ const Projects = () => {
 	return (
 		<div className={styles.outer__container}>
 			<div className={styles.project__label}>
-				<img
-					src="/svg/person.svg"
-					alt="options btn"
-					height={17}
-					width={17}
-				/>
+				<PersonIcon height={17} width={17} fill="black" />
+
 				<h3>Personal Projects</h3>
 			</div>
 			<div className={styles.inner__container}>

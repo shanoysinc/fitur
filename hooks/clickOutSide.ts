@@ -7,7 +7,7 @@ export const useClickOutSide = (handler: Handler) => {
 
 	React.useEffect(() => {
 		let maybeHandler = (event: Event) => {
-			if (!domNode.current.contains(event.target)) {
+			if (!domNode.current?.contains(event.target)) {
 				handler();
 			}
 		};

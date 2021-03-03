@@ -1,5 +1,6 @@
 .container {
 	padding-top: 0.5em;
+	position: fixed;
 }
 .container__left {
 	display: flex;
@@ -21,6 +22,7 @@
 		color: hsl(0, 0%, 100%);
 		font-weight: 500;
 		letter-spacing: 0.03em;
+		text-transform: capitalize;
 	}
 }
 .nav__items:hover {

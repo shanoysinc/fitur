@@ -46,7 +46,7 @@ const projectTask = (props: AppProps) => {
 		return <span>Error: {projectQuery.error.message}</span>;
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<Navbar
 				session={session}
 				navBgColor={projectQuery.data?.data.project.color}

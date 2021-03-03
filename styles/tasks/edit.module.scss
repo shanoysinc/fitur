@@ -66,27 +66,3 @@
 		}
 	}
 }
-
-.selectOptions {
-	margin-top: 0.5em;
-
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-end;
-
-	& > div {
-		width: 140px;
-	}
-
-	& > * + * {
-		margin-top: 0.5em;
-	}
-}
-
-@media screen and (min-width: 25em) {
-	.selectOptions {
-		& > * + * {
-			margin-left: 1em;
-		}
-	}
-}

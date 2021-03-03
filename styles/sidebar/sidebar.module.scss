@@ -10,9 +10,8 @@
 		height: 35px;
 		color: hsl(202, 98%, 33%);
 		border-radius: 2px;
-		& > img {
-			margin-left: 0.5em;
-		}
+		padding-left: 0.5em;
+
 		& > p {
 			font-weight: 600;
 			font-size: 0.8rem;

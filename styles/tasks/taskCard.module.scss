@@ -5,12 +5,25 @@
 		rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 	cursor: pointer;
 	border-radius: 4px;
-
-	& > p {
-		padding: 8px;
-		font-size: 0.875rem;
-		color: hsl(0, 0%, 50%);
+	padding-left: 8px;
+	padding-right: 8px;
+	& > .title {
+		& > p {
+			padding: 8px 0;
+			font-size: 0.875rem;
+			color: hsl(0, 0%, 34%);
+		}
 	}
+
+	& > .task__details {
+		margin-top: -0.7em;
+		padding-bottom: 8px;
+	}
+
+	// & > img {
+	// 	margin-left: 8px;
+	// 	margin-top: -8px;
+	// }
 }
 
 .container + .container {

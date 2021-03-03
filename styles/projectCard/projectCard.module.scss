@@ -3,14 +3,24 @@
 	height: fit-content;
 	background-color: #ebecf0;
 	padding: 0.5em;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+		rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 	border-radius: 4px;
 	& > .title__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		margin-top: -1em;
 		& > h4 {
 			font-weight: 400;
 			color: hsl(228, 14%, 33%);
 			margin-left: 0.4em;
 			text-transform: capitalize;
+		}
+
+		& > .projectCard__options {
+			cursor: pointer;
+			margin-top: 0.2em;
 		}
 	}
 }

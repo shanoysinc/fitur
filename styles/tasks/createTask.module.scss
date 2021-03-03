@@ -32,8 +32,8 @@
 		height: 80px;
 		resize: none;
 		font-family: "Rubik", sans-serif;
-		// letter-spacing: 0.03em;
 	}
+
 	& > .input__btns {
 		display: flex;
 		align-items: center;
@@ -50,6 +50,10 @@
 			font-size: 0.9rem;
 			font-weight: 500;
 			border-radius: 4px;
+			outline: none;
+		}
+		& > .btn__save:hover {
+			background-color: hsl(107, 43%, 50%);
 		}
 
 		& > .btn__close {

@@ -50,6 +50,10 @@
 			font-size: 0.9rem;
 			font-weight: 500;
 			border-radius: 4px;
+			outline: none;
+		}
+		& > .btn__save:hover {
+			background-color: hsl(107, 43%, 50%);
 		}
 
 		& > .btn__close {

@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../../styles/sidebar/sidebar.module.scss";
+import TaskIcon from "../../assets/TaskIcon";
+import ProjectIcon from "../../assets/ProjectIcon";
 
 interface SidebarProps {
 	currentTab: "Projects" | "Tasks";
@@ -7,8 +9,6 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
-	// const [tab, setTab] = React.useState<"Projects" | "Tasks">("Projects");
-
 	return (
 		<div className={styles.container}>
 			<div
@@ -17,12 +17,12 @@ const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
 				}`}
 				onClick={() => setCurrentTab("Projects")}
 			>
-				<img
-					src="/svg/project.svg"
-					height={18}
-					width={18}
-					alt="projects"
+				<ProjectIcon
+					height={16}
+					width={16}
+					fill="rgba(2, 100, 157, 0.884)"
 				/>
+
 				<p>Projects</p>
 			</div>
 			<div
@@ -31,7 +31,11 @@ const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
 				}`}
 				onClick={() => setCurrentTab("Tasks")}
 			>
-				<img src="/svg/task.svg" height={18} width={18} alt="task" />
+				<TaskIcon
+					height={18}
+					width={18}
+					fill="rgba(2, 100, 157, 0.884)"
+				/>
 				<p>All Tasks</p>
 			</div>
 		</div>

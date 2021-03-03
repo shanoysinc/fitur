@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 import { useClickOutSide } from "../../hooks/clickOutSide";
-
+import AddIcon from "../../assets/AddIcon";
 interface AppProps {
 	setShowProjectCardInput: React.Dispatch<React.SetStateAction<boolean>>;
 	showProjectCardInput: boolean;
@@ -48,24 +48,22 @@ const CreateProjectCard = ({
 		setShowProjectCardInput(false);
 	});
 	return (
-		<div className={styles.container} ref={projectCardInputRef}>
+		<div className={styles.container}>
 			{!showProjectCardInput && (
 				<div
 					className={styles.add__task_btn}
 					onClick={showInputHandler}
 				>
-					<img
-						src="/svg/add-dark.svg"
-						alt="add sign"
-						height={13}
-						width={13}
-					/>
+					<AddIcon height={13} width={13} fill="white" />
 					<p>Add another task</p>
 				</div>
 			)}
 
 			{showProjectCardInput && (
-				<div className={styles.input__container}>
+				<div
+					className={styles.input__container}
+					ref={projectCardInputRef}
+				>
 					<input
 						onChange={changeNameHandler}
 						className={styles.discription__input}

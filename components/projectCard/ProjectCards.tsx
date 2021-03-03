@@ -9,6 +9,7 @@ import { useQuery } from "react-query";
 import { fetcher } from "../../utils/fetcher";
 import { CurrentTask } from "../../types/Task";
 import OptionsIcon from "../../assets/OptionsIcon";
+import Loading from "../loading/Loading";
 interface AppProps {
 	projectID: string;
 }
@@ -24,7 +25,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		fetcher(projectCardUrl)
 	);
 
-	if (isLoading) return <p>loading project cards....</p>;
+	if (isLoading) return <Loading />;
 
 	const projectCardData = res?.data.projectCards;
 

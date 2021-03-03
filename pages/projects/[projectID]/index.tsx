@@ -1,14 +1,10 @@
 import React from "react";
 import Navbar from "../../../components/navbar/Navbar";
-// import Dashboard from "../../../components/dashboard/Dashboard";
 import styles from "../../../styles/index/home__dashboard.module.scss";
 import Loading from "../../../components/loading/Loading";
-import { Task } from "../../../types/Task";
-import { useQuery, useMutation } from "react-query";
+import { useQuery } from "react-query";
 import { fetcher } from "../../../utils/fetcher";
-// import { distributeTask } from "../../../utils/distributeTask";
 import { GetServerSideProps } from "next";
-// import CreateTask from "../../../components/tasks/CreateTask";
 import { useSession } from "next-auth/client";
 import Redirect from "../../../components/redirect/Redirect";
 import DashboardNavBar from "../../../components/dashboard/DashboardNavBar";
@@ -27,7 +23,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const projectTask = (props: AppProps) => {
-	// const [currentTask, setCurrentTask] = React.useState<Task | null>(null);
 	const [showProjectCardInput, setShowProjectCardInput] = React.useState(
 		false
 	);

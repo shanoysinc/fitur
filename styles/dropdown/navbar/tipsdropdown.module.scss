@@ -1,0 +1,19 @@
+.container {
+	& > .image__container {
+		& > p {
+			text-align: center;
+			padding-top: -0.8em;
+			color: hsl(230, 5%, 30%);
+			font-size: 0.9rem;
+			font-weight: 500;
+			text-transform: capitalize;
+		}
+	}
+	& > p {
+		text-align: center;
+		padding-top: 0.8em;
+		color: hsl(240, 0%, 42%);
+		font-size: 0.875rem;
+		text-decoration: underline;
+	}
+}

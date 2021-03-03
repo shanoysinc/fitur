@@ -5,18 +5,11 @@ import { useClickOutSide } from "../../hooks/clickOutSide";
 interface AppProps {
 	children: React.ReactNode;
 	leftPosition?: string;
-	closeDropDown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DropDown = ({ leftPosition, children, closeDropDown }: AppProps) => {
-	const dropdownRef = useClickOutSide(() => closeDropDown(false));
-
+const DropDown = ({ leftPosition, children }: AppProps) => {
 	return (
-		<div
-			className={styles.container}
-			style={{ left: leftPosition }}
-			ref={dropdownRef}
-		>
+		<div className={styles.container} style={{ left: leftPosition }}>
 			<div className={styles.header}>
 				<p>Create</p>
 				<div className={styles.closeIcon}>

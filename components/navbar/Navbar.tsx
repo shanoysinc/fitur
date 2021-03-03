@@ -6,13 +6,19 @@ import { extractUserInitials } from "../../utils/extractUserIntials";
 import tinyColor from "tinycolor2";
 import ProjectIcon from "../../assets/ProjectIcon";
 import CreateItemsDropDown from "../dropdown/navbar/CreateItemsDropDown";
-
+import TipsDropDown from "../dropdown/navbar/TipsDropDown";
+import { useClickOutSide } from "../../hooks/clickOutSide";
 interface NavBarProps {
 	session?: Session;
 	navBgColor?: string;
 }
 const Navbar = ({ session, navBgColor }: NavBarProps) => {
 	const [showCreateItems, setShowCreateItems] = React.useState(false);
+	const [showTips, setShowTips] = React.useState(false);
+	console.log("rendering");
+
+	const createItemsRef = useClickOutSide(() => setShowCreateItems(false));
+	const showTipsRef = useClickOutSide(() => setShowTips(false));
 	return (
 		<div
 			className={styles.nav}
@@ -46,7 +52,10 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 			<div className={styles.nav__items_right}>
 				{session ? (
 					<div className={styles.items__container}>
-						<div className={styles.icon__container}>
+						<div
+							className={styles.icon__container}
+							ref={createItemsRef}
+						>
 							<div
 								className={styles.nav__icons}
 								onClick={() =>
@@ -61,26 +70,29 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 								/>
 							</div>
 
-							{showCreateItems && (
-								<CreateItemsDropDown
-									setShowCreateItems={setShowCreateItems}
-								/>
-							)}
+							{showCreateItems && <CreateItemsDropDown />}
 						</div>
-						<div className={styles.icon__container}>
-							<div className={styles.nav__icons}>
+						<div
+							className={styles.icon__container}
+							ref={showTipsRef}
+						>
+							<div
+								className={styles.nav__icons}
+								onClick={() => setShowTips(!showTips)}
+							>
 								<img
-									src="/svg/notification.svg"
+									src="/svg/tips.svg"
 									alt="notification icon"
 									height={16}
 									width={16}
 								/>
 							</div>
+							{showTips && <TipsDropDown />}
 						</div>
 						<div className={styles.icon__container}>
 							<div className={styles.nav__icons}>
 								<img
-									src="/svg/tips.svg"
+									src="/svg/notification.svg"
 									alt="notification icon"
 									height={16}
 									width={16}

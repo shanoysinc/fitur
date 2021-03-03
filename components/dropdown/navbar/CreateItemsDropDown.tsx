@@ -3,12 +3,9 @@ import Dropdown from "../DropDown";
 import styles from "../../../styles/dropdown/navbar/CreateItems.module.scss";
 import ProjectIcon from "../../../assets/ProjectIcon";
 
-interface AppProps {
-	setShowCreateItems: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const CreateItemsDropDown = ({ setShowCreateItems }: AppProps) => {
+const CreateItemsDropDown = () => {
 	return (
-		<Dropdown closeDropDown={setShowCreateItems}>
+		<Dropdown>
 			<div className={styles.container}>
 				<div className={styles.header}>
 					<ProjectIcon fill="#5e6c84" height={13} width={13} />

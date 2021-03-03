@@ -4,6 +4,7 @@ import styles from "../../styles/navbar/navbar.module.scss";
 import { Session, signIn, signOut } from "next-auth/client";
 import { extractUserInitials } from "../../utils/extractUserIntials";
 import tinyColor from "tinycolor2";
+import ProjectIcon from "../../assets/ProjectIcon";
 interface NavBarProps {
 	session?: Session;
 	navBgColor?: string;
@@ -18,21 +19,19 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 			}}
 		>
 			<div className={styles.nav__items_left}>
+				<Link href="/">
+					<a className={styles.nav__icons}>
+						<img
+							src="/svg/home.svg"
+							alt="notification icon"
+							height={16}
+							width={16}
+						/>
+					</a>
+				</Link>
 				<div className={styles.nav__icons}>
-					<img
-						src="/svg/home.svg"
-						alt="notification icon"
-						height={16}
-						width={16}
-					/>
-				</div>{" "}
-				<div className={styles.nav__icons}>
-					<img
-						src="/svg/project.svg"
-						alt="notification icon"
-						height={16}
-						width={16}
-					/>
+					<ProjectIcon height={16} width={16} fill="white" />
+
 					<p>Project</p>
 				</div>
 			</div>

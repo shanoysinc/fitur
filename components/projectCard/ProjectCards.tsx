@@ -25,7 +25,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		fetcher(projectCardUrl)
 	);
 
-	if (isLoading) return <Loading />;
+	if (isLoading) return <Loading color="white" />;
 
 	const projectCardData = res?.data.projectCards;
 

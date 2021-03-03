@@ -10,6 +10,7 @@ import { fetcher } from "../../utils/fetcher";
 import { CurrentTask } from "../../types/Task";
 import OptionsIcon from "../../assets/OptionsIcon";
 import Loading from "../loading/Loading";
+import Dropdown from "../dropdown/DropDown";
 interface AppProps {
 	projectID: string;
 }
@@ -41,6 +42,9 @@ const ProjectCard = ({ projectID }: AppProps) => {
 								width={15}
 								fill="#383838"
 							/>
+							{/* <Dropdown>
+								<p>hello</p>
+							</Dropdown> */}
 						</div>
 					</div>
 					<TaskCard

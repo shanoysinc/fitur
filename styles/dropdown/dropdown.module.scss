@@ -1,0 +1,31 @@
+.container {
+	position: absolute;
+	top: 120%;
+	background-color: white;
+	border-radius: 4px;
+	padding: 0 1em 1em 1em;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+		rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+	min-width: 272px;
+
+	& > .header {
+		// margin-top: -0.5em;
+		display: flex;
+		align-items: center;
+		// justify-content: center;
+		& > p {
+			margin-left: auto;
+			color: hsl(0, 0%, 45%);
+			font-size: 0.875rem;
+		}
+		& > .closeIcon {
+			margin-left: auto;
+		}
+	}
+
+	& > hr {
+		margin-top: -0.2em;
+		border: 0;
+		border-top: 1px solid hsl(0, 0%, 85%);
+	}
+}

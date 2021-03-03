@@ -5,6 +5,7 @@ import { Session, signIn, signOut } from "next-auth/client";
 import { extractUserInitials } from "../../utils/extractUserIntials";
 import tinyColor from "tinycolor2";
 import ProjectIcon from "../../assets/ProjectIcon";
+import DropDown from "../dropdown/DropDown";
 interface NavBarProps {
 	session?: Session;
 	navBgColor?: string;
@@ -50,6 +51,7 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 								height={16}
 								width={16}
 							/>
+							<DropDown></DropDown>
 						</div>
 						<div className={styles.nav__icons}>
 							<img

@@ -12,6 +12,7 @@ import CreateProject from "./CreateProject";
 import Modal from "../modal/Modal";
 import PersonIcon from "../../assets/PersonIcon";
 import OptionsIcon from "../../assets/OptionsIcon";
+import ProjectOptions from "../dropdown/projects/ProjectOptions";
 
 const colors = [
 	"#FF6900",
@@ -92,12 +93,14 @@ const Projects = () => {
 									/>
 								</button>
 								{showOptions === _id && (
-									<div className={styles.options}>
-										<div>Edit</div>
-										<div onClick={deleteProject(_id)}>
-											Delete
-										</div>
-									</div>
+									<ProjectOptions />
+
+									// <<div className={styles.options}>
+									// 	<div>Edit</div>
+									// 	<div onClick={deleteProject(_id)}>
+									// 		Delete
+									// 	</div>
+									// </div>>
 								)}
 							</div>
 						</div>

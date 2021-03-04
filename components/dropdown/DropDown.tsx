@@ -6,11 +6,32 @@ interface AppProps {
 	children: React.ReactNode;
 	leftPosition?: string;
 	title: string;
+	rightPosition?: string;
+	bottomPostion?: string;
+	topPosition?: string;
+	width?: string;
 }
 
-const DropDown = ({ leftPosition, children, title }: AppProps) => {
+const DropDown = ({
+	leftPosition,
+	children,
+	title,
+	bottomPostion,
+	rightPosition,
+	topPosition,
+	width,
+}: AppProps) => {
 	return (
-		<div className={styles.container} style={{ left: leftPosition }}>
+		<div
+			className={styles.container}
+			style={{
+				left: leftPosition,
+				right: rightPosition,
+				top: topPosition,
+				bottom: bottomPostion,
+				minWidth: width,
+			}}
+		>
 			<div className={styles.header}>
 				<p>{title}</p>
 				<div className={styles.closeIcon}>

@@ -2,20 +2,29 @@
 	width: 304px;
 	margin-top: -0.7em;
 	font-size: 0.875rem;
+	& > .options__item {
+		cursor: pointer;
+		margin: 0 -1.1em;
+		padding: 0 1em;
 
-	& > .header {
-		display: flex;
-		align-items: center;
-		& > p {
-			margin-left: 0.5em;
-			color: hsl(218, 17%, 40%);
+		& > .header {
+			display: flex;
+			align-items: center;
+
+			& > .title {
+				margin-left: 0.5em;
+				color: hsl(218, 17%, 40%);
+			}
+		}
+
+		& > .paragraph {
+			margin-top: -0.5em;
+			font-size: 0.79rem;
+			color: hsl(218, 17%, 49%);
+			line-height: 1.5;
 		}
 	}
-
-	& > p {
-		margin-top: -0.5em;
-		font-size: 0.79rem;
-		color: hsl(218, 17%, 49%);
-		line-height: 1.5;
+	& > .options__item:hover {
+		background-color: hsl(0, 0%, 95%);
 	}
 }

@@ -10,6 +10,7 @@ import Modal from "../modal/Modal";
 import PersonIcon from "../../assets/PersonIcon";
 import OptionsIcon from "../../assets/OptionsIcon";
 import ProjectOptions from "../dropdown/projects/ProjectOptions";
+import CreateProjectModal from "../modal/projects/CreateProjectModal";
 
 const colors = [
 	"#FF6900",
@@ -31,7 +32,6 @@ interface projectProps {
 const Projects = () => {
 	const { data, isLoading } = useProject();
 	const [openModal, setOpenModal] = React.useState(false);
-	const [projectColor, setProjectColor] = React.useState<string>("#9900EF");
 	const [showOptions, setShowOptions] = React.useState("");
 
 	if (isLoading) {
@@ -47,7 +47,6 @@ const Projects = () => {
 	};
 
 	const createProjectHandler = () => setOpenModal(!openModal);
-	const projectColorHandler = (color: any) => setProjectColor(color.hex);
 
 	return (
 		<div className={styles.outer__container}>
@@ -92,26 +91,7 @@ const Projects = () => {
 					<p>create new project</p>
 				</div>
 			</div>
-			{openModal && (
-				<Modal
-					setOpenModal={setOpenModal}
-					modalStyles={modalStyles}
-					projectColor={projectColor}
-				>
-					<CreateProject
-						projectColor={projectColor}
-						setOpenModal={setOpenModal}
-					/>
-					<CirclePicker
-						colors={colors}
-						onChange={projectColorHandler}
-						width="100%"
-						circleSize={28}
-						circleSpacing={10}
-						className={modalStyles.color__picker}
-					/>
-				</Modal>
-			)}
+			{openModal && <CreateProjectModal setOpenModal={setOpenModal} />}
 		</div>
 	);
 };

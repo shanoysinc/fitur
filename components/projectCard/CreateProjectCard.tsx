@@ -38,12 +38,15 @@ const CreateProjectCard = ({
 	const showInputHandler = () =>
 		setShowProjectCardInput(!showProjectCardInput);
 
-	const createProjectCardHandler = () => {
+	const createProjectCardHandler = (event: Event) => {
+		event.preventDefault();
+
 		const modProjectCardName = projectCardName.trim();
 		if (modProjectCardName === "") {
 			return toastNotification("Task require a title!", "error");
 		}
 		mutation.mutate({ name: modProjectCardName });
+		setProjectCardName("");
 	};
 
 	const projectCardInputRef = useClickOutSide(() => {
@@ -62,21 +65,20 @@ const CreateProjectCard = ({
 			)}
 
 			{showProjectCardInput && (
-				<div
+				<form
 					className={styles.input__container}
 					ref={projectCardInputRef}
+					onSubmit={createProjectCardHandler}
 				>
 					<input
 						onChange={changeNameHandler}
 						className={styles.discription__input}
 						name="title"
 						placeholder="Enter a project card title..."
+						value={projectCardName}
 					/>
 					<div className={styles.input__btns}>
-						<button
-							onClick={createProjectCardHandler}
-							className={styles.btn__save}
-						>
+						<button type="submit" className={styles.btn__save}>
 							Save
 						</button>
 						<div
@@ -86,7 +88,7 @@ const CreateProjectCard = ({
 							<CloseIcon height={14} width={14} fill="grey" />
 						</div>
 					</div>
-				</div>
+				</form>
 			)}
 		</div>
 	);

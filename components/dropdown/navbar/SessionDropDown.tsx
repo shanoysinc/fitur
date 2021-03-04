@@ -12,7 +12,7 @@ const SessionDropDown = ({ username }: AppProps) => {
 		<Dropdown title="Account">
 			<div className={styles.container}>
 				<p className={styles.options__item} onClick={() => signOut()}>
-					Sign Out
+					Log Out
 				</p>
 			</div>
 		</Dropdown>

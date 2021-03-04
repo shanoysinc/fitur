@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import styles from "../../styles/tasks/createTask.module.scss";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
@@ -33,15 +33,18 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 	const changeTitleHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setTitle(e.target.value);
 	};
+
 	const showInputHandler = () => setShowCreateTaskInput(projectCardID);
 	const closeInputHanlder = () => setShowCreateTaskInput("");
 
-	const createTaskHandler = () => {
+	const createTaskHandler = (event: FormEvent) => {
+		event.preventDefault();
 		const modTitle = title.trim();
 		if (modTitle === "") {
 			return toastNotification("Task require a title!", "error");
 		}
 		mutation.mutate({ title: modTitle, projectCardID });
+		setTitle("");
 	};
 
 	const createTaskRef = useClickOutSide(() => setShowCreateTaskInput(""));
@@ -59,18 +62,19 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 			)}
 
 			{showCreateTaskInput && (
-				<div className={styles.input__container}>
-					<textarea
+				<form
+					className={styles.input__container}
+					onSubmit={createTaskHandler}
+				>
+					<input
 						onChange={changeTitleHandler}
-						className={styles.discription__input}
+						className={styles.task__name_input}
 						name="title"
 						placeholder="Enter a title for this task..."
-					></textarea>
+						value={title}
+					></input>
 					<div className={styles.input__btns}>
-						<button
-							onClick={createTaskHandler}
-							className={styles.btn__save}
-						>
+						<button type="submit" className={styles.btn__save}>
 							Save
 						</button>
 
@@ -81,7 +85,7 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 							<CloseIcon height={14} width={14} fill="grey" />
 						</div>
 					</div>
-				</div>
+				</form>
 			)}
 		</div>
 	);

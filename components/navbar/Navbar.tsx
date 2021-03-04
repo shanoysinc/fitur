@@ -1,13 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import styles from "../../styles/navbar/navbar.module.scss";
-import { Session, signIn, signOut } from "next-auth/client";
+import { Session, signIn } from "next-auth/client";
 import { extractUserInitials } from "../../utils/extractUserIntials";
 import tinyColor from "tinycolor2";
 import ProjectIcon from "../../assets/ProjectIcon";
 import CreateItemsDropDown from "../dropdown/navbar/CreateItemsDropDown";
 import TipsDropDown from "../dropdown/navbar/TipsDropDown";
 import { useClickOutSide } from "../../hooks/clickOutSide";
+import SessionDropDown from "../dropdown/navbar/SessionDropDown";
 
 interface NavBarProps {
 	session?: Session;
@@ -16,9 +17,20 @@ interface NavBarProps {
 const Navbar = ({ session, navBgColor }: NavBarProps) => {
 	const [showCreateItems, setShowCreateItems] = React.useState(false);
 	const [showTips, setShowTips] = React.useState(false);
-
+	const [username, setUsername] = React.useState("");
+	const [showAccountOptions, setShowAccountOptions] = React.useState(false);
 	const createItemsRef = useClickOutSide(() => setShowCreateItems(false));
 	const showTipsRef = useClickOutSide(() => setShowTips(false));
+	const showAccountOptionsRef = useClickOutSide(() =>
+		setShowAccountOptions(false)
+	);
+
+	React.useEffect(() => {
+		if (session) {
+			setUsername(() => extractUserInitials(session.user.name));
+		}
+	}, [session]);
+
 	return (
 		<div
 			className={styles.nav}
@@ -103,15 +115,22 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 							</div>
 						</div>
 
-						<div className={styles.user__name}>
-							<p>{extractUserInitials(session.user.name)}</p>
-						</div>
-						<button
-							className={styles.btn}
-							onClick={() => signOut()}
+						<div
+							className={styles.icon__container}
+							ref={showAccountOptionsRef}
 						>
-							LOG OUT
-						</button>
+							<div
+								className={styles.user__name}
+								onClick={() =>
+									setShowAccountOptions(!showAccountOptions)
+								}
+							>
+								<p>{username}</p>
+							</div>
+							{showAccountOptions && (
+								<SessionDropDown username={username} />
+							)}
+						</div>
 					</div>
 				) : (
 					<button className={styles.btn} onClick={() => signIn()}>

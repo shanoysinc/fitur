@@ -1,0 +1,14 @@
+.container {
+	& > .options__item {
+		font-size: 0.88rem;
+		text-transform: capitalize;
+		color: #575a5f;
+		padding: 8px 1em;
+		margin: 0 -1.1em;
+		cursor: pointer;
+	}
+
+	& > .options__item:hover {
+		background-color: hsl(0, 0%, 95%);
+	}
+}

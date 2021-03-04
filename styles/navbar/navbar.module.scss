@@ -18,13 +18,14 @@
 	align-items: center;
 	background-color: hsla(0, 0%, 100%, 0.253);
 	border-radius: 4px;
-	padding: 0.5em 0.6em;
+	height: 33px;
+
+	padding: 0 0.6em;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	cursor: pointer;
-	& > P {
-		margin: 0;
+	& > span {
 		margin-left: 0.5em;
-		font-weight: 500;
+		font-weight: 700;
 		font-size: 0.9rem;
 		color: white;
 	}
@@ -95,7 +96,7 @@
 
 @media screen and (min-width: 60em) {
 	.nav {
-		padding: 0.3em 0.5em;
+		padding: 0.2em 0.5em;
 		justify-content: space-between;
 	}
 }

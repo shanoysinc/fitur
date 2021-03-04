@@ -28,20 +28,23 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 			}}
 		>
 			<div className={styles.nav__items_left}>
-				<Link href="/">
-					<a className={styles.nav__icons}>
-						<img
-							src="/svg/home.svg"
-							alt="notification icon"
-							height={16}
-							width={16}
-						/>
-					</a>
-				</Link>
-				<div className={styles.nav__icons}>
-					<ProjectIcon height={16} width={16} fill="white" />
-
-					<p>Project</p>
+				<div className={styles.icon__container}>
+					<Link href="/">
+						<a className={styles.nav__icons}>
+							<img
+								src="/svg/home.svg"
+								alt="notification icon"
+								height={16}
+								width={16}
+							/>
+						</a>
+					</Link>
+				</div>
+				<div className={styles.icon__container}>
+					<div className={styles.nav__icons}>
+						<ProjectIcon height={16} width={16} fill="white" />
+						<span>Project</span>
+					</div>
 				</div>
 			</div>
 			<div className={styles.logo__container}>

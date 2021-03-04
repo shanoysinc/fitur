@@ -11,7 +11,7 @@
 	}
 	& > .modal__body {
 		max-width: 600px;
-		border-radius: 4px;
+		border-radius: 2px;
 		position: fixed;
 		top: 15%;
 		left: 30px;
@@ -26,7 +26,6 @@
 		& > .modal__body {
 			top: 15%;
 			left: 25%;
-			// right: 25%;
 		}
 	}
 }

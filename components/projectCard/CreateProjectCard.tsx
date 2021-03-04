@@ -5,6 +5,8 @@ import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 import { useClickOutSide } from "../../hooks/clickOutSide";
 import AddIcon from "../../assets/AddIcon";
+import CloseIcon from "../../assets/CloseIcon";
+
 interface AppProps {
 	setShowProjectCardInput: React.Dispatch<React.SetStateAction<boolean>>;
 	showProjectCardInput: boolean;
@@ -77,14 +79,12 @@ const CreateProjectCard = ({
 						>
 							Save
 						</button>
-						<img
-							onClick={showInputHandler}
-							src="/svg/close.svg"
-							alt="close button"
+						<div
 							className={styles.btn__close}
-							height={15}
-							width={15}
-						/>
+							onClick={showInputHandler}
+						>
+							<CloseIcon height={14} width={14} fill="grey" />
+						</div>
 					</div>
 				</div>
 			)}

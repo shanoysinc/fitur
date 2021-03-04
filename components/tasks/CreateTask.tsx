@@ -5,6 +5,8 @@ import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 import { useClickOutSide } from "../../hooks/clickOutSide";
 import AddIcon from "../../assets/AddIcon";
+import CloseIcon from "../../assets/CloseIcon";
+
 interface AppProps {
 	projectCardID: string;
 }
@@ -71,14 +73,13 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 						>
 							Save
 						</button>
-						<img
-							onClick={closeInputHanlder}
-							src="/svg/close.svg"
-							alt="close button"
+
+						<div
 							className={styles.btn__close}
-							height={15}
-							width={15}
-						/>
+							onClick={closeInputHanlder}
+						>
+							<CloseIcon height={14} width={14} fill="grey" />
+						</div>
 					</div>
 				</div>
 			)}

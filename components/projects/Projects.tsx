@@ -11,6 +11,7 @@ import { toastNotification } from "../../utils/toastNotification";
 import CreateProject from "./CreateProject";
 import Modal from "../modal/Modal";
 import PersonIcon from "../../assets/PersonIcon";
+import OptionsIcon from "../../assets/OptionsIcon";
 
 const colors = [
 	"#FF6900",
@@ -84,11 +85,10 @@ const Projects = () => {
 									className={styles.option__btn}
 									onClick={() => toggleOptions(_id)}
 								>
-									<img
-										src="/svg/options.svg"
-										alt="options btn"
+									<OptionsIcon
 										height={23}
 										width={23}
+										fill="white"
 									/>
 								</button>
 								{showOptions === _id && (

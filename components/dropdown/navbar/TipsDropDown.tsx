@@ -4,7 +4,7 @@ import styles from "../../../styles/dropdown/navbar/tipsdropdown.module.scss";
 import Image from "next/image";
 const CreateItemsDropDown = () => {
 	return (
-		<Dropdown>
+		<Dropdown title="information">
 			<div className={styles.container}>
 				<div className={styles.image__container}>
 					<Image

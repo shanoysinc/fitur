@@ -5,7 +5,7 @@ import ProjectIcon from "../../../assets/ProjectIcon";
 
 const CreateItemsDropDown = () => {
 	return (
-		<Dropdown>
+		<Dropdown title="create">
 			<div className={styles.container}>
 				<div className={styles.header}>
 					<ProjectIcon fill="#5e6c84" height={13} width={13} />

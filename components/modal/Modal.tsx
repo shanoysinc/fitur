@@ -3,7 +3,7 @@ import { CurrentTask } from "../../types/Task";
 
 interface ModalProps {
 	children: React.ReactNode;
-	setOpenModal: React.Dispatch<React.SetStateAction<true | false>>;
+	setOpenModal?: React.Dispatch<React.SetStateAction<true | false>>;
 	setCurrentTask?: React.Dispatch<React.SetStateAction<CurrentTask | null>>;
 	modalStyles: {
 		readonly [key: string]: string;
@@ -19,7 +19,9 @@ const Modal = ({
 	projectColor,
 }: ModalProps) => {
 	const modalHandler = () => {
-		setOpenModal(false);
+		if (setOpenModal) {
+			setOpenModal(false);
+		}
 		if (setCurrentTask) {
 			setCurrentTask(null);
 		}

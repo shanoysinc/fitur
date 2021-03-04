@@ -8,6 +8,7 @@ import ProjectIcon from "../../assets/ProjectIcon";
 import CreateItemsDropDown from "../dropdown/navbar/CreateItemsDropDown";
 import TipsDropDown from "../dropdown/navbar/TipsDropDown";
 import { useClickOutSide } from "../../hooks/clickOutSide";
+
 interface NavBarProps {
 	session?: Session;
 	navBgColor?: string;
@@ -15,7 +16,6 @@ interface NavBarProps {
 const Navbar = ({ session, navBgColor }: NavBarProps) => {
 	const [showCreateItems, setShowCreateItems] = React.useState(false);
 	const [showTips, setShowTips] = React.useState(false);
-	console.log("rendering");
 
 	const createItemsRef = useClickOutSide(() => setShowCreateItems(false));
 	const showTipsRef = useClickOutSide(() => setShowTips(false));

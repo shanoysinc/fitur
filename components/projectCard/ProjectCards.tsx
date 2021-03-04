@@ -21,7 +21,6 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		null
 	);
 	const [currentProjectCard, setCurrentProjectCard] = React.useState("");
-	const [openModal, setOpenModal] = React.useState(false);
 
 	const projectCardUrl = `/api/projectcards/${projectID}`;
 	const { data: res, isLoading } = useQuery("projectCards", () =>
@@ -77,11 +76,13 @@ const ProjectCard = ({ projectID }: AppProps) => {
 			))}
 			{currentTask?._id && (
 				<Modal
-					setOpenModal={setOpenModal}
 					setCurrentTask={setCurrentTask}
 					modalStyles={modalStyles}
 				>
-					<EditTask currentTask={currentTask} projectID={projectID} />
+					<EditTask
+						currentTask={currentTask}
+						setCurrentTask={setCurrentTask}
+					/>
 				</Modal>
 			)}
 		</>

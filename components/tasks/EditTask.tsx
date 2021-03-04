@@ -1,19 +1,17 @@
 import React from "react";
 import styles from "../../styles/tasks/edit.module.scss";
-import { Task, CurrentTask } from "../../types/Task";
-import Select from "react-select";
+import { CurrentTask } from "../../types/Task";
 import TaskIcon from "../../assets/TaskIcon";
-// import { StatusOptions, TypeOptions } from "../tasks/CreateTask";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 
 interface TaskProps {
 	currentTask: CurrentTask;
-	projectID: string;
+	setCurrentTask: React.Dispatch<React.SetStateAction<CurrentTask | null>>;
 }
 
-const EditTask = ({ currentTask, projectID }: TaskProps) => {
+const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 	const queryClient = useQueryClient();
 	const { title, projectCardName } = currentTask;
 	const [description, setDescription] = React.useState<string>(
@@ -34,6 +32,19 @@ const EditTask = ({ currentTask, projectID }: TaskProps) => {
 		}
 	);
 
+	const deleteTaskMutation = useMutation(
+		() => axios.delete(`/api/tasks/${currentTask._id}`),
+		{
+			onSuccess: (res) => {
+				queryClient.invalidateQueries("projectCards");
+				toastNotification(res.data.message, "success");
+			},
+			onError: (res) => {
+				toastNotification(res.data.message, "error");
+			},
+		}
+	);
+
 	const updateDescriptionHandler = (
 		e: React.ChangeEvent<HTMLTextAreaElement>
 	) => {
@@ -45,6 +56,10 @@ const EditTask = ({ currentTask, projectID }: TaskProps) => {
 			description,
 		};
 		mutation.mutate(updatedTask);
+	};
+	const deleteTaskHandler = () => {
+		deleteTaskMutation.mutate();
+		setCurrentTask(null);
 	};
 
 	return (
@@ -78,12 +93,20 @@ const EditTask = ({ currentTask, projectID }: TaskProps) => {
 						id=""
 						defaultValue={description}
 					></textarea>
-					<button
-						onClick={updateTaskHandler}
-						className={styles.btn__save}
-					>
-						Save
-					</button>
+					<div className={styles.btn__container}>
+						<button
+							onClick={updateTaskHandler}
+							className={styles.btn__save}
+						>
+							Save
+						</button>
+						<button
+							onClick={deleteTaskHandler}
+							className={styles.btn__delete}
+						>
+							Delete Task
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

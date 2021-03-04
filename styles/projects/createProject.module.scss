@@ -1,5 +1,12 @@
 .container {
-	padding: 2em 1.5em;
+	padding: 2em;
+	margin-top: -2.5em;
+
+	& > h2 {
+		color: #eef2ff;
+		text-transform: capitalize;
+		text-align: center;
+	}
 }
 
 .form__container {
@@ -8,37 +15,31 @@
 	flex-direction: column;
 }
 .input {
-	height: 35px;
-	padding: 0.8em;
+	// height: 35px;
+	padding: 1.1em;
 	border-radius: 4px;
-	background-color: rgba(26, 27, 26, 0.185);
+	background-color: #eef2ff;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	outline: none;
 	border: 0;
-	color: white;
+	color: #059669;
+	font-weight: 600;
 }
 .input::placeholder {
-	color: white;
+	color: #059669;
 }
 
 .submit__btn {
-	background-color: rgba(26, 27, 26, 0.185);
-	color: white;
+	background-color: #eef2ff;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	color: #059669;
 	border: 0;
 	width: fit-content;
 	cursor: pointer;
-	padding: 0.7em 1em;
+	padding: 0.7em 0.9em;
 	text-transform: capitalize;
 	outline: none;
+	font-size: 1rem;
 	font-weight: 600;
 	border-radius: 4px;
-	height: 30px;
-}
-
-@media screen and (min-width: 60em) {
-	.container {
-		& > h1 {
-			font-size: 3em;
-			color: hsl(202, 98%, 13%);
-		}
-	}
 }

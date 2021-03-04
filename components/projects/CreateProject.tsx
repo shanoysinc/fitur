@@ -46,18 +46,17 @@ const CreateProject = ({ projectColor }: AppProps) => {
 
 	return (
 		<div className={styles.container}>
+			<h2>First step to a new Beginning!❤️</h2>
 			<form onSubmit={onSubmit} className={styles.form__container}>
-				{/* <div className={styles.project__color}></div> */}
-
 				<input
 					type="text"
 					name="name"
-					placeholder="Create a project title..."
+					placeholder="Add a project title..."
 					onChange={inputHandler}
 					className={styles.input}
 				/>
 				<button type="submit" className={styles.submit__btn}>
-					create
+					create Project
 				</button>
 			</form>
 		</div>

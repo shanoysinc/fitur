@@ -20,7 +20,7 @@ const colors = [
 	"#00D084",
 	"#0693E3",
 	"#EB144C",
-	"#F78DA7",
+
 	"rgb(205, 90, 145)",
 ];
 
@@ -121,7 +121,7 @@ const Projects = () => {
 						colors={colors}
 						onChange={projectColorHandler}
 						width="100%"
-						circleSize={25}
+						circleSize={28}
 						circleSpacing={10}
 						className={modalStyles.color__picker}
 					/>

@@ -2,13 +2,9 @@
 	background-color: hsla(202, 98%, 31%, 0.884);
 	position: relative;
 	display: flex;
-	padding: 0.3em 0;
+	padding: 0.2em 0.3em;
 	justify-content: space-between;
 	align-items: center;
-}
-
-.icon__container {
-	// position: relative;
 }
 
 .nav__icons {
@@ -20,7 +16,7 @@
 	border-radius: 4px;
 	height: 33px;
 
-	padding: 0 0.6em;
+	padding: 0.2em 0.5em;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	cursor: pointer;
 	& > span {
@@ -39,14 +35,14 @@
 	align-items: center;
 
 	& > * + * {
-		margin-left: 0.5em;
+		margin-left: 0.3em;
 	}
 }
 
 .logo__container {
 	display: none;
 	& > .logo {
-		font-size: 1.8rem;
+		font-size: 1.7rem;
 		font-weight: 600;
 		color: hsla(0, 0%, 100%, 0.536);
 		justify-self: center;
@@ -61,7 +57,7 @@
 		display: flex;
 		align-items: center;
 		& > * + * {
-			margin-left: 0.5em;
+			margin-left: 0.3em;
 		}
 
 		& > .user__name {
@@ -73,7 +69,7 @@
 			align-items: center;
 			justify-content: center;
 			& > p {
-				font-weight: 500;
+				font-weight: 700;
 				font-size: 0.875rem;
 			}
 		}
@@ -94,9 +90,9 @@
 	}
 }
 
-@media screen and (min-width: 60em) {
-	.nav {
-		padding: 0.2em 0.5em;
-		justify-content: space-between;
-	}
-}
+// @media screen and (min-width: 60em) {
+// 	.nav {
+// 		// padding: 0.2em 0.5em;
+// 		justify-content: space-between;
+// 	}
+// }

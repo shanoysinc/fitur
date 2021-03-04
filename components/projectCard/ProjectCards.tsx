@@ -10,7 +10,8 @@ import { fetcher } from "../../utils/fetcher";
 import { CurrentTask } from "../../types/Task";
 import OptionsIcon from "../../assets/OptionsIcon";
 import Loading from "../loading/Loading";
-import Dropdown from "../dropdown/DropDown";
+import ProjectCardOptions from "../dropdown/projectCard/ProjectCardOptions";
+
 interface AppProps {
 	projectID: string;
 }
@@ -19,6 +20,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 	const [currentTask, setCurrentTask] = React.useState<CurrentTask | null>(
 		null
 	);
+	const [currentProjectCard, setCurrentProjectCard] = React.useState("");
 	const [openModal, setOpenModal] = React.useState(false);
 
 	const projectCardUrl = `/api/projectcards/${projectID}`;
@@ -30,6 +32,13 @@ const ProjectCard = ({ projectID }: AppProps) => {
 
 	const projectCardData = res?.data.projectCards;
 
+	const projectCardOptionsHandler = (projectCardID: string) => {
+		if (currentProjectCard === projectCardID) {
+			return setCurrentProjectCard("");
+		}
+		setCurrentProjectCard(projectCardID);
+	};
+
 	return (
 		<>
 			{projectCardData.map((projectCard) => (
@@ -37,14 +46,24 @@ const ProjectCard = ({ projectID }: AppProps) => {
 					<div className={styles.title__container}>
 						<h4>{projectCard.name}</h4>
 						<div className={styles.projectCard__options}>
-							<OptionsIcon
-								height={15}
-								width={15}
-								fill="#383838"
-							/>
-							{/* <Dropdown leftPosition={"0"}>
-								<p>hello</p>
-							</Dropdown> */}
+							<div
+								className={styles.option__icon}
+								onClick={() =>
+									projectCardOptionsHandler(projectCard._id)
+								}
+							>
+								<OptionsIcon
+									height={15}
+									width={15}
+									fill="#383838"
+								/>
+							</div>
+							{currentProjectCard === projectCard._id && (
+								<ProjectCardOptions
+									projectCardID={projectCard._id}
+									projectID={projectID}
+								/>
+							)}
 						</div>
 					</div>
 					<TaskCard

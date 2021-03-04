@@ -3,11 +3,8 @@ import styles from "../../styles/projects/projects.module.scss";
 import modalStyles from "../../styles/modal/createProjectModal.module.scss";
 import { CirclePicker } from "react-color";
 import { useProject } from "../../hooks/project";
-import { useMutation, useQueryClient } from "react-query";
 import Link from "next/link";
-import axios from "axios";
 import Loading from "../loading/Loading";
-import { toastNotification } from "../../utils/toastNotification";
 import CreateProject from "./CreateProject";
 import Modal from "../modal/Modal";
 import PersonIcon from "../../assets/PersonIcon";
@@ -36,23 +33,12 @@ const Projects = () => {
 	const [openModal, setOpenModal] = React.useState(false);
 	const [projectColor, setProjectColor] = React.useState<string>("#9900EF");
 	const [showOptions, setShowOptions] = React.useState("");
-	const queryClient = useQueryClient();
-
-	const mutation = useMutation((id) => axios.delete(`/api/projects/${id}`), {
-		onSuccess: (response) => {
-			const { data } = response;
-			queryClient.invalidateQueries("projects");
-			toastNotification(data.message, "success");
-		},
-	});
 
 	if (isLoading) {
 		return <Loading />;
 	}
 	const projects = data?.data.projects;
-	const deleteProject = (currentID: any) => {
-		return () => mutation.mutate(currentID);
-	};
+
 	const toggleOptions = (id: string) => {
 		if (showOptions == id) {
 			return setShowOptions("");
@@ -93,14 +79,7 @@ const Projects = () => {
 									/>
 								</button>
 								{showOptions === _id && (
-									<ProjectOptions />
-
-									// <<div className={styles.options}>
-									// 	<div>Edit</div>
-									// 	<div onClick={deleteProject(_id)}>
-									// 		Delete
-									// 	</div>
-									// </div>>
+									<ProjectOptions projectID={_id} />
 								)}
 							</div>
 						</div>

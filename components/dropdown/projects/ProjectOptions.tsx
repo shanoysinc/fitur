@@ -30,7 +30,7 @@ const ProjectOptions = ({ projectID }: AppProps) => {
 		<Dropdown
 			title="Project Options"
 			leftPosition="-30px"
-			topPosition="-40px"
+			topPosition="-30px"
 			width="220px"
 		>
 			<div className={styles.container}>

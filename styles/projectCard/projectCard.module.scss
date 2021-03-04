@@ -18,11 +18,12 @@
 			margin-left: 0.4em;
 			text-transform: capitalize;
 		}
-
-		& > .projectCard__options {
-			position: relative;
-			cursor: pointer;
-			margin-top: 0.2em;
-		}
+	}
+}
+.projectCard__options {
+	position: relative;
+	margin-top: 0.2em;
+	& > .option__icon {
+		cursor: pointer;
 	}
 }

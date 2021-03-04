@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const newProject = new Project(project);
 				await newProject.save();
 
-				res.json({ message: "Project was successfully created!" });
+				res.json({ project: newProject });
 			} catch (err) {
 				res.json({
 					message:

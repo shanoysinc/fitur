@@ -98,7 +98,10 @@ const Projects = () => {
 					modalStyles={modalStyles}
 					projectColor={projectColor}
 				>
-					<CreateProject projectColor={projectColor} />
+					<CreateProject
+						projectColor={projectColor}
+						setOpenModal={setOpenModal}
+					/>
 					<CirclePicker
 						colors={colors}
 						onChange={projectColorHandler}

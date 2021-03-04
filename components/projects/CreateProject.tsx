@@ -1,23 +1,24 @@
 import React from "react";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 import axios from "axios";
 import styles from "../../styles/projects/createProject.module.scss";
 import { toastNotification } from "../../utils/toastNotification";
-
+import { useRouter } from "next/router";
 interface AppProps {
 	projectColor: string;
+	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CreateProject = ({ projectColor }: AppProps) => {
-	const queryClient = useQueryClient();
+const CreateProject = ({ projectColor, setOpenModal }: AppProps) => {
+	const router = useRouter();
 
 	const mutation = useMutation(
 		(newProject) => axios.post("/api/projects", newProject),
 		{
 			onSuccess: (res) => {
 				const { data } = res;
-				queryClient.invalidateQueries("projects");
-				toastNotification(data.message, "success");
+				const projectID = data.project._id;
+				router.push(`/projects/${projectID}`);
 			},
 		}
 	);
@@ -34,6 +35,7 @@ const CreateProject = ({ projectColor }: AppProps) => {
 		}
 		const newProject = { name, color: projectColor } as any;
 		mutation.mutate(newProject);
+		setOpenModal(false);
 	};
 
 	React.useEffect(() => {

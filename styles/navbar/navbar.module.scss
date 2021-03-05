@@ -42,9 +42,10 @@
 .logo__container {
 	display: none;
 	& > .logo {
-		font-size: 1.7rem;
+		margin-left: 0.2em;
+		font-size: 1.4rem;
 		font-weight: 600;
-		color: hsla(0, 0%, 100%, 0.536);
+		color: #ffffff89;
 		justify-self: center;
 	}
 	& > .logo:hover {

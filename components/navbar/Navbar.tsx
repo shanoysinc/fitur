@@ -45,7 +45,7 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 						<a className={styles.nav__icons}>
 							<img
 								src="/svg/home.svg"
-								alt="notification icon"
+								alt="Home icon"
 								height={16}
 								width={16}
 							/>
@@ -60,6 +60,8 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 				</div>
 			</div>
 			<div className={styles.logo__container}>
+				<ProjectIcon height={16} width={16} fill="#ffffff89" />
+
 				<Link href="/">
 					<a className={styles.logo}>Fitur</a>
 				</Link>

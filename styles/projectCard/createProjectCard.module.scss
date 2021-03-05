@@ -9,7 +9,7 @@
 	gap: 0.7em;
 	align-items: center;
 	cursor: pointer;
-	background-color: rgba(255, 255, 255, 0.282);
+	background-color: hsla(0, 0%, 100%, 0.24);
 	border-radius: 4px;
 	padding-left: 1em;
 	height: 40px;
@@ -18,7 +18,7 @@
 	font-weight: 500;
 }
 .add__task_btn:hover {
-	background-color: rgba(255, 255, 255, 0.382);
+	background-color: hsla(0, 0%, 100%, 0.349);
 }
 
 .input__container {

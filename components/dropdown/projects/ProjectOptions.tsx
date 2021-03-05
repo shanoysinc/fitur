@@ -7,9 +7,10 @@ import { toastNotification } from "../../../utils/toastNotification";
 
 interface AppProps {
 	projectID: string;
+	closeDropdown: React.Dispatch<React.SetStateAction<any>>;
 }
 
-const ProjectOptions = ({ projectID }: AppProps) => {
+const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
 	const queryClient = useQueryClient();
 
 	const deleteProjectMutation = useMutation(
@@ -32,6 +33,7 @@ const ProjectOptions = ({ projectID }: AppProps) => {
 			leftPosition="-30px"
 			topPosition="-30px"
 			width="220px"
+			closeDropdown={closeDropdown}
 		>
 			<div className={styles.container}>
 				<p

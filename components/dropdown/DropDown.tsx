@@ -10,6 +10,7 @@ interface AppProps {
 	bottomPostion?: string;
 	topPosition?: string;
 	width?: string;
+	closeDropdown: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const DropDown = ({
@@ -20,6 +21,7 @@ const DropDown = ({
 	rightPosition,
 	topPosition,
 	width,
+	closeDropdown,
 }: AppProps) => {
 	return (
 		<div
@@ -34,7 +36,10 @@ const DropDown = ({
 		>
 			<div className={styles.header}>
 				<p>{title}</p>
-				<div className={styles.closeIcon}>
+				<div
+					className={styles.closeIcon}
+					onClick={() => closeDropdown(false)}
+				>
 					<CloseIcon width={10} height={10} fill="hsl(0, 0%, 45%)" />
 				</div>
 			</div>

@@ -87,7 +87,11 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 								/>
 							</div>
 
-							{showCreateItems && <CreateItemsDropDown />}
+							{showCreateItems && (
+								<CreateItemsDropDown
+									closeDropdown={setShowCreateItems}
+								/>
+							)}
 						</div>
 						<div
 							className={styles.icon__container}
@@ -104,7 +108,9 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 									width={16}
 								/>
 							</div>
-							{showTips && <TipsDropDown />}
+							{showTips && (
+								<TipsDropDown closeDropdown={setShowTips} />
+							)}
 						</div>
 						<div className={styles.icon__container}>
 							<div className={styles.nav__icons}>
@@ -130,7 +136,10 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 								<p>{username}</p>
 							</div>
 							{showAccountOptions && (
-								<SessionDropDown username={username} />
+								<SessionDropDown
+									username={username}
+									closeDropdown={setShowAccountOptions}
+								/>
 							)}
 						</div>
 					</div>

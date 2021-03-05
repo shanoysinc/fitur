@@ -4,14 +4,18 @@ import styles from "../../../styles/dropdown/navbar/CreateItems.module.scss";
 import ProjectIcon from "../../../assets/ProjectIcon";
 import CreateProjectModal from "../../modal/projects/CreateProjectModal";
 
-const CreateItemsDropDown = () => {
+interface AppProps {
+	closeDropdown: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const CreateItemsDropDown = ({ closeDropdown }: AppProps) => {
 	const [openModal, setOpenModal] = React.useState(false);
 
 	const createProjectHandler = () => setOpenModal(!openModal);
 
 	return (
 		<>
-			<Dropdown title="create">
+			<Dropdown title="create" closeDropdown={closeDropdown}>
 				<div className={styles.container}>
 					<div
 						className={styles.options__item}

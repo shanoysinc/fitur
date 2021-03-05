@@ -20,7 +20,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 	const [currentTask, setCurrentTask] = React.useState<CurrentTask | null>(
 		null
 	);
-	const [currentProjectCard, setCurrentProjectCard] = React.useState("");
+	const [currentProjectCardID, setCurrentProjectCardID] = React.useState("");
 
 	const projectCardUrl = `/api/projectcards/${projectID}`;
 	const { data: res, isLoading } = useQuery("projectCards", () =>
@@ -32,10 +32,10 @@ const ProjectCard = ({ projectID }: AppProps) => {
 	const projectCardData = res?.data.projectCards;
 
 	const projectCardOptionsHandler = (projectCardID: string) => {
-		if (currentProjectCard === projectCardID) {
-			return setCurrentProjectCard("");
+		if (currentProjectCardID === projectCardID) {
+			return setCurrentProjectCardID("");
 		}
-		setCurrentProjectCard(projectCardID);
+		setCurrentProjectCardID(projectCardID);
 	};
 
 	return (
@@ -57,10 +57,11 @@ const ProjectCard = ({ projectID }: AppProps) => {
 									fill="#383838"
 								/>
 							</div>
-							{currentProjectCard === projectCard._id && (
+							{currentProjectCardID === projectCard._id && (
 								<ProjectCardOptions
 									projectCardID={projectCard._id}
 									projectID={projectID}
+									closeDropdown={setCurrentProjectCardID}
 								/>
 							)}
 						</div>

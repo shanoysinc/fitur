@@ -78,7 +78,10 @@ const Projects = () => {
 									/>
 								</button>
 								{showOptions === _id && (
-									<ProjectOptions projectID={_id} />
+									<ProjectOptions
+										projectID={_id}
+										closeDropdown={setShowOptions}
+									/>
 								)}
 							</div>
 						</div>

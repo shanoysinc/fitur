@@ -8,8 +8,13 @@ import { useMutation, useQueryClient } from "react-query";
 interface AppProps {
 	projectCardID: string;
 	projectID: String;
+	closeDropdown: React.Dispatch<React.SetStateAction<string>>;
 }
-const ProjectCardOptions = ({ projectCardID, projectID }: AppProps) => {
+const ProjectCardOptions = ({
+	projectCardID,
+	projectID,
+	closeDropdown,
+}: AppProps) => {
 	const queryClient = useQueryClient();
 	const mutation = useMutation(
 		() => axios.delete(`/api/projectcards/${projectID}/${projectCardID}`),
@@ -23,7 +28,11 @@ const ProjectCardOptions = ({ projectCardID, projectID }: AppProps) => {
 		}
 	);
 	return (
-		<Dropdown title="Cards Action" leftPosition="0">
+		<Dropdown
+			title="Cards Action"
+			leftPosition="0"
+			closeDropdown={closeDropdown}
+		>
 			<div className={styles.container}>
 				<p
 					className={styles.options__item}

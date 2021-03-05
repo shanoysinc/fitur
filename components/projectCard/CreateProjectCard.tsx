@@ -26,7 +26,7 @@ const CreateProjectCard = ({
 		{
 			onSuccess: (res) => {
 				const { data } = res;
-				// queryClient.invalidateQueries("projectCards");
+				queryClient.invalidateQueries("projectCards");
 				toastNotification(data.message, "success");
 			},
 		}

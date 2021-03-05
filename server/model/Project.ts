@@ -7,6 +7,7 @@ const projectSchema = new Schema({
 		required: true,
 	},
 	color: String,
+	projectCards: [{ type: Schema.Types.ObjectId, ref: "ProjectCard" }],
 });
 
 export default models.Project || model("Project", projectSchema);

@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import ProjectCard from "../../../server/model/ProjectCard";
 import Task from "../../../server/model/Task";
+import Project from "../../../server/model/Project";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { method, query } = req;
@@ -44,6 +45,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const { name } = req.body;
 				const newProjectCard = new ProjectCard({ name, projectID });
 				await newProjectCard.save();
+
+				const project = await Project.findOne({ _id: projectID });
+				project.projectCards.push(newProjectCard._id);
+				await project.save();
+
 				res.json({ message: "Project Card was successfully created!" });
 			} catch (err) {
 				res.status(404).send({

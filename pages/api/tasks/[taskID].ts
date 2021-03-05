@@ -3,7 +3,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import Task from "../../../server/model/Task";
 import Project from "../../../server/model/Project";
-import mongoose from "mongoose";
+import ProjectCard from "../../../server/model/ProjectCard";
+import { Types } from "mongoose";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { method, query } = req;
 	const session = await getSession({ req });
@@ -23,7 +24,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	switch (method) {
 		case "DELETE":
 			try {
-				await Task.findOneAndDelete({ _id: taskID });
+				const deleteTask = await Task.findOneAndDelete({ _id: taskID });
+				console.log("deletetask", deleteTask);
+
+				const projectCardID = deleteTask.projectCardID;
+				const projectCard = await ProjectCard.findOne({
+					_id: projectCardID,
+				});
+
+				projectCard.tasks = projectCard.tasks.filter(
+					(id: Types.ObjectId) => !id.equals(taskID)
+				);
+
+				await projectCard.save();
 
 				res.json({
 					message: "Tasks was successfully deleted!",

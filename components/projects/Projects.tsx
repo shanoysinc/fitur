@@ -1,33 +1,14 @@
 import React from "react";
 import styles from "../../styles/projects/projects.module.scss";
-import modalStyles from "../../styles/modal/createProjectModal.module.scss";
-import { CirclePicker } from "react-color";
+
 import { useProject } from "../../hooks/project";
 import Link from "next/link";
 import Loading from "../loading/Loading";
-import CreateProject from "./CreateProject";
-import Modal from "../modal/Modal";
+
 import PersonIcon from "../../assets/PersonIcon";
 import OptionsIcon from "../../assets/OptionsIcon";
 import ProjectOptions from "../dropdown/projects/ProjectOptions";
 import CreateProjectModal from "../modal/projects/CreateProjectModal";
-
-const colors = [
-	"#FF6900",
-	"#FCB900",
-	"rgb(75, 191, 107)",
-	"#00D084",
-	"#0693E3",
-	"#EB144C",
-
-	"rgb(205, 90, 145)",
-];
-
-interface projectProps {
-	name: string;
-	_id: string;
-	color: string;
-}
 
 const Projects = () => {
 	const { data, isLoading } = useProject();

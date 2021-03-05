@@ -19,6 +19,7 @@ const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
 			onSuccess: (response) => {
 				const { data } = response;
 				queryClient.invalidateQueries("projects");
+
 				toastNotification(data.message, "success");
 			},
 		}

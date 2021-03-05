@@ -35,20 +35,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		case "DELETE":
 			try {
 				await Project.findOneAndDelete({ _id: projectID });
-				const { _id } = await ProjectCard.findOne({ projectID });
+				const projectCard = await ProjectCard.findOne({ projectID });
 
-				await ProjectCard.deleteMany({
-					projectID,
-				});
-				await Task.deleteMany({
-					projectCardID: _id,
-				});
+				if (projectCard) {
+					const projectCardID = projectCard._id;
+					await ProjectCard.deleteMany({
+						projectID,
+					});
+
+					await Task.deleteMany({
+						projectCardID,
+					});
+				}
+
 				res.json({
 					message: "All projects and related task were deleted",
 				});
 			} catch (err) {
 				res.json({
-					err,
+					err: err.message,
 				});
 			}
 			break;

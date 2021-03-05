@@ -5,14 +5,13 @@ import { CirclePicker } from "react-color";
 import modalStyles from "../../../styles/modal/createProjectModal.module.scss";
 
 const colors = [
-	"#FF6900",
-	"#FCB900",
-	"rgb(75, 191, 107)",
-	"#00D084",
-	"#0693E3",
-	"#EB144C",
-
-	"rgb(205, 90, 145)",
+	"#D97706",
+	"#3B82F6",
+	"#374151",
+	"#1F2937",
+	"#8B5CF6",
+	"#DB2777",
+	"#059669",
 ];
 
 interface AppProps {

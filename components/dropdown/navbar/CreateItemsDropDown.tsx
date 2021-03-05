@@ -13,7 +13,10 @@ const CreateItemsDropDown = () => {
 		<>
 			<Dropdown title="create">
 				<div className={styles.container}>
-					<div className={styles.options__item}>
+					<div
+						className={styles.options__item}
+						onClick={createProjectHandler}
+					>
 						<div className={styles.header}>
 							<ProjectIcon
 								fill="#5e6c84"
@@ -22,10 +25,7 @@ const CreateItemsDropDown = () => {
 							/>
 							<p className={styles.title}>Create Project</p>
 						</div>
-						<p
-							onClick={createProjectHandler}
-							className={styles.paragraph}
-						>
+						<p className={styles.paragraph}>
 							A board is made up of cards ordered on lists. Use it
 							to manage projects, track information, or organize
 							anything.

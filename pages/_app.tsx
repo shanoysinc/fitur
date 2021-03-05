@@ -5,8 +5,11 @@ import { Provider } from "next-auth/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
+// import { ReactQueryDevtools } from "react-query/devtools";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: { queries: { refetchOnWindowFocus: false } },
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -24,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					draggable={false}
 					pauseOnHover
 				/>
+				{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 			</QueryClientProvider>
 		</Provider>
 	);

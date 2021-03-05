@@ -91,4 +91,4 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 	);
 };
 
-export default CreateTask;
+export default React.memo(CreateTask);

@@ -90,4 +90,4 @@ const ProjectCard = ({ projectID }: AppProps) => {
 	);
 };
 
-export default ProjectCard;
+export default React.memo(ProjectCard);

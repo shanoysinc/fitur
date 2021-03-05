@@ -25,4 +25,4 @@ const DashboardNavBar = ({ project }: AppProps) => {
 	);
 };
 
-export default DashboardNavBar;
+export default React.memo(DashboardNavBar);

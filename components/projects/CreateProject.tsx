@@ -65,4 +65,4 @@ const CreateProject = ({ projectColor, setOpenModal }: AppProps) => {
 	);
 };
 
-export default CreateProject;
+export default React.memo(CreateProject);

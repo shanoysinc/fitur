@@ -153,4 +153,4 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 	);
 };
 
-export default Navbar;
+export default React.memo(Navbar);

@@ -19,4 +19,4 @@ const OptionsIcon = (props: IconType) => {
 	);
 };
 
-export default OptionsIcon;
+export default React.memo(OptionsIcon);

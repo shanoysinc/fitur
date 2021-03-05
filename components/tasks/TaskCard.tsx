@@ -35,4 +35,4 @@ const TaskCard = ({ tasks, setCurrentTask, projectCardName }: AppProps) => {
 	);
 };
 
-export default TaskCard;
+export default React.memo(TaskCard);

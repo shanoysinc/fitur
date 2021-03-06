@@ -40,7 +40,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		setCurrentProjectCardID(projectCardID);
 	};
 
-	console.log(res);
+	// console.log(res);
 
 	const onDragEnd = (result: DropResult) => {
 		const { source, destination, draggableId } = result;
@@ -56,32 +56,67 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		}
 		// console.log("source", source.droppableId);
 		// console.log("source index", source.index);
-		const column = projectCardData.find(
+		const startColumn = projectCardData.find(
 			(project) => project._id === source.droppableId
 		);
 
-		const newTasks = Array.from(column.tasks);
-		const movedTask = newTasks.splice(source.index, 1);
-		newTasks.splice(destination.index, 0, movedTask[0]);
-		// console.log(newTasks);
+		if (destination.droppableId === source.droppableId) {
+			const newTasks = Array.from(startColumn.tasks);
+			const movedTask = newTasks.splice(source.index, 1);
 
-		// console.log(newTasks);
+			newTasks.splice(destination.index, 0, movedTask[0]);
 
-		const newColumn = { ...column, tasks: newTasks };
+			const newColumn = { ...startColumn, tasks: newTasks };
+
+			const newProjectCardData = projectCardData.map((projectCard) => {
+				if (projectCard._id === source.droppableId) {
+					return newColumn;
+				}
+				return projectCard;
+			});
+
+			// setting data on the client
+			queryClient.setQueryData("projectCards", {
+				data: { projectCards: newProjectCardData },
+			});
+			//make call to the server with task id in projectCards
+			return;
+		}
+
+		const endColumn = projectCardData.find(
+			(project) => project._id === destination.droppableId
+		);
+
+		const startTasks = Array.from(startColumn.tasks);
+		const startMovedTasks = startTasks.splice(source.index, 1);
+		const finalStart = startTasks.filter(
+			(tasks) => tasks._id !== startMovedTasks[0]._id
+		);
+		const newStart = { ...startColumn, tasks: finalStart };
+
+		// console.log(startMovedTasks);
+		// console.log("start", newStart);
+
+		const finnishedTasks = Array.from(endColumn.tasks);
+		finnishedTasks.splice(destination.index, 0, startMovedTasks[0]);
+		// console.log(finnishedTasks);
+
+		const newFinish = { ...endColumn, tasks: finnishedTasks };
+		// console.log(newFinish);
 
 		const newProjectCardData = projectCardData.map((projectCard) => {
 			if (projectCard._id === source.droppableId) {
-				return newColumn;
+				return newStart;
+			} else if (projectCard._id === destination.droppableId) {
+				return newFinish;
 			}
+
 			return projectCard;
 		});
 
-		// setting data on the client
 		queryClient.setQueryData("projectCards", {
 			data: { projectCards: newProjectCardData },
 		});
-
-		//make call to the server with task id in projectCards
 	};
 
 	return (

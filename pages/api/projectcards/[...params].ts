@@ -30,17 +30,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	switch (method) {
 		case "GET":
 			try {
-				// const projectCards = await ProjectCard.find({
-				// 	projectID,
-				// }).populate("tasks");
-				const project = await Project.findOne({
+				const columns = await Project.findOne({
 					_id: projectID,
-				}).populate({
-					path: "projectCards",
-					populate: { path: "tasks" },
-				});
+				}).select("projectCards");
 
-				res.json({ project });
+				const projectCards = await ProjectCard.find({
+					projectID,
+				}).populate("tasks");
+
+				res.json({ projectCards, columns: columns.projectCards });
 			} catch (err) {
 				res.status(400).send({ err: err.message });
 			}

@@ -30,7 +30,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 	if (isLoading) return <Loading color="white" />;
 	console.log(res);
 
-	const projectCardData = res?.data.project.projectCards;
+	const projectCardData = res?.data.projectCards;
 
 	const projectCardOptionsHandler = (projectCardID: string) => {
 		if (currentProjectCardID === projectCardID) {

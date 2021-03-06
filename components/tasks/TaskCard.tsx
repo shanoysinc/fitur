@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../styles/tasks/taskCard.module.scss";
 import { CurrentTask, Task } from "../../types/Task";
+import { Draggable } from "react-beautiful-dnd";
+
 interface AppProps {
 	tasks: Task[];
 	setCurrentTask: React.Dispatch<React.SetStateAction<CurrentTask | null>>;
@@ -10,26 +12,34 @@ interface AppProps {
 const TaskCard = ({ tasks, setCurrentTask, projectCardName }: AppProps) => {
 	return (
 		<>
-			{tasks.map((task) => (
-				<div
-					className={styles.container}
-					key={task._id}
-					onClick={() => setCurrentTask({ ...task, projectCardName })}
-				>
-					<div className={styles.title}>
-						<p>{task.title}</p>
-					</div>
-					{task.description && (
-						<div className={styles.task__details}>
-							<img
-								src="/svg/description.svg"
-								alt=""
-								height={14}
-								width={14}
-							/>
+			{tasks.map((task, index) => (
+				<Draggable draggableId={task._id} index={index} key={task._id}>
+					{(provided) => (
+						<div
+							{...provided.draggableProps}
+							{...provided.dragHandleProps}
+							ref={provided.innerRef}
+							className={styles.container}
+							onClick={() =>
+								setCurrentTask({ ...task, projectCardName })
+							}
+						>
+							<div className={styles.title}>
+								<p>{task.title}</p>
+							</div>
+							{task.description && (
+								<div className={styles.task__details}>
+									<img
+										src="/svg/description.svg"
+										alt=""
+										height={14}
+										width={14}
+									/>
+								</div>
+							)}
 						</div>
 					)}
-				</div>
+				</Draggable>
 			))}
 		</>
 	);

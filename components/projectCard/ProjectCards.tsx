@@ -11,7 +11,12 @@ import { CurrentTask } from "../../types/Task";
 import OptionsIcon from "../../assets/OptionsIcon";
 import Loading from "../loading/Loading";
 import ProjectCardOptions from "../dropdown/projectCard/ProjectCardOptions";
-import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+import {
+	DragDropContext,
+	Droppable,
+	DropResult,
+	Draggable,
+} from "react-beautiful-dnd";
 
 interface AppProps {
 	projectID: string;
@@ -43,7 +48,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 	// console.log(res);
 
 	const onDragEnd = (result: DropResult) => {
-		const { source, destination, draggableId } = result;
+		const { source, destination, draggableId, type } = result;
 		if (!destination) {
 			return;
 		}
@@ -54,8 +59,25 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		) {
 			return;
 		}
-		// console.log("source", source.droppableId);
-		// console.log("source index", source.index);
+
+		if (type === "column") {
+			console.log("column");
+
+			const newColumnOrder = Array.from(projectCardData);
+			// newColumnOrder.splice(source.index, 1);
+
+			let temp = newColumnOrder[source.index];
+			newColumnOrder[source.index] = newColumnOrder[destination.index];
+			newColumnOrder[destination.index] = temp;
+
+			queryClient.setQueryData("projectCards", {
+				data: { projectCards: newColumnOrder },
+			});
+			return;
+		}
+
+		console.log("tasks");
+
 		const startColumn = projectCardData.find(
 			(project) => project._id === source.droppableId
 		);
@@ -94,15 +116,10 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		);
 		const newStart = { ...startColumn, tasks: finalStart };
 
-		// console.log(startMovedTasks);
-		// console.log("start", newStart);
-
 		const finnishedTasks = Array.from(endColumn.tasks);
 		finnishedTasks.splice(destination.index, 0, startMovedTasks[0]);
-		// console.log(finnishedTasks);
 
 		const newFinish = { ...endColumn, tasks: finnishedTasks };
-		// console.log(newFinish);
 
 		const newProjectCardData = projectCardData.map((projectCard) => {
 			if (projectCard._id === source.droppableId) {
@@ -114,71 +131,124 @@ const ProjectCard = ({ projectID }: AppProps) => {
 			return projectCard;
 		});
 
+		// setting data on the client
+
 		queryClient.setQueryData("projectCards", {
 			data: { projectCards: newProjectCardData },
 		});
+
+		//make call to the server with task id in projectCards
 	};
 
 	return (
 		<>
 			<DragDropContext onDragEnd={onDragEnd}>
-				{projectCardData.map((projectCard) => (
-					<Droppable
-						droppableId={projectCard._id}
-						key={projectCard._id}
-					>
-						{(provided) => (
-							<div className={styles.container}>
-								<div className={styles.title__container}>
-									<h4>{projectCard.name}</h4>
-									<div
-										className={styles.projectCard__options}
-									>
+				<Droppable
+					droppableId="all-column"
+					direction="horizontal"
+					type="column"
+				>
+					{(provided) => (
+						<div
+							ref={provided.innerRef}
+							{...provided.droppableProps}
+							className={styles.projectCard_outer__container}
+						>
+							{projectCardData.map((projectCard, index) => (
+								<Draggable
+									draggableId={projectCard._id}
+									index={index}
+									key={projectCard._id}
+								>
+									{(provided) => (
 										<div
-											className={styles.option__icon}
-											onClick={() =>
-												projectCardOptionsHandler(
-													projectCard._id
-												)
-											}
+											className={styles.container}
+											ref={provided.innerRef}
+											{...provided.draggableProps}
 										>
-											<OptionsIcon
-												height={15}
-												width={15}
-												fill="#383838"
+											<div
+												className={
+													styles.title__container
+												}
+												{...provided.dragHandleProps}
+											>
+												<h4>{projectCard.name}</h4>
+												<div
+													className={
+														styles.projectCard__options
+													}
+												>
+													<div
+														className={
+															styles.option__icon
+														}
+														onClick={() =>
+															projectCardOptionsHandler(
+																projectCard._id
+															)
+														}
+													>
+														<OptionsIcon
+															height={15}
+															width={15}
+															fill="#383838"
+														/>
+													</div>
+													{currentProjectCardID ===
+														projectCard._id && (
+														<ProjectCardOptions
+															projectCardID={
+																projectCard._id
+															}
+															projectID={
+																projectID
+															}
+															closeDropdown={
+																setCurrentProjectCardID
+															}
+														/>
+													)}
+												</div>
+											</div>
+											<Droppable
+												droppableId={projectCard._id}
+												type="tasks"
+											>
+												{(provided) => (
+													<div
+														ref={provided.innerRef}
+														{...provided.droppableProps}
+														className={
+															styles.tasks__container
+														}
+													>
+														<TaskCard
+															tasks={
+																projectCard.tasks
+															}
+															setCurrentTask={
+																setCurrentTask
+															}
+															projectCardName={
+																projectCard.name
+															}
+														/>
+														{provided.placeholder}
+													</div>
+												)}
+											</Droppable>
+
+											<CreateTask
+												projectCardID={projectCard._id}
 											/>
 										</div>
-										{currentProjectCardID ===
-											projectCard._id && (
-											<ProjectCardOptions
-												projectCardID={projectCard._id}
-												projectID={projectID}
-												closeDropdown={
-													setCurrentProjectCardID
-												}
-											/>
-										)}
-									</div>
-								</div>
-
-								<div
-									ref={provided.innerRef}
-									{...provided.droppableProps}
-									className={styles.tasks__container}
-								>
-									<TaskCard
-										tasks={projectCard.tasks}
-										setCurrentTask={setCurrentTask}
-										projectCardName={projectCard.name}
-									/>
-									{provided.placeholder}
-								</div>
-
-								<CreateTask projectCardID={projectCard._id} />
-							</div>
-						)}
-					</Droppable>
-				))}
+									)}
+								</Draggable>
+							))}
+							{provided.placeholder}
+						</div>
+					)}
+				</Droppable>
 			</DragDropContext>
 
 			{currentTask?._id && (

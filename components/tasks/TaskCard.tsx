@@ -14,7 +14,7 @@ const TaskCard = ({ tasks, setCurrentTask, projectCardName }: AppProps) => {
 		<>
 			{tasks.map((task, index) => (
 				<Draggable draggableId={task._id} index={index} key={task._id}>
-					{(provided) => (
+					{(provided, snapshot) => (
 						<div
 							{...provided.draggableProps}
 							{...provided.dragHandleProps}

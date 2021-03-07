@@ -12,6 +12,7 @@ import OptionsIcon from "../../assets/OptionsIcon";
 import Loading from "../loading/Loading";
 import ProjectCardOptions from "../dropdown/projectCard/ProjectCardOptions";
 import axios from "axios";
+import { Task } from "../../types/Task";
 import {
 	DragDropContext,
 	Droppable,
@@ -25,6 +26,10 @@ interface AppProps {
 
 const ProjectCard = ({ projectID }: AppProps) => {
 	const queryClient = useQueryClient();
+	const [projectCardsForUpdate, setProjectCardsForUpdate] = React.useState({
+		projectCardIDOne: "",
+		projectCardIDTwo: "",
+	});
 	const [currentTask, setCurrentTask] = React.useState<CurrentTask | null>(
 		null
 	);
@@ -40,6 +45,14 @@ const ProjectCard = ({ projectID }: AppProps) => {
 			`/api/projectcards-order/${projectID}`,
 			newProjectCardsOrder
 		)
+	);
+
+	const taskOrderMutation = useMutation((newtasksOrder) =>
+		axios.patch("/api/projectcard-tasks-order", newtasksOrder)
+	);
+
+	const taskandProjectCardMutation = useMutation((newOrder) =>
+		axios.patch("/api/projectcards-tasks-order", newOrder)
 	);
 
 	if (isLoading) return <Loading color="white" />;
@@ -78,9 +91,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 				data: { project: { projectCards: newColumnOrder } },
 			});
 
-			// console.log(newColumnOrder);
-
-			//make call to the server with task id in projectCards
+			//make call to update the projectCards order on the server
 			const projectCardsID = newColumnOrder.map((projectCard) => {
 				return projectCard._id;
 			});
@@ -112,7 +123,18 @@ const ProjectCard = ({ projectID }: AppProps) => {
 			queryClient.setQueryData("projectCards", {
 				data: { project: { projectCards: newProjectCardData } },
 			});
-			//make call to the server with task id in projectCards
+			//make call to update the projectCards order on the server
+			const taskIDs = newColumn.tasks.map((task: Task) => {
+				return task._id;
+			});
+
+			const projectCardIDToUpdate = newColumn.tasks[0].projectCardID;
+
+			taskOrderMutation.mutate({
+				taskIDs,
+				projectCardID: projectCardIDToUpdate,
+			});
+
 			return;
 		}
 
@@ -145,6 +167,20 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		// setting data on the client
 		queryClient.setQueryData("projectCards", {
 			data: { project: { projectCards: newProjectCardData } },
+		});
+
+		//make call to update the projectCards order on the server
+		const projectCardOneID = newStart._id;
+		const projectCardOneTask = newStart.tasks;
+
+		const projectCardTwoID = newFinish._id;
+		const projectCardTwoTask = newFinish.tasks;
+
+		taskandProjectCardMutation.mutate({
+			projectCardOneID,
+			projectCardOneTask,
+			projectCardTwoID,
+			projectCardTwoTask,
 		});
 
 		//make call to the server with task id in projectCards

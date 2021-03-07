@@ -34,12 +34,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				// 	_id: projectID,
 				// }).select("projectCards");
 
-				const projectCards = await ProjectCard.find({
-					projectID,
-				}).populate("tasks");
+				const project = await Project.findOne({
+					_id: projectID,
+				}).populate({
+					path: "projectCards",
+					populate: {
+						path: "tasks",
+					},
+				});
+
+				// const projectCards = await ProjectCard.find({
+				// 	projectID,
+				// }).populate("tasks");
 
 				// res.json({ projectCards, columns: columns.projectCards });
-				res.json({ projectCards });
+				res.json({ project });
 			} catch (err) {
 				res.status(400).send({ err: err.message });
 			}

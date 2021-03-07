@@ -164,6 +164,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 								<div
 									ref={provided.innerRef}
 									{...provided.droppableProps}
+									className={styles.tasks__container}
 								>
 									<TaskCard
 										tasks={projectCard.tasks}

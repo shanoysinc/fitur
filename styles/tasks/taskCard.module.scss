@@ -6,16 +6,19 @@
 	border-radius: 3px;
 	padding-left: 8px;
 	padding-right: 8px;
+	display: flex;
+	flex-direction: column;
+
 	& > .title {
 		& > p {
 			padding: 8px 0;
+			margin: 0;
 			font-size: 0.875rem;
 			color: hsl(0, 0%, 34%);
 		}
 	}
 
 	& > .task__details {
-		margin-top: -0.7em;
 		padding-left: 0.4em;
 		padding-bottom: 8px;
 	}
@@ -27,5 +30,5 @@
 }
 
 .container + .container {
-	margin-top: -0.3em;
+	margin-top: 0.6em;
 }

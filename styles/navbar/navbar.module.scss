@@ -2,7 +2,7 @@
 	background-color: hsla(202, 98%, 31%, 0.884);
 	position: relative;
 	display: flex;
-	padding: 0.2em 0.3em;
+	padding: 0.3em 0.3em;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -14,7 +14,7 @@
 	align-items: center;
 	background-color: hsla(0, 0%, 100%, 0.24);
 	border-radius: 4px;
-	height: 33px;
+	height: 32px;
 
 	padding: 0.2em 0.5em;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -67,8 +67,8 @@
 				display: flex;
 				border-radius: 50%;
 				background-color: rgb(255, 174, 0);
-				width: 35px;
-				height: 35px;
+				width: 32px;
+				height: 32px;
 				align-items: center;
 				justify-content: center;
 				& > p {

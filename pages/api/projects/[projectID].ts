@@ -4,19 +4,17 @@ import { getSession } from "next-auth/client";
 import Task from "../../../server/model/Task";
 import Project from "../../../server/model/Project";
 import ProjectCard from "../../../server/model/ProjectCard";
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const { method, query } = req;
 	const session = await getSession({ req });
-
-	// console.log(session);
-
-	// if (!session) {
-	// 	return res
-	// 		.status(401)
-	// 		.send({ message: "Invalid credentials for user" });
-	// }
-	// const { id: userID } = session;
+	if (!session) {
+		return res
+			.status(401)
+			.send({ message: "Invalid credentials for user" });
+	}
 	await dbConnect();
+
+	const { method, query } = req;
 
 	const { projectID } = query;
 

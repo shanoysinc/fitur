@@ -5,18 +5,15 @@ import ProjectCard from "../../../server/model/ProjectCard";
 import Task from "../../../server/model/Task";
 import Project from "../../../server/model/Project";
 import { Types } from "mongoose";
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { method, query } = req;
 	const session = await getSession({ req });
-
-	// console.log(session);
-
-	// if (!session) {
-	// 	return res
-	// 		.status(401)
-	// 		.send({ message: "Invalid credentials for user" });
-	// }
-	// const { id: userID } = session;
+	if (!session) {
+		return res
+			.status(401)
+			.send({ message: "Invalid credentials for user" });
+	}
 	await dbConnect();
 
 	const projectID = query.params[0];
@@ -30,10 +27,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	switch (method) {
 		case "GET":
 			try {
-				// const columns = await Project.findOne({
-				// 	_id: projectID,
-				// }).select("projectCards");
-
 				const project = await Project.findOne({
 					_id: projectID,
 				}).populate({
@@ -43,11 +36,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					},
 				});
 
-				// const projectCards = await ProjectCard.find({
-				// 	projectID,
-				// }).populate("tasks");
-
-				// res.json({ projectCards, columns: columns.projectCards });
 				res.json({ project });
 			} catch (err) {
 				res.status(400).send({ err: err.message });

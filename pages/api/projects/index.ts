@@ -1,19 +1,20 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Project from "../../../server/model/Project";
-import Task from "../../../server/model/Task";
 import { getSession } from "next-auth/client";
 import dbConnect from "../../../server/db/db";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-	const { method, query } = req;
-	// const session = await getSession({req})
-	// if(session){
-
-	// }
-	// console.log(query);
-
+	const session = await getSession({ req });
+	if (!session) {
+		return res
+			.status(401)
+			.send({ message: "Invalid credentials for user" });
+	}
 	await dbConnect();
-	const userID = "6038857e45680b2898048a7f";
+
+	const { method } = req;
+
+	const userID = session.id;
 
 	switch (method) {
 		case "GET":

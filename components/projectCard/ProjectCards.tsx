@@ -5,12 +5,13 @@ import TaskCard from "../tasks/TaskCard";
 import modalStyles from "../../styles/modal/taskModal.module.scss";
 import EditTask from "../tasks/EditTask";
 import Modal from "../modal/Modal";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery, useQueryClient, useMutation } from "react-query";
 import { fetcher } from "../../utils/fetcher";
 import { CurrentTask } from "../../types/Task";
 import OptionsIcon from "../../assets/OptionsIcon";
 import Loading from "../loading/Loading";
 import ProjectCardOptions from "../dropdown/projectCard/ProjectCardOptions";
+import axios from "axios";
 import {
 	DragDropContext,
 	Droppable,
@@ -34,9 +35,16 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		fetcher(projectCardUrl)
 	);
 
+	const projectCardOrderMutation = useMutation((newProjectCardsOrder) =>
+		axios.patch(
+			`/api/projectcards-order/${projectID}`,
+			newProjectCardsOrder
+		)
+	);
+
 	if (isLoading) return <Loading color="white" />;
 
-	const projectCardData = res?.data.projectCards;
+	const projectCardData = res?.data.project.projectCards;
 
 	const projectCardOptionsHandler = (projectCardID: string) => {
 		if (currentProjectCardID === projectCardID) {
@@ -44,8 +52,6 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		}
 		setCurrentProjectCardID(projectCardID);
 	};
-
-	// console.log(res);
 
 	const onDragEnd = (result: DropResult) => {
 		const { source, destination, draggableId, type } = result;
@@ -61,22 +67,27 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		}
 
 		if (type === "column") {
-			console.log("column");
-
 			const newColumnOrder = Array.from(projectCardData);
-			// newColumnOrder.splice(source.index, 1);
 
 			let temp = newColumnOrder[source.index];
 			newColumnOrder[source.index] = newColumnOrder[destination.index];
 			newColumnOrder[destination.index] = temp;
 
+			// setting data on the client
 			queryClient.setQueryData("projectCards", {
-				data: { projectCards: newColumnOrder },
+				data: { project: { projectCards: newColumnOrder } },
 			});
+
+			// console.log(newColumnOrder);
+
+			//make call to the server with task id in projectCards
+			const projectCardsID = newColumnOrder.map((projectCard) => {
+				return projectCard._id;
+			});
+
+			projectCardOrderMutation.mutate({ projectCardsID });
 			return;
 		}
-
-		console.log("tasks");
 
 		const startColumn = projectCardData.find(
 			(project) => project._id === source.droppableId
@@ -99,7 +110,7 @@ const ProjectCard = ({ projectID }: AppProps) => {
 
 			// setting data on the client
 			queryClient.setQueryData("projectCards", {
-				data: { projectCards: newProjectCardData },
+				data: { project: { projectCards: newProjectCardData } },
 			});
 			//make call to the server with task id in projectCards
 			return;
@@ -132,9 +143,8 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		});
 
 		// setting data on the client
-
 		queryClient.setQueryData("projectCards", {
-			data: { projectCards: newProjectCardData },
+			data: { project: { projectCards: newProjectCardData } },
 		});
 
 		//make call to the server with task id in projectCards

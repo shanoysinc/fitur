@@ -5,7 +5,7 @@
 	& > h2 {
 		color: #eef2ff;
 		text-transform: capitalize;
-		text-align: center;
+		// text-align:;
 	}
 }
 
@@ -21,17 +21,16 @@
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	outline: none;
 	border: 0;
-	color: #059669;
-	font-weight: 600;
+	color: #0f0f0f;
 }
 .input::placeholder {
-	color: #059669;
+	color: #0f0f0f;
 }
 
 .submit__btn {
-	background-color: #eef2ff;
+	background-color: #0f0f0f;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	color: #059669;
+	color: #ffffff;
 	border: 0;
 	width: fit-content;
 	cursor: pointer;

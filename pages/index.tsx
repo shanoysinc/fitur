@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "../styles/Home.module.scss";
 import Navbar from "../components/navbar/Navbar";
 import Redirect from "../components/redirect/Redirect";

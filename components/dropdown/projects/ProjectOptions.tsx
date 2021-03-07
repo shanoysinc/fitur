@@ -17,10 +17,8 @@ const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
 		(id) => axios.delete(`/api/projects/${id}`),
 		{
 			onSuccess: (response) => {
-				const { data } = response;
+				// const { data } = response;
 				queryClient.invalidateQueries("projects");
-
-				toastNotification(data.message, "success");
 			},
 		}
 	);

@@ -1,4 +1,5 @@
 .container {
+	transition: all 1s ease-in-out;
 	& > .backdrop {
 		position: fixed;
 		top: 0;
@@ -14,7 +15,7 @@
 
 		max-width: 330px;
 		height: fit-content;
-		border-radius: 4px;
+		border-radius: 8px;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 		position: fixed;
@@ -31,8 +32,8 @@
 	padding: 0.5em 0.5em 0 0.5em;
 	position: absolute;
 	background-color: #f0f0f0;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 @media screen and (min-width: 43em) {

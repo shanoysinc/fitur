@@ -1,5 +1,6 @@
 import React from "react";
 import { CurrentTask } from "../../types/Task";
+import { motion } from "framer-motion";
 
 interface ModalProps {
 	children: React.ReactNode;
@@ -29,12 +30,15 @@ const Modal = ({
 	return (
 		<div className={modalStyles.container}>
 			<div className={modalStyles.backdrop} onClick={modalHandler}></div>
-			<div
+			<motion.div
 				className={modalStyles.modal__body}
 				style={{ backgroundColor: projectColor }}
+				initial={{ opacity: 0.9, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ type: "spring", stiffness: 150 }}
 			>
 				{children}
-			</div>
+			</motion.div>
 		</div>
 	);
 };

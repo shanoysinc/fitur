@@ -6,6 +6,7 @@ import { toastNotification } from "../../utils/toastNotification";
 import { useClickOutSide } from "../../hooks/clickOutSide";
 import AddIcon from "../../assets/AddIcon";
 import CloseIcon from "../../assets/CloseIcon";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 interface AppProps {
 	setShowProjectCardInput: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +28,6 @@ const CreateProjectCard = ({
 			onSuccess: (res) => {
 				const { data } = res;
 				queryClient.invalidateQueries("projectCards");
-				toastNotification(data.message, "success");
 			},
 		}
 	);
@@ -63,33 +63,39 @@ const CreateProjectCard = ({
 					<p>Add another task</p>
 				</div>
 			)}
-
-			{showProjectCardInput && (
-				<form
-					className={styles.input__container}
-					ref={projectCardInputRef}
-					onSubmit={createProjectCardHandler}
-				>
-					<input
-						onChange={changeNameHandler}
-						className={styles.discription__input}
-						name="title"
-						placeholder="Enter a project card title..."
-						value={projectCardName}
-					/>
-					<div className={styles.input__btns}>
-						<button type="submit" className={styles.btn__save}>
-							Save
-						</button>
-						<div
-							className={styles.btn__close}
-							onClick={showInputHandler}
-						>
-							<CloseIcon height={14} width={14} fill="grey" />
+			<AnimatePresence initial={showProjectCardInput}>
+				{showProjectCardInput && (
+					<motion.form
+						key="create-projectcard"
+						className={styles.input__container}
+						ref={projectCardInputRef}
+						onSubmit={createProjectCardHandler}
+						initial={{ opacity: 0.9, y: 3 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ y: -50, opacity: 0 }}
+						transition={{ duration: 0.3 }}
+					>
+						<input
+							onChange={changeNameHandler}
+							className={styles.discription__input}
+							name="title"
+							placeholder="Enter a project card title..."
+							value={projectCardName}
+						/>
+						<div className={styles.input__btns}>
+							<button type="submit" className={styles.btn__save}>
+								Save
+							</button>
+							<div
+								className={styles.btn__close}
+								onClick={showInputHandler}
+							>
+								<CloseIcon height={14} width={14} fill="grey" />
+							</div>
 						</div>
-					</div>
-				</form>
-			)}
+					</motion.form>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };

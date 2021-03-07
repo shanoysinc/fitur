@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/dropdown/dropdown.module.scss";
 import CloseIcon from "../../assets/CloseIcon";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface AppProps {
 	children: React.ReactNode;
@@ -24,7 +25,7 @@ const DropDown = ({
 	closeDropdown,
 }: AppProps) => {
 	return (
-		<div
+		<motion.div
 			className={styles.container}
 			style={{
 				left: leftPosition,
@@ -33,6 +34,9 @@ const DropDown = ({
 				bottom: bottomPostion,
 				minWidth: width,
 			}}
+			initial={{ opacity: 0.9, y: 10 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ type: "spring", stiffness: 200 }}
 		>
 			<div className={styles.header}>
 				<p>{title}</p>
@@ -45,7 +49,7 @@ const DropDown = ({
 			</div>
 			<hr />
 			{children}
-		</div>
+		</motion.div>
 	);
 };
 

@@ -6,6 +6,7 @@ import { toastNotification } from "../../utils/toastNotification";
 import { useClickOutSide } from "../../hooks/clickOutSide";
 import AddIcon from "../../assets/AddIcon";
 import CloseIcon from "../../assets/CloseIcon";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface AppProps {
 	projectCardID: string;
@@ -61,32 +62,39 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 				</div>
 			)}
 
-			{showCreateTaskInput && (
-				<form
-					className={styles.input__container}
-					onSubmit={createTaskHandler}
-				>
-					<input
-						onChange={changeTitleHandler}
-						className={styles.task__name_input}
-						name="title"
-						placeholder="Enter a title for this task..."
-						value={title}
-					></input>
-					<div className={styles.input__btns}>
-						<button type="submit" className={styles.btn__save}>
-							Save
-						</button>
+			<AnimatePresence initial={false}>
+				{showCreateTaskInput && (
+					<motion.form
+						key="creatTask"
+						className={styles.input__container}
+						onSubmit={createTaskHandler}
+						initial={{ opacity: 0.9, y: 3 }}
+						animate={{ opacity: 1, y: 0 }}
+						// exit={{ }}
+						transition={{ duration: 0.2 }}
+					>
+						<input
+							onChange={changeTitleHandler}
+							className={styles.task__name_input}
+							name="title"
+							placeholder="Enter a title for this task..."
+							value={title}
+						></input>
+						<div className={styles.input__btns}>
+							<button type="submit" className={styles.btn__save}>
+								Save
+							</button>
 
-						<div
-							className={styles.btn__close}
-							onClick={closeInputHanlder}
-						>
-							<CloseIcon height={14} width={14} fill="grey" />
+							<div
+								className={styles.btn__close}
+								onClick={closeInputHanlder}
+							>
+								<CloseIcon height={14} width={14} fill="grey" />
+							</div>
 						</div>
-					</div>
-				</form>
-			)}
+					</motion.form>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };

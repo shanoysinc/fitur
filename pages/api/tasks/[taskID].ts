@@ -22,7 +22,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		case "DELETE":
 			try {
 				const deleteTask = await Task.findOneAndDelete({ _id: taskID });
-				console.log("deletetask", deleteTask);
 
 				const projectCardID = deleteTask.projectCardID;
 				const projectCard = await ProjectCard.findOne({

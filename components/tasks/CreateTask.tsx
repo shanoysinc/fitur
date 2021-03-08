@@ -65,6 +65,7 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 			<AnimatePresence initial={false}>
 				{showCreateTaskInput && (
 					<motion.form
+						autoComplete="off"
 						key="creatTask"
 						className={styles.input__container}
 						onSubmit={createTaskHandler}

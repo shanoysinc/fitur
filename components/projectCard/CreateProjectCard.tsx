@@ -66,6 +66,7 @@ const CreateProjectCard = ({
 			<AnimatePresence initial={showProjectCardInput}>
 				{showProjectCardInput && (
 					<motion.form
+						autoComplete="off"
 						key="create-projectcard"
 						className={styles.input__container}
 						ref={projectCardInputRef}

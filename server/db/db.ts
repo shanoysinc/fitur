@@ -5,9 +5,10 @@ export default async function dbConnect() {
 		return;
 	}
 
-	mongoose.connect(process.env.MONGO_URL as string, {
+	return mongoose.connect(process.env.MONGO_URL as string, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useFindAndModify: false,
+		useCreateIndex: true,
 	});
 }

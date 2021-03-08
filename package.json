@@ -34,6 +34,6 @@
 		"typescript": "^4.1.5"
 	},
 	"peerOptionalDependencies": {
-		"mongodb": "^3.6.4"
+		"mongodb": "^3.6.5"
 	}
 }

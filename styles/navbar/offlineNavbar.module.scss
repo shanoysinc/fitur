@@ -1,0 +1,47 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1em;
+	margin-top: 0.5em;
+}
+
+.left__container {
+	& > .logo {
+		& > span {
+			font-size: 2rem;
+			font-weight: 700;
+			color: hsl(216, 100%, 20%);
+			padding-left: 0.25em;
+		}
+		cursor: pointer;
+	}
+}
+
+.right__container {
+	display: flex;
+	align-items: center;
+	gap: 0.8em;
+	& > .login__btn {
+		& > p {
+			color: #0065ff;
+			font-size: 1.125rem;
+			font-weight: 500;
+		}
+		cursor: pointer;
+	}
+
+	& > .signup__btn {
+		color: white;
+		background-color: #0065ff;
+		outline: none;
+		border: 0;
+		border-radius: 3px;
+		padding: 0.25rem 0.5rem;
+		height: 35px;
+		font-size: 1rem;
+		font-family: sans-serif;
+		font-weight: 600;
+		cursor: pointer;
+	}
+}

@@ -7,6 +7,10 @@ const projectSchema = new Schema({
 		required: true,
 	},
 	color: String,
+	isStarred: {
+		type: Boolean,
+		default: false,
+	},
 	projectCards: [{ type: Schema.Types.ObjectId, ref: "ProjectCard" }],
 });
 

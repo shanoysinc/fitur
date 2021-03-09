@@ -1,0 +1,62 @@
+.outer__container {
+	margin-bottom: 2.5em;
+	& > .project__label {
+		display: flex;
+		align-items: center;
+		& > .person__icon {
+			margin-top: 0.8em;
+		}
+		& > h3 {
+			font-size: 1rem;
+			margin-left: 0.4em;
+			color: hsl(202, 98%, 15%);
+			text-transform: capitalize;
+		}
+	}
+}
+
+.inner__container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5em;
+}
+
+.projects__container {
+	position: relative;
+	width: 195px;
+	height: 100px;
+	filter: brightness(98%);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	padding: 1em;
+	border-radius: 4px;
+	& > .title {
+		font-size: 1.125rem;
+		font-weight: 500;
+		color: hsl(0, 0%, 100%);
+		text-transform: capitalize;
+	}
+
+	& > .info__container {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.projects__container:hover {
+	box-shadow: inset 0px 0px 400px 110px rgba(0, 0, 0, 0.088),
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.option__container {
+	display: flex;
+	& > .option__btn {
+		position: absolute;
+		bottom: 0;
+		right: 10px;
+		border: none;
+		background: none;
+		cursor: pointer;
+		outline: none;
+	}
+}

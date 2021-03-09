@@ -61,7 +61,7 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 				<div className={styles.icon__container}>
 					<div className={styles.nav__icons}>
 						<ProjectIcon height={15} width={15} fill="white" />
-						<span>Project</span>
+						<span>Projects</span>
 					</div>
 				</div>
 			</div>

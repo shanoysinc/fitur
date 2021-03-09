@@ -37,8 +37,9 @@ const projectTask = (props: AppProps) => {
 
 	if (projectQuery.isLoading) return <Loading />;
 	if (!session) return <Redirect to="/" />;
-	if (projectQuery.isError)
+	if (projectQuery.isError) {
 		return <span>Error: {projectQuery.error.message}</span>;
+	}
 
 	return (
 		<div className={styles.container}>
@@ -52,7 +53,11 @@ const projectTask = (props: AppProps) => {
 					backgroundColor: projectQuery.data?.data.project.color,
 				}}
 			>
-				<DashboardNavBar project={projectQuery.data?.data.project} />
+				<DashboardNavBar
+					name={projectQuery.data?.data.project.name}
+					isStarred={projectQuery.data?.data.project.isStarred}
+					projectID={projectID}
+				/>
 				<div className={styles.dashboard__container}>
 					<ProjectCards projectID={projectID} />
 

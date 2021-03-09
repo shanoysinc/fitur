@@ -49,7 +49,11 @@ const CreateProject = ({ projectColor, setOpenModal }: AppProps) => {
 	return (
 		<div className={styles.container}>
 			<h2>First step to a new Beginning!❤️</h2>
-			<form onSubmit={onSubmit} className={styles.form__container}>
+			<form
+				onSubmit={onSubmit}
+				className={styles.form__container}
+				autoComplete="off"
+			>
 				<input
 					type="text"
 					name="name"

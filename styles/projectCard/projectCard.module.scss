@@ -1,13 +1,17 @@
 .projectCard_outer__container {
 	display: flex;
-	gap: 0.5em;
+	// margin-top: 2em;
 }
 
+.container + .container {
+	margin-left: 0.5em;
+}
 .container {
 	width: 272px;
 	height: fit-content;
 	background-color: #ebecf0;
 	padding: 0.5em;
+
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
 		rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 	border-radius: 4px;
@@ -37,4 +41,10 @@
 
 .tasks__container {
 	min-height: 1px;
+}
+
+@media screen and (min-width: 27.5em) {
+	.projectCard_outer__container {
+		margin-top: 0;
+	}
 }

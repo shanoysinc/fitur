@@ -1,12 +1,10 @@
 .container {
-	// max-width: 500px;
+	padding-left: 0.5em;
 
 	width: 272px;
-	padding-right: 1em;
 }
 .add__task_btn {
 	display: flex;
-	gap: 0.7em;
 	align-items: center;
 	cursor: pointer;
 	background-color: hsla(0, 0%, 100%, 0.24);
@@ -16,6 +14,9 @@
 	color: white;
 	font-size: 0.875rem;
 	font-weight: 500;
+	& > P {
+		padding-left: 0.7em;
+	}
 }
 .add__task_btn:hover {
 	background-color: hsla(0, 0%, 100%, 0.349);

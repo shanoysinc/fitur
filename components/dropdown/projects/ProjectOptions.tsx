@@ -31,7 +31,7 @@ const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
 	return (
 		<Dropdown
 			title="Project Options"
-			rightPosition="-125px"
+			// rightPosition="50px"
 			width="220px"
 			closeDropdown={closeDropdown}
 		>

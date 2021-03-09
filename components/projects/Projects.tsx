@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "../../styles/projects/projects.module.scss";
-
 import { useProject } from "../../hooks/project";
 import Link from "next/link";
 import Loading from "../loading/Loading";
-
 import PersonIcon from "../../assets/PersonIcon";
 import OptionsIcon from "../../assets/OptionsIcon";
 import ProjectOptions from "../dropdown/projects/ProjectOptions";
@@ -32,7 +30,9 @@ const Projects = () => {
 	return (
 		<div className={styles.outer__container}>
 			<div className={styles.project__label}>
-				<PersonIcon height={17} width={17} fill="black" />
+				<div className={styles.person__icon}>
+					<PersonIcon height={42} width={42} fill="grey" />
+				</div>
 
 				<h3>Personal Projects</h3>
 			</div>

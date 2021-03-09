@@ -9,6 +9,7 @@ import CreateItemsDropDown from "../dropdown/navbar/CreateItemsDropDown";
 import TipsDropDown from "../dropdown/navbar/TipsDropDown";
 import { useClickOutSide } from "../../hooks/clickOutSide";
 import SessionDropDown from "../dropdown/navbar/SessionDropDown";
+import GridIcon from "../../assets/Grid";
 
 interface NavBarProps {
 	session?: Session;
@@ -41,26 +42,31 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 		>
 			<div className={styles.nav__items_left}>
 				<div className={styles.icon__container}>
+					<div className={styles.nav__icons}>
+						<GridIcon height={14} width={14} fill="white" />
+					</div>
+				</div>
+				<div className={styles.icon__container}>
 					<Link href="/">
 						<a className={styles.nav__icons}>
 							<img
 								src="/svg/home.svg"
 								alt="Home icon"
-								height={16}
-								width={16}
+								height={15}
+								width={15}
 							/>
 						</a>
 					</Link>
 				</div>
 				<div className={styles.icon__container}>
 					<div className={styles.nav__icons}>
-						<ProjectIcon height={16} width={16} fill="white" />
+						<ProjectIcon height={15} width={15} fill="white" />
 						<span>Project</span>
 					</div>
 				</div>
 			</div>
 			<div className={styles.logo__container}>
-				<ProjectIcon height={16} width={16} fill="#ffffff89" />
+				<ProjectIcon height={15} width={15} fill="#ffffff89" />
 
 				<Link href="/">
 					<a className={styles.logo}>Fitur</a>
@@ -82,8 +88,8 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 								<img
 									src="/svg/add.svg"
 									alt="notification icon"
-									height={16}
-									width={16}
+									height={15}
+									width={15}
 								/>
 							</div>
 
@@ -104,8 +110,8 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 								<img
 									src="/svg/tips.svg"
 									alt="notification icon"
-									height={16}
-									width={16}
+									height={15}
+									width={15}
 								/>
 							</div>
 							{showTips && (
@@ -117,8 +123,8 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 								<img
 									src="/svg/notification.svg"
 									alt="notification icon"
-									height={16}
-									width={16}
+									height={15}
+									width={15}
 								/>
 							</div>
 						</div>

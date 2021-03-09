@@ -5,7 +5,7 @@ const CopyWriteInfo = () => {
 	return (
 		<div className={styles.container}>
 			<p>
-				© Copyright 2021. All clone😉 rights reserved create by
+				© Copyright 2021. All clone😉 rights reserved created by
 				<a href="https://github.com/shanoysinc" target="_blank">
 					Shanoy Sinc
 				</a>

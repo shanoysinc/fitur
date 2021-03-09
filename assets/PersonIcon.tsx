@@ -8,7 +8,7 @@ const PersonIcon = (props: IconType) => {
 			xmlnsXlink="http://www.w3.org/1999/xlink"
 			version="1.1"
 			viewBox="0 0 100 125"
-			enable-background="new 0 0 100 100"
+			enableBackground="new 0 0 100 100"
 			xmlSpace="preserve"
 			height={props.height}
 			width={props.width}

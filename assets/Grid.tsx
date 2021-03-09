@@ -4,7 +4,7 @@ import { IconType } from "../types/Icons";
 const Grid = (props: IconType) => {
 	return (
 		<svg
-			enable-background="new 0 0 24 24"
+			enableBackground="new 0 0 24 24"
 			height={props.height}
 			viewBox="0 0 24 24"
 			width={props.width}

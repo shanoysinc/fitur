@@ -8,6 +8,10 @@
 	gap: 0.4em;
 }
 
+.item__container {
+	display: flex;
+}
+
 .nav__items {
 	display: flex;
 	justify-content: center;
@@ -16,7 +20,6 @@
 	border-radius: 4px;
 	padding: 0.5em 0.6em;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
 	cursor: pointer;
 	& > h3 {
 		color: hsl(0, 0%, 100%);
@@ -24,7 +27,22 @@
 		letter-spacing: 0.03em;
 		text-transform: capitalize;
 	}
+
+	& > p {
+		margin-left: 0.4em;
+		color: hsl(0, 0%, 100%);
+		font-weight: 500;
+		letter-spacing: 0.03em;
+		text-transform: capitalize;
+		font-size: 0.875rem;
+	}
 }
+
 .nav__items:hover {
 	background-color: hsla(0, 0%, 100%, 0.349);
+}
+
+.vertical__bar {
+	border-left: 1px solid rgba(180, 180, 180, 0.534);
+	margin: 0 0.3em;
 }

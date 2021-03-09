@@ -25,7 +25,6 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 		{
 			onSuccess: (res) => {
 				const { data } = res;
-				toastNotification(data.message, "success");
 				queryClient.invalidateQueries("projectCards");
 			},
 		}

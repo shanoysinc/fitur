@@ -4,13 +4,14 @@ import styles from "../../../styles/dropdown/projects/projectOptions.module.scss
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../../utils/toastNotification";
-
+import { useRouter } from "next/router";
 interface AppProps {
 	projectID: string;
 	closeDropdown: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
+	const router = useRouter();
 	const queryClient = useQueryClient();
 
 	const deleteProjectMutation = useMutation(
@@ -24,20 +25,20 @@ const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
 	);
 
 	const deleteProject = (currentID: any) => {
-		return () => deleteProjectMutation.mutate(currentID);
+		deleteProjectMutation.mutate(currentID);
+		router.push("/projects");
 	};
 	return (
 		<Dropdown
 			title="Project Options"
-			leftPosition="-30px"
-			topPosition="-30px"
+			rightPosition="-125px"
 			width="220px"
 			closeDropdown={closeDropdown}
 		>
 			<div className={styles.container}>
 				<p
 					className={styles.options__item}
-					onClick={deleteProject(projectID)}
+					onClick={() => deleteProject(projectID)}
 				>
 					Delete project
 				</p>

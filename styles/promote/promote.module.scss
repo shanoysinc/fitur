@@ -1,0 +1,51 @@
+.container {
+	padding-top: 4em;
+	text-align: center;
+	margin: 0 1em;
+	color: #091e42;
+	padding-bottom: 4em;
+
+	.content__container {
+		& > h2 {
+			font-size: 1.5rem;
+		}
+
+		& > p {
+			font-size: 1.2rem;
+		}
+
+		& > button {
+			color: #0065ff;
+			border: 1px solid #0065ff;
+			background-color: transparent;
+			outline: none;
+			padding: 0.6em 1.5em;
+			font-size: 1.2rem;
+			border-radius: 6px;
+			margin-bottom: 1.5em;
+		}
+	}
+	& > p {
+		font-size: 1.2rem;
+		margin-top: -1em;
+	}
+}
+
+@media screen and (min-width: 62em) {
+	.container {
+		width: 80%;
+		margin: 0 auto;
+		.content__container {
+			margin: 0 auto;
+			width: 70%;
+			& > h2 {
+				font-size: 2.5rem;
+			}
+
+			& > p {
+				font-size: 1.3rem;
+				line-height: 1.6;
+			}
+		}
+	}
+}

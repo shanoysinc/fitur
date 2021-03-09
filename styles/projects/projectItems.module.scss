@@ -18,7 +18,10 @@
 .inner__container {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1.5em;
+	& > * {
+		margin-left: 1em;
+		margin-top: 1em;
+	}
 }
 
 .projects__container {

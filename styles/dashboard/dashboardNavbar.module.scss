@@ -1,6 +1,7 @@
 .container {
 	padding-top: 0.5em;
 	position: fixed;
+	z-index: 600;
 }
 .container__left {
 	display: flex;

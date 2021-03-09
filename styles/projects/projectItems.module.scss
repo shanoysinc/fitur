@@ -28,10 +28,10 @@
 	filter: brightness(98%);
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
 		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-	padding: 1em;
+	padding: 0.5em 1em 1em 0.5em;
 	border-radius: 4px;
 	& > .title {
-		font-size: 1.125rem;
+		font-size: 1rem;
 		font-weight: 500;
 		color: hsl(0, 0%, 100%);
 		text-transform: capitalize;
@@ -48,15 +48,8 @@
 		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.option__container {
-	display: flex;
-	& > .option__btn {
-		position: absolute;
-		bottom: 0;
-		right: 10px;
-		border: none;
-		background: none;
-		cursor: pointer;
-		outline: none;
-	}
+.star__container {
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
 }

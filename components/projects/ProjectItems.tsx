@@ -2,6 +2,7 @@ import React from "react";
 import { Project } from "../../types/Project";
 import styles from "../../styles/projects/projectItems.module.scss";
 import Link from "next/link";
+import StarIcon from "../../assets/StarIcon";
 
 interface AppProps {
 	children?: React.ReactNode;
@@ -24,7 +25,7 @@ const ProjectItems = ({
 				<h3>{labelTitle}</h3>
 			</div>
 			<div className={styles.inner__container}>
-				{projects.map(({ name, _id, color }) => (
+				{projects.map(({ name, _id, color, isStarred }) => (
 					<div
 						className={styles.projects__container}
 						key={_id}
@@ -33,8 +34,19 @@ const ProjectItems = ({
 						<Link href={`/projects/${_id}`}>
 							<a className={styles.title}>{name}</a>
 						</Link>
+
+						<div className={styles.star__container}>
+							{isStarred && (
+								<StarIcon
+									fill="#f0c929"
+									height={17}
+									width={17}
+								/>
+							)}
+						</div>
 					</div>
 				))}
+
 				{children}
 			</div>
 		</div>

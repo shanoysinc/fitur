@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../styles/jumbotron/signupjumbo.module.scss";
 import Image from "next/image";
+import { signIn } from "next-auth/client";
+
 const SignUpJumbotron = () => {
 	return (
 		<div className={styles.container}>
@@ -13,7 +15,9 @@ const SignUpJumbotron = () => {
 					peaks. From high rises to the home office, the way your team
 					works is unique—accomplish it all with Trello.
 				</p>
-				<button className={styles.btn}>Sign up-it's free!</button>
+				<button className={styles.btn} onClick={() => signIn()}>
+					Sign up-it's free!
+				</button>
 			</div>
 
 			<div className={styles.right__container}>

@@ -30,6 +30,9 @@
 		}
 		cursor: pointer;
 	}
+	& > .login__btn:hover {
+		text-decoration: underline;
+	}
 
 	& > .signup__btn {
 		color: white;

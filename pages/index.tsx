@@ -19,7 +19,6 @@ export default function Home() {
 				<OffLineNavbar />
 				<SignUpJumbotron />
 			</div>
-
 			<Promote />
 			<CopyWriteInfo />
 		</div>

@@ -44,10 +44,13 @@
 
 			& > p {
 				font-size: 1.3rem;
-				margin-top: -1em;
 
 				line-height: 1.6;
 			}
+		}
+
+		& > p {
+			margin-top: -1em;
 		}
 	}
 }

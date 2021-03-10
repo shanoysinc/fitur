@@ -5,16 +5,23 @@
 }
 .container__left {
 	display: flex;
-	// max-height: 32px;
-	gap: 0.4em;
 	flex-wrap: wrap;
+}
+
+.container__left {
 }
 
 .item__container {
 	display: flex;
 }
 
+.nav__items + .nav__items {
+	margin-left: 0.4em;
+}
+
 .nav__items {
+	margin-top: 0.4em;
+
 	display: flex;
 	flex-shrink: 0;
 	height: 32px;
@@ -25,6 +32,7 @@
 	padding: 0.5em 0.6em;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	cursor: pointer;
+
 	& > h3 {
 		color: hsl(0, 0%, 100%);
 		font-weight: 500;
@@ -49,4 +57,5 @@
 .vertical__bar {
 	border-left: 1px solid rgba(180, 180, 180, 0.534);
 	margin: 0 0.3em;
+	margin-top: 0.4em;
 }

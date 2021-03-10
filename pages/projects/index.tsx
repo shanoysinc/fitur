@@ -27,7 +27,7 @@ const index = () => {
 				</div>
 				<div className={styles.projects__container}>
 					{currentTab == "Projects" && <Projects />}
-					{currentTab == "Tasks" && <TasksBoard />}
+					{/* {currentTab == "Tasks" && <TasksBoard />} */}
 				</div>
 			</div>
 		</div>

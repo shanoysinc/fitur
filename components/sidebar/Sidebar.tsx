@@ -25,7 +25,7 @@ const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
 
 				<p>Projects</p>
 			</div>
-			<div
+			{/* <div
 				className={`${styles.items} ${
 					currentTab == "Tasks" && styles.currentTab
 				}`}
@@ -37,7 +37,7 @@ const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
 					fill="rgba(2, 100, 157, 0.884)"
 				/>
 				<p>All Tasks</p>
-			</div>
+			</div> */}
 		</div>
 	);
 };

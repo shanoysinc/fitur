@@ -82,9 +82,9 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		if (type === "column") {
 			const newColumnOrder = Array.from(projectCardData);
 
-			let temp = newColumnOrder[source.index];
-			newColumnOrder[source.index] = newColumnOrder[destination.index];
-			newColumnOrder[destination.index] = temp;
+			const movedColumn = newColumnOrder.splice(source.index, 1)[0];
+
+			newColumnOrder.splice(destination.index, 0, movedColumn);
 
 			// updating  data on the client
 			queryClient.setQueryData("projectCards", {
@@ -179,18 +179,22 @@ const ProjectCard = ({ projectID }: AppProps) => {
 
 		//make call to update the projectCards order on the server
 		const projectCardOneID = newStart._id;
-		const projectCardOneTask = newStart.tasks;
+		const projectCardOneTasksID = newStart.tasks.map((task) => {
+			return task._id;
+		});
 		// console.log("projectone", projectCardOneTask);
 
 		const projectCardTwoID = newFinish._id;
-		const projectCardTwoTask = newFinish.tasks;
+		const projectCardTwoTasksID = newFinish.tasks.map((task) => {
+			return task._id;
+		});
 		// console.log("projecttwo", projectCardTwoTask);
 
 		taskandProjectCardMutation.mutate({
 			projectCardOneID,
-			projectCardOneTask,
+			projectCardOneTasksID,
 			projectCardTwoID,
-			projectCardTwoTask,
+			projectCardTwoTasksID,
 			movedTask,
 		});
 	};

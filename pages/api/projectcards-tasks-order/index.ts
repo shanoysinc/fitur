@@ -19,9 +19,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			try {
 				const {
 					projectCardOneID,
-					projectCardOneTask,
+					projectCardOneTasksID,
 					projectCardTwoID,
-					projectCardTwoTask,
+					projectCardTwoTasksID,
 					movedTask,
 				} = body;
 
@@ -34,12 +34,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 				await ProjectCard.findOneAndUpdate(
 					{ _id: projectCardOneID },
-					{ tasks: projectCardOneTask }
+					{ tasks: projectCardOneTasksID }
 				);
 
 				await ProjectCard.findOneAndUpdate(
 					{ _id: projectCardTwoID },
-					{ tasks: projectCardTwoTask }
+					{ tasks: projectCardTwoTasksID }
 				);
 
 				res.send({ success: true });

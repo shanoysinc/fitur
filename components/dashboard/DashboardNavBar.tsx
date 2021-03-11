@@ -23,9 +23,8 @@ const DashboardNavBar = ({
 	);
 	const starHandler = () => {
 		const newValue = !isStarred;
-		setIsStarred(newValue);
-
 		mutation.mutate({ startValue: newValue });
+		setIsStarred(newValue);
 	};
 
 	const toggleOptions = (id: string) => {

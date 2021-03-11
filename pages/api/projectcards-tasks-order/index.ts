@@ -2,6 +2,7 @@ import ProjectCard from "../../../server/model/ProjectCard";
 import dbConnect from "../../../server/db/db";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
+import Task from "../../../server/model/Task";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const session = await getSession({ req });
@@ -21,7 +22,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					projectCardOneTask,
 					projectCardTwoID,
 					projectCardTwoTask,
+					movedTask,
 				} = body;
+
+				await Task.findOneAndUpdate(
+					{ _id: movedTask._id },
+					{
+						projectCardID: movedTask.projectCardID,
+					}
+				);
 
 				await ProjectCard.findOneAndUpdate(
 					{ _id: projectCardOneID },

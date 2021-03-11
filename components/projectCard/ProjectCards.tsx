@@ -86,12 +86,12 @@ const ProjectCard = ({ projectID }: AppProps) => {
 			newColumnOrder[source.index] = newColumnOrder[destination.index];
 			newColumnOrder[destination.index] = temp;
 
-			// setting data on the client
+			// updating  data on the client
 			queryClient.setQueryData("projectCards", {
 				data: { project: { projectCards: newColumnOrder } },
 			});
 
-			//make call to update the projectCards order on the server
+			// make call to update the projectCards order on the server
 			const projectCardsID = newColumnOrder.map((projectCard) => {
 				return projectCard._id;
 			});
@@ -100,11 +100,10 @@ const ProjectCard = ({ projectID }: AppProps) => {
 			return;
 		}
 
-		const startColumn = projectCardData.find(
-			(project) => project._id === source.droppableId
-		);
-
 		if (destination.droppableId === source.droppableId) {
+			const startColumn = projectCardData.find(
+				(project) => project._id === source.droppableId
+			);
 			const newTasks = Array.from(startColumn.tasks);
 			const movedTask = newTasks.splice(source.index, 1);
 
@@ -138,19 +137,28 @@ const ProjectCard = ({ projectID }: AppProps) => {
 			return;
 		}
 
+		const startColumn = projectCardData.find(
+			(project) => project._id === source.droppableId
+		);
+
 		const endColumn = projectCardData.find(
 			(project) => project._id === destination.droppableId
 		);
 
+		const newProjectCardId = endColumn._id;
+
 		const startTasks = Array.from(startColumn.tasks);
-		const startMovedTasks = startTasks.splice(source.index, 1);
+		const movedTask = startTasks.splice(source.index, 1)[0];
+
+		movedTask.projectCardID = newProjectCardId;
+
 		const finalStart = startTasks.filter(
-			(tasks) => tasks._id !== startMovedTasks[0]._id
+			(tasks) => tasks._id !== movedTask._id
 		);
 		const newStart = { ...startColumn, tasks: finalStart };
 
 		const finnishedTasks = Array.from(endColumn.tasks);
-		finnishedTasks.splice(destination.index, 0, startMovedTasks[0]);
+		finnishedTasks.splice(destination.index, 0, movedTask);
 
 		const newFinish = { ...endColumn, tasks: finnishedTasks };
 
@@ -172,18 +180,19 @@ const ProjectCard = ({ projectID }: AppProps) => {
 		//make call to update the projectCards order on the server
 		const projectCardOneID = newStart._id;
 		const projectCardOneTask = newStart.tasks;
+		// console.log("projectone", projectCardOneTask);
 
 		const projectCardTwoID = newFinish._id;
 		const projectCardTwoTask = newFinish.tasks;
+		// console.log("projecttwo", projectCardTwoTask);
 
 		taskandProjectCardMutation.mutate({
 			projectCardOneID,
 			projectCardOneTask,
 			projectCardTwoID,
 			projectCardTwoTask,
+			movedTask,
 		});
-
-		//make call to the server with task id in projectCards
 	};
 
 	return (

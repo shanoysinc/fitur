@@ -5,6 +5,8 @@ import TaskIcon from "../../assets/TaskIcon";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
+import DescriptionIcon from "../../assets/DescriptionIcon";
+import CloseIcon from "../../assets/CloseIcon";
 
 interface TaskProps {
 	currentTask: CurrentTask;
@@ -14,6 +16,9 @@ interface TaskProps {
 const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 	const queryClient = useQueryClient();
 	const { title, projectCardName } = currentTask;
+	const [showDescriptionEditor, setShowDescriptionEditor] = React.useState(
+		false
+	);
 	const [description, setDescription] = React.useState<string>(
 		currentTask.description || ""
 	);
@@ -25,9 +30,6 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 			onSuccess: (res) => {
 				queryClient.invalidateQueries("projectCards");
 				toastNotification(res.data.message, "success");
-			},
-			onError: (error) => {
-				// console.log(error);
 			},
 		}
 	);
@@ -65,7 +67,7 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.task_title}>
-				<TaskIcon height={20} width={20} fill="#3d3d3d" />
+				<TaskIcon height={18} width={18} fill="#172b4d" />
 				<h3>{title}</h3>
 			</div>
 			<div className={styles.current__board}>
@@ -76,38 +78,66 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 
 			<div className={styles.description__container}>
 				<div className={styles.description__title}>
-					<img
-						src="/svg/description.svg"
-						alt=""
-						height={20}
-						width={20}
-					/>
+					<DescriptionIcon height={18} width={18} fill="#172b4d" />
 					<h4>Description</h4>
 				</div>
 
 				<div className={styles.input__container}>
-					<textarea
-						onChange={updateDescriptionHandler}
-						className={styles.discription__input}
-						name="description"
-						id=""
-						defaultValue={description}
-					></textarea>
-					<div className={styles.btn__container}>
-						<button
-							onClick={updateTaskHandler}
-							className={styles.btn__save}
+					{!showDescriptionEditor && (
+						<div
+							className={styles.description__content}
+							onClick={() => setShowDescriptionEditor(true)}
 						>
-							Save
-						</button>
-						<button
-							onClick={deleteTaskHandler}
-							className={styles.btn__delete}
-						>
-							Delete Task
-						</button>
-					</div>
+							{description ? (
+								<p>{`${description}`}</p>
+							) : (
+								<p>Add a more detailed description...</p>
+							)}
+						</div>
+					)}
+
+					{showDescriptionEditor && (
+						<>
+							<textarea
+								onChange={updateDescriptionHandler}
+								className={styles.discription__input}
+								name="description"
+								id=""
+								defaultValue={description}
+							></textarea>
+							<div className={styles.btn__container}>
+								<button
+									onClick={updateTaskHandler}
+									className={styles.btn__save}
+									onClick={() =>
+										setShowDescriptionEditor(false)
+									}
+								>
+									Save
+								</button>
+								<div
+									className={styles.btn__close}
+									onClick={() =>
+										setShowDescriptionEditor(false)
+									}
+								>
+									<CloseIcon
+										height={14}
+										width={14}
+										fill="grey"
+									/>
+								</div>
+							</div>
+						</>
+					)}
 				</div>
+
+				<button
+					onClick={deleteTaskHandler}
+					className={styles.btn__delete}
+				>
+					Delete Task
+				</button>
 			</div>
 		</div>
 	);

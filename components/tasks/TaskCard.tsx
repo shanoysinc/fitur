@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../styles/tasks/taskCard.module.scss";
 import { CurrentTask, Task } from "../../types/Task";
 import { Draggable } from "react-beautiful-dnd";
+import DescriptionIcon from "../../assets/DescriptionIcon";
 
 interface AppProps {
 	tasks: Task[];
@@ -29,11 +30,10 @@ const TaskCard = ({ tasks, setCurrentTask, projectCardName }: AppProps) => {
 							</div>
 							{task.description && (
 								<div className={styles.task__details}>
-									<img
-										src="/svg/description.svg"
-										alt=""
+									<DescriptionIcon
 										height={14}
 										width={14}
+										fill="#172b4d"
 									/>
 								</div>
 							)}

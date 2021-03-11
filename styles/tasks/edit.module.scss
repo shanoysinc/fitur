@@ -2,22 +2,22 @@
 	margin: 1em;
 	& > .task_title {
 		display: flex;
-		align-items: flex-start;
+		flex-shrink: 0;
 		& > h3 {
-			margin-top: auto;
+			margin-top: -0.3em;
 			margin-left: 0.5em;
 			font-weight: 500;
-			color: black;
+			color: #172b4d;
+			font-size: 1.2rem;
 		}
 	}
 
 	& > .current__board {
-		margin-top: -1.6em;
+		margin-top: -1.8em;
 		margin-left: 2em;
 		& > p {
-			color: hsl(0, 0%, 45%);
+			color: hsl(210, 2%, 46%);
 			font-size: 0.875rem;
-			font-weight: 200;
 			& > span {
 				text-decoration: underline;
 			}
@@ -25,7 +25,7 @@
 	}
 
 	.description__container {
-		margin-top: 1.5em;
+		margin-top: 2.5em;
 		& > .description__title {
 			display: flex;
 			align-items: flex-start;
@@ -34,46 +34,76 @@
 				margin-left: 0.7em;
 				font-size: 0.9rem;
 				font-weight: 500;
-				color: black;
+				color: #172b4d;
 			}
 		}
 
 		& > .input__container {
 			margin-left: 2em;
 			margin-bottom: 2em;
+			& > .description__content {
+				cursor: pointer;
+				margin-top: -1.4em;
+				background-color: hsl(220, 16%, 92%);
+				min-height: 60px;
+				border-radius: 2px;
+				width: 90%;
+				& > p {
+					color: hsl(220, 16%, 40%);
+					padding: 0.8em;
+					font-size: 0.875rem;
+				}
+			}
 			& > .discription__input {
 				outline: none;
-				border: 0;
-				width: 100%;
+				border: 2px solid #0079bf;
+				border-radius: 3px;
+				width: 90%;
 				height: 100px;
-				padding: 12px 20px;
+				padding: 0.8em;
+				color: hsl(220, 16%, 35%);
 				resize: none;
-				font-family: "Rubik", sans-serif;
-				letter-spacing: 0.03em;
+				font-family: sans-serif;
+				line-height: 1.5;
+				letter-spacing: 0.02em;
 			}
 
 			& > .btn__container {
+				display: flex;
+				align-items: center;
 				& > .btn__save {
 					margin-top: 1em;
 					background-color: #5aac44;
 					color: white;
 					border: 0;
-					padding: 0.5em 1.2em;
+					padding: 0.6em 1.4em;
 					text-transform: capitalize;
 					font-size: 0.9rem;
 					font-weight: 500;
-					border-radius: 4px;
+					border-radius: 3px;
 				}
-
-				& > .btn__delete {
-					color: #dc2626;
-					border: 0;
+				& > .btn__close {
 					cursor: pointer;
-					font-weight: 600;
-					margin-left: 0.5em;
-					outline: none;
+					margin-top: 1em;
+					padding-left: 1em;
 				}
 			}
 		}
 	}
+}
+
+.btn__delete {
+	margin-top: 2em;
+	display: block;
+	background-color: hsl(0, 96%, 92%);
+	color: hsl(0, 72%, 56%);
+	border: 0;
+	padding: 0.6em 1em;
+	text-transform: capitalize;
+	font-size: 0.875rem;
+	font-weight: 600;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-left: auto;
+	outline: none;
 }

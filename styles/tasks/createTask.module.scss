@@ -1,7 +1,6 @@
 .add__task_btn {
 	display: flex;
 	align-items: center;
-
 	margin-left: 0.5em;
 	cursor: pointer;
 	height: 30px;
@@ -9,6 +8,7 @@
 	margin-top: 1em;
 	color: hsl(0, 0%, 60%);
 	font-size: 0.9rem;
+	padding-left: 0.4em;
 	& > p {
 		padding-left: 1em;
 	}
@@ -41,7 +41,7 @@
 		display: flex;
 		align-items: center;
 		margin-left: 1em;
-		margin-top: 0.4em;
+		margin-top: 0.6em;
 
 		& > .btn__save {
 			cursor: pointer;

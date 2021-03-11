@@ -1,15 +1,17 @@
 .add__task_btn {
 	display: flex;
 	align-items: center;
-	gap: 0.5em;
+
 	margin-left: 0.5em;
 	cursor: pointer;
 	height: 30px;
 	border-radius: 4px;
 	margin-top: 1em;
-	padding-left: 0.5em;
 	color: hsl(0, 0%, 60%);
 	font-size: 0.9rem;
+	& > p {
+		padding-left: 1em;
+	}
 }
 .add__task_btn:hover {
 	background-color: rgba(78, 77, 77, 0.1);
@@ -59,6 +61,7 @@
 
 		& > .btn__close {
 			cursor: pointer;
+			padding-left: 1em;
 		}
 	}
 }

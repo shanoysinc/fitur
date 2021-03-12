@@ -59,3 +59,20 @@
 	margin: 0 0.3em;
 	margin-top: 0.4em;
 }
+
+.editProjectName__form {
+	margin-top: 0.4em;
+	margin-right: 0.4em;
+	display: flex;
+	flex-shrink: 0;
+	& > input {
+		border-radius: 4px;
+		border: 2px solid #0079bf;
+		height: 32px;
+		font-weight: 500;
+		text-transform: capitalize;
+		font-size: 1.19rem;
+		outline: none;
+		padding: 0.5em;
+	}
+}

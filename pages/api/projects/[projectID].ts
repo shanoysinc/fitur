@@ -30,6 +30,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			}
 
 			break;
+		case "PATCH":
+			try {
+				const project = await Project.findOneAndUpdate(
+					{ _id: projectID },
+					{ ...req.body }
+				);
+				await project.save();
+
+				res.json({ project });
+			} catch (error) {
+				res.json({ message: "Unable to update project name!" });
+			}
+			break;
 		case "DELETE":
 			try {
 				await Project.findOneAndDelete({ _id: projectID });

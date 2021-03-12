@@ -8,6 +8,7 @@ import { toastNotification } from "../../utils/toastNotification";
 import DescriptionIcon from "../../assets/DescriptionIcon";
 import CloseIcon from "../../assets/CloseIcon";
 import { useClickOutSide } from "../../hooks/clickOutSide";
+
 interface TaskProps {
 	currentTask: CurrentTask;
 	setCurrentTask: React.Dispatch<React.SetStateAction<CurrentTask | null>>;
@@ -32,7 +33,6 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 		{
 			onSuccess: (res) => {
 				queryClient.invalidateQueries("projectCards");
-				// toastNotification(res.data.message, "success");
 			},
 		}
 	);
@@ -59,6 +59,10 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 	const updateTaskHandler = () => {
 		setShowDescriptionEditor(false);
 		setShowTitleEdior(false);
+		if (editTitle == "") {
+			setEditTitle(title);
+			return toastNotification("Task title cannot be empty", "error");
+		}
 
 		const updatedTask = {
 			description,

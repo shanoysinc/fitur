@@ -1,9 +1,28 @@
+.editTitle__form {
+	width: 100%;
+	margin-left: 0.5em;
+	margin-bottom: 1em;
+	& > input {
+		padding-left: 0.5em;
+		outline: none;
+		width: 100%;
+		border-radius: 2px;
+		height: 34px;
+		border: 2px solid #0079bf;
+		font-weight: 500;
+		color: #172b4d;
+		font-size: 1.2rem;
+	}
+}
+
 .container {
 	margin: 1em;
 	& > .task_title {
 		display: flex;
 		flex-shrink: 0;
 		& > h3 {
+			cursor: text;
+			width: 100%;
 			margin-top: -0.3em;
 			margin-left: 0.5em;
 			font-weight: 500;
@@ -14,7 +33,7 @@
 
 	& > .current__board {
 		margin-top: -1.8em;
-		margin-left: 2em;
+		margin-left: 1.5em;
 		& > p {
 			color: hsl(210, 2%, 46%);
 			font-size: 0.875rem;
@@ -54,40 +73,43 @@
 					font-size: 0.875rem;
 				}
 			}
-			& > .discription__input {
-				outline: none;
-				border: 2px solid #0079bf;
-				border-radius: 3px;
-				width: 90%;
-				height: 100px;
-				padding: 0.8em;
-				color: hsl(220, 16%, 35%);
-				resize: none;
-				font-family: sans-serif;
-				line-height: 1.5;
-				letter-spacing: 0.02em;
-			}
+		}
+	}
+}
 
-			& > .btn__container {
-				display: flex;
-				align-items: center;
-				& > .btn__save {
-					margin-top: 1em;
-					background-color: #5aac44;
-					color: white;
-					border: 0;
-					padding: 0.6em 1.4em;
-					text-transform: capitalize;
-					font-size: 0.9rem;
-					font-weight: 500;
-					border-radius: 3px;
-				}
-				& > .btn__close {
-					cursor: pointer;
-					margin-top: 1em;
-					padding-left: 1em;
-				}
-			}
+.editDescription__container {
+	& > .discription__input {
+		outline: none;
+		border: 2px solid #0079bf;
+		border-radius: 3px;
+		width: 90%;
+		height: 100px;
+		padding: 0.8em;
+		color: hsl(220, 16%, 35%);
+		resize: none;
+		font-family: sans-serif;
+		line-height: 1.5;
+		letter-spacing: 0.02em;
+	}
+
+	& > .btn__container {
+		display: flex;
+		align-items: center;
+		& > .btn__save {
+			margin-top: 1em;
+			background-color: #5aac44;
+			color: white;
+			border: 0;
+			padding: 0.6em 1.4em;
+			text-transform: capitalize;
+			font-size: 0.9rem;
+			font-weight: 500;
+			border-radius: 3px;
+		}
+		& > .btn__close {
+			cursor: pointer;
+			margin-top: 1em;
+			padding-left: 1em;
 		}
 	}
 }

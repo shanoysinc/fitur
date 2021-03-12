@@ -82,7 +82,7 @@ const CreateTask = ({ projectCardID }: AppProps) => {
 						></input>
 						<div className={styles.input__btns}>
 							<button type="submit" className={styles.btn__save}>
-								Save
+								Add Task
 							</button>
 
 							<div

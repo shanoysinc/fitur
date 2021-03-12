@@ -7,7 +7,7 @@ import axios from "axios";
 import { toastNotification } from "../../utils/toastNotification";
 import DescriptionIcon from "../../assets/DescriptionIcon";
 import CloseIcon from "../../assets/CloseIcon";
-
+import { useClickOutSide } from "../../hooks/clickOutSide";
 interface TaskProps {
 	currentTask: CurrentTask;
 	setCurrentTask: React.Dispatch<React.SetStateAction<CurrentTask | null>>;
@@ -16,11 +16,14 @@ interface TaskProps {
 const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 	const queryClient = useQueryClient();
 	const { title, projectCardName } = currentTask;
-	const [showDescriptionEditor, setShowDescriptionEditor] = React.useState(
-		false
-	);
+
+	const [editTitle, setEditTitle] = React.useState(title);
+	const [showTitleEditor, setShowTitleEdior] = React.useState(false);
 	const [description, setDescription] = React.useState<string>(
 		currentTask.description || ""
+	);
+	const [showDescriptionEditor, setShowDescriptionEditor] = React.useState(
+		false
 	);
 
 	const mutation = useMutation(
@@ -29,7 +32,7 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 		{
 			onSuccess: (res) => {
 				queryClient.invalidateQueries("projectCards");
-				toastNotification(res.data.message, "success");
+				// toastNotification(res.data.message, "success");
 			},
 		}
 	);
@@ -55,23 +58,47 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 
 	const updateTaskHandler = () => {
 		setShowDescriptionEditor(false);
+		setShowTitleEdior(false);
 
 		const updatedTask = {
 			description,
+			title: editTitle,
 		};
 
 		mutation.mutate(updatedTask);
 	};
+
 	const deleteTaskHandler = () => {
 		deleteTaskMutation.mutate();
 		setCurrentTask(null);
 	};
 
+	const titleRef = useClickOutSide(() => setShowTitleEdior(false));
+	const descriptionRef = useClickOutSide(() =>
+		setShowDescriptionEditor(false)
+	);
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.task_title}>
 				<TaskIcon height={18} width={18} fill="#172b4d" />
-				<h3>{title}</h3>
+				{!showTitleEditor && (
+					<h3 onClick={() => setShowTitleEdior(true)}>{editTitle}</h3>
+				)}
+
+				{showTitleEditor && (
+					<form
+						className={styles.editTitle__form}
+						onSubmit={updateTaskHandler}
+						ref={titleRef}
+					>
+						<input
+							type="text"
+							defaultValue={editTitle}
+							onChange={(e) => setEditTitle(e.target.value)}
+						/>
+					</form>
+				)}
 			</div>
 			<div className={styles.current__board}>
 				<p>
@@ -100,7 +127,10 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 					)}
 
 					{showDescriptionEditor && (
-						<>
+						<div
+							ref={descriptionRef}
+							className={styles.editDescription__container}
+						>
 							<textarea
 								onChange={updateDescriptionHandler}
 								className={styles.discription__input}
@@ -128,7 +158,7 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 									/>
 								</div>
 							</div>
-						</>
+						</div>
 					)}
 					<button
 						onClick={deleteTaskHandler}

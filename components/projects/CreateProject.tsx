@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "../../styles/projects/createProject.module.scss";
 import { toastNotification } from "../../utils/toastNotification";
 import { useRouter } from "next/router";
+
 interface AppProps {
 	projectColor: string;
 	setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;

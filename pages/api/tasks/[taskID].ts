@@ -47,6 +47,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			try {
 				const task = {
 					description: req.body.description,
+					title: req.body.title,
 				};
 
 				const updatedTask = await Task.findOneAndUpdate(

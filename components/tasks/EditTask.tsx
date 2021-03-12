@@ -54,9 +54,12 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 	};
 
 	const updateTaskHandler = () => {
+		setShowDescriptionEditor(false);
+
 		const updatedTask = {
 			description,
 		};
+
 		mutation.mutate(updatedTask);
 	};
 	const deleteTaskHandler = () => {
@@ -109,9 +112,6 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 								<button
 									onClick={updateTaskHandler}
 									className={styles.btn__save}
-									onClick={() =>
-										setShowDescriptionEditor(false)
-									}
 								>
 									Save
 								</button>
@@ -130,14 +130,13 @@ const EditTask = ({ currentTask, setCurrentTask }: TaskProps) => {
 							</div>
 						</>
 					)}
+					<button
+						onClick={deleteTaskHandler}
+						className={styles.btn__delete}
+					>
+						Delete Task
+					</button>
 				</div>
-
-				<button
-					onClick={deleteTaskHandler}
-					className={styles.btn__delete}
-				>
-					Delete Task
-				</button>
 			</div>
 		</div>
 	);

@@ -5,9 +5,9 @@ import styles from "../../styles/Home.module.scss";
 import { useSession } from "next-auth/client";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Redirect from "../../components/redirect/Redirect";
-// import TasksBoard from "../../components/tasks/TasksBoard";
+import TasksBoard from "../../components/tasks/TasksBoard";
 
-type CurrentTab = "Projects" | "Tasks";
+type CurrentTab = "Projects" | "Tasks" | "Home";
 
 const index = () => {
 	const [session, isLoading] = useSession();
@@ -27,7 +27,8 @@ const index = () => {
 				</div>
 				<div className={styles.projects__container}>
 					{currentTab == "Projects" && <Projects />}
-					{/* {currentTab == "Tasks" && <TasksBoard />} */}
+					{currentTab == "Tasks" && <TasksBoard />}
+					{currentTab == "Home" && <TasksBoard />}
 				</div>
 			</div>
 		</div>

@@ -46,6 +46,7 @@ const projectTask = (props: AppProps) => {
 			<Navbar
 				session={session}
 				navBgColor={projectQuery.data?.data.project.color}
+				projectID={projectID}
 			/>
 			<div
 				className={styles.main__container}

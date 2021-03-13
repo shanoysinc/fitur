@@ -1,0 +1,45 @@
+.container {
+	margin-top: 1.5em;
+}
+.loading {
+	text-align: center;
+	color: rgb(170, 169, 169);
+}
+
+.project__container {
+	display: flex;
+	align-items: center;
+	height: 40px;
+	width: 100%;
+	border-radius: 3px;
+
+	& > .color {
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+		height: 40px;
+		width: 45px;
+		background-color: rebeccapurple;
+	}
+
+	& > .text__container {
+		display: flex;
+		align-items: center;
+		background-color: rgba(102, 51, 153, 0.205);
+		height: 40px;
+		width: 100%;
+		justify-content: space-between;
+		padding: 0 0.6em;
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+		& > P {
+			color: rgb(88, 88, 88);
+			font-weight: 500;
+			font-size: 0.875rem;
+			text-transform: capitalize;
+		}
+	}
+}
+
+.project__container + .project__container {
+	margin-top: 0.5em;
+}

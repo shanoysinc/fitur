@@ -6,6 +6,9 @@
 	justify-content: space-between;
 	align-items: center;
 }
+.icon__container {
+	position: relative;
+}
 
 .nav__icons {
 	display: flex;
@@ -62,6 +65,7 @@
 		}
 
 		.icon__container {
+			// position: relative;
 			& > .user__name {
 				cursor: pointer;
 				display: flex;

@@ -31,6 +31,7 @@ const ProjectCardOptions = ({
 		<Dropdown
 			title="Cards Action"
 			leftPosition="0"
+			topPosition="20px"
 			closeDropdown={closeDropdown}
 		>
 			<div className={styles.container}>

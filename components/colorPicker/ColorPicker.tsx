@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../../styles/colorPicker/colorPicker.module.scss";
 import { CirclePicker } from "react-color";
 import { useProjectMutation } from "../../hooks/project";
+import { motion } from "framer-motion";
+
 const colors = [
 	"#D97706",
 	"#3B82F6",
@@ -19,16 +21,18 @@ interface AppProps {
 }
 const ColorPicker = ({ projectID }: AppProps) => {
 	const mutation = useProjectMutation(projectID);
-	const [projectColor, setProjectColor] = React.useState<string>("#D97706");
 
 	const projectColorHandler = (color: any) => {
-		// console.log(color.hex);
 		mutation.mutate({ color: color.hex });
-		// setProjectColor(color.hex);
 	};
 
 	return (
-		<div className={styles.container}>
+		<motion.div
+			className={styles.container}
+			initial={{ x: 40, opacity: 0 }}
+			animate={{ x: 0, opacity: 1 }}
+			transition={{ stiffness: 150, type: "spring" }}
+		>
 			<CirclePicker
 				colors={colors}
 				onChange={projectColorHandler}
@@ -36,7 +40,7 @@ const ColorPicker = ({ projectID }: AppProps) => {
 				circleSize={45}
 				circleSpacing={15}
 			/>
-		</div>
+		</motion.div>
 	);
 };
 

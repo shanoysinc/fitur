@@ -3,8 +3,9 @@ import Dropdown from "../DropDown";
 import styles from "../../../styles/dropdown/projects/projectOptions.module.scss";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import { toastNotification } from "../../../utils/toastNotification";
+// import { toastNotification } from "../../../utils/toastNotification";
 import { useRouter } from "next/router";
+
 interface AppProps {
 	projectID: string;
 	closeDropdown: React.Dispatch<React.SetStateAction<any>>;
@@ -18,7 +19,6 @@ const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
 		(id) => axios.delete(`/api/projects/${id}`),
 		{
 			onSuccess: (response) => {
-				// const { data } = response;
 				queryClient.invalidateQueries("projects");
 			},
 		}
@@ -31,7 +31,6 @@ const ProjectOptions = ({ projectID, closeDropdown }: AppProps) => {
 	return (
 		<Dropdown
 			title="Project Options"
-			// rightPosition="50px"
 			width="220px"
 			closeDropdown={closeDropdown}
 		>

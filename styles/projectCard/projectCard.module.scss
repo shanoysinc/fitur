@@ -39,7 +39,7 @@
 }
 
 .tasks__container {
-	// min-height: 1px;
+	min-height: 1px; // for space to drop task when projectcard is empty
 	max-height: 58vh;
 	overflow-y: auto;
 }

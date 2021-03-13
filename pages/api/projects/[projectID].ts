@@ -40,7 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 				res.json({ project });
 			} catch (error) {
-				res.json({ message: "Unable to update project name!" });
+				res.json({ message: "Unable to update project!" });
 			}
 			break;
 		case "DELETE":

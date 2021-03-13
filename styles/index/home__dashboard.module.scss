@@ -6,13 +6,19 @@
 }
 
 .dashboard__container {
-	margin-top: 6em;
+	margin-top: 8em;
 	padding-top: 0.5em;
 	display: flex;
 	width: fit-content;
 }
 
-@media screen and (min-width: 27.5em) {
+@media screen and (min-width: 20.8em) {
+	.dashboard__container {
+		margin-top: 5em;
+	}
+}
+
+@media screen and (min-width: 30em) {
 	.dashboard__container {
 		margin-top: 3em;
 	}

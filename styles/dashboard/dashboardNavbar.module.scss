@@ -2,17 +2,23 @@
 	padding-top: 0.5em;
 	position: fixed;
 	z-index: 600;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
 }
 .container__left {
 	display: flex;
 	flex-wrap: wrap;
 }
-
-.container__left {
+.container__right {
+	margin-left: 0.5em;
+	margin-right: 2em;
 }
 
 .item__container {
 	display: flex;
+	position: relative;
 }
 
 .nav__items + .nav__items {

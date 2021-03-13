@@ -1,0 +1,25 @@
+.item__container {
+	display: flex;
+	align-items: center;
+	& > .current__color {
+		height: 20px;
+		width: 20px;
+		border-radius: 2px;
+		background-color: royalblue;
+	}
+	& > p {
+		cursor: pointer;
+		padding-left: 0.5em;
+		font-size: 0.875rem;
+		color: rgba(15, 15, 58, 0.815);
+		font-weight: 500;
+	}
+}
+
+.return__text {
+	margin-top: 2em;
+	margin-bottom: auto;
+	color: rgb(94, 93, 93);
+	font-weight: 500;
+	cursor: pointer;
+}

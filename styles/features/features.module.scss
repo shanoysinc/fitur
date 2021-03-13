@@ -1,0 +1,31 @@
+.container {
+	margin: 0 1em;
+
+	& > .header {
+		& > h2 {
+			font-size: 1.5rem;
+		}
+		& > P {
+			margin-top: -0.5em;
+			font-size: 1.1rem;
+			letter-spacing: 0.02em;
+			line-height: 1.5;
+		}
+	}
+}
+
+@media screen and (min-width: 62em) {
+	.container {
+		margin: 0 5em;
+
+		& > .header {
+			width: 45%;
+			& > h2 {
+				font-size: 2.1rem;
+			}
+			& > P {
+				font-size: 1.3rem;
+			}
+		}
+	}
+}

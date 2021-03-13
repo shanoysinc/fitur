@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "../../styles/navbar/offlineNavbar.module.scss";
+import styles from "../../styles/navbar/unregisterNavbar.module.scss";
 import ProjectIcon from "../../assets/ProjectIcon";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
 
-const OffLineNavbar = () => {
+const unregisterNavbar = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.left__container}>
@@ -27,4 +27,4 @@ const OffLineNavbar = () => {
 	);
 };
 
-export default OffLineNavbar;
+export default unregisterNavbar;

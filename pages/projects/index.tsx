@@ -5,7 +5,7 @@ import styles from "../../styles/Home.module.scss";
 import { useSession } from "next-auth/client";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Redirect from "../../components/redirect/Redirect";
-import TasksBoard from "../../components/tasks/TasksBoard";
+// import TasksBoard from "../../components/tasks/TasksBoard";
 
 type CurrentTab = "Projects" | "Tasks";
 

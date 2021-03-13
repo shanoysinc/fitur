@@ -3,7 +3,7 @@ import React from "react";
 const TasksBoard = () => {
 	return (
 		<div>
-			<h1>hello</h1>
+			<p>in beta...</p>
 		</div>
 	);
 };

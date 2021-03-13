@@ -2,10 +2,13 @@ import React from "react";
 import styles from "../../styles/sidebar/sidebar.module.scss";
 import TaskIcon from "../../assets/TaskIcon";
 import ProjectIcon from "../../assets/ProjectIcon";
+import HomeIcon from "../../assets/HomeIcon";
 
 interface SidebarProps {
-	currentTab: "Projects" | "Tasks";
-	setCurrentTab: React.Dispatch<React.SetStateAction<"Projects" | "Tasks">>;
+	currentTab: "Projects" | "Tasks" | "Home";
+	setCurrentTab: React.Dispatch<
+		React.SetStateAction<"Projects" | "Tasks" | "Home">
+	>;
 }
 
 const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
@@ -25,19 +28,28 @@ const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
 
 				<p>Projects</p>
 			</div>
-			{/* <div
+			<div
 				className={`${styles.items} ${
 					currentTab == "Tasks" && styles.currentTab
 				}`}
 				onClick={() => setCurrentTab("Tasks")}
 			>
-				<TaskIcon
+				<TaskIcon height={20} width={20} fill="rgb(3, 82, 128)" />
+				<p>All Tasks</p>
+			</div>
+			<div
+				className={`${styles.items} ${
+					currentTab == "Home" && styles.currentTab
+				}`}
+				onClick={() => setCurrentTab("Home")}
+			>
+				<HomeIcon
 					height={18}
 					width={18}
 					fill="rgba(2, 100, 157, 0.884)"
 				/>
-				<p>All Tasks</p>
-			</div> */}
+				<p>Home</p>
+			</div>
 		</div>
 	);
 };

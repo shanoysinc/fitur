@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/projects/projects.module.scss";
-import { useProject } from "../../hooks/project";
+import { useProjects } from "../../hooks/project";
 import Loading from "../loading/Loading";
 import ProjectItems from "./ProjectItems";
 import CreateProjectModal from "../modal/projects/CreateProjectModal";
@@ -8,7 +8,7 @@ import StarIcon from "../../assets/StarIcon";
 import PersonIcon from "../../assets/PersonIcon";
 
 const Projects = () => {
-	const { data, isLoading } = useProject();
+	const { data, isLoading } = useProjects();
 	const [openModal, setOpenModal] = React.useState(false);
 
 	if (isLoading) {

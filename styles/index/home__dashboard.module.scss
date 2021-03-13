@@ -2,7 +2,22 @@
 	height: 93.4vh;
 
 	padding-left: 1em;
-	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.main__container::-webkit-scrollbar {
+	width: 9px;
+	height: 12px;
+}
+
+.main__container::-webkit-scrollbar-track {
+	background: hsla(0, 0%, 3%, 0.247);
+	border-radius: 20px;
+}
+
+.main__container::-webkit-scrollbar-thumb {
+	background-color: hsla(227, 14%, 80%, 0.815);
+	border-radius: 20px;
 }
 
 .dashboard__container {

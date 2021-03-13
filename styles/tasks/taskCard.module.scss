@@ -1,6 +1,7 @@
 .container {
 	background-color: white;
 	min-height: fit-content;
+	max-height: 200px;
 	box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
 	cursor: pointer;
 	border-radius: 3px;
@@ -8,6 +9,7 @@
 	padding-right: 8px;
 	display: flex;
 	flex-direction: column;
+	margin-right: 0.25em;
 
 	& > .title {
 		& > p {

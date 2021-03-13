@@ -1,6 +1,5 @@
 .projectCard_outer__container {
 	display: flex;
-	// margin-top: 2em;
 }
 
 .container + .container {
@@ -40,7 +39,23 @@
 }
 
 .tasks__container {
-	min-height: 1px;
+	// min-height: 1px;
+	max-height: 58vh;
+	overflow-y: auto;
+}
+
+.tasks__container::-webkit-scrollbar {
+	width: 9px;
+}
+
+.tasks__container::-webkit-scrollbar-track {
+	background: hsl(228, 14%, 86%);
+	border-radius: 20px;
+}
+
+.tasks__container::-webkit-scrollbar-thumb {
+	background-color: hsl(228, 14%, 80%);
+	border-radius: 20px; /* roundness of the scroll thumb */
 }
 
 @media screen and (min-width: 27.5em) {

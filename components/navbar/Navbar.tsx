@@ -10,21 +10,19 @@ import TipsDropDown from "../dropdown/navbar/TipsDropDown";
 import { useClickOutSide } from "../../hooks/clickOutSide";
 import SessionDropDown from "../dropdown/navbar/SessionDropDown";
 import GridIcon from "../../assets/Grid";
+import ProjectsOption from "../dropdown/projects/ProjectsOption";
 
 interface NavBarProps {
 	session?: Session;
 	navBgColor?: string;
+	projectID?: string;
 }
-const Navbar = ({ session, navBgColor }: NavBarProps) => {
+const Navbar = ({ session, navBgColor, projectID }: NavBarProps) => {
 	const [showCreateItems, setShowCreateItems] = React.useState(false);
 	const [showTips, setShowTips] = React.useState(false);
 	const [username, setUsername] = React.useState("");
 	const [showAccountOptions, setShowAccountOptions] = React.useState(false);
-	const createItemsRef = useClickOutSide(() => setShowCreateItems(false));
-	const showTipsRef = useClickOutSide(() => setShowTips(false));
-	const showAccountOptionsRef = useClickOutSide(() =>
-		setShowAccountOptions(false)
-	);
+	const [showProjectsOption, setShowProjectsOption] = React.useState(false);
 
 	React.useEffect(() => {
 		if (session) {
@@ -32,6 +30,14 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 		}
 	}, [session]);
 
+	const createItemsRef = useClickOutSide(() => setShowCreateItems(false));
+	const showTipsRef = useClickOutSide(() => setShowTips(false));
+	const showAccountOptionsRef = useClickOutSide(() =>
+		setShowAccountOptions(false)
+	);
+	const projectsOptionRef = useClickOutSide(() =>
+		setShowProjectsOption(false)
+	);
 	return (
 		<div
 			className={styles.nav}
@@ -58,11 +64,20 @@ const Navbar = ({ session, navBgColor }: NavBarProps) => {
 						</a>
 					</Link>
 				</div>
-				<div className={styles.icon__container}>
-					<div className={styles.nav__icons}>
+				<div className={styles.icon__container} ref={projectsOptionRef}>
+					<div
+						className={styles.nav__icons}
+						onClick={() =>
+							setShowProjectsOption(!showProjectsOption)
+						}
+					>
 						<ProjectIcon height={15} width={15} fill="white" />
 						<span>Projects</span>
 					</div>
+
+					{showProjectsOption && (
+						<ProjectsOption closeDropdown={setShowProjectsOption} />
+					)}
 				</div>
 			</div>
 			<div className={styles.logo__container}>

@@ -11,7 +11,7 @@
 		"axios": "^0.21.1",
 		"framer-motion": "^3.10.0",
 		"mongoose": "^5.11.16",
-		"next": "10.0.7",
+		"next": "10.1.2",
 		"next-auth": "^3.4.1",
 		"react": "17.0.1",
 		"react-beautiful-dnd": "^13.0.0",

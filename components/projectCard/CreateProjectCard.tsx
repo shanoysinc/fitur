@@ -60,7 +60,7 @@ const CreateProjectCard = ({
 					onClick={showInputHandler}
 				>
 					<AddIcon height={13} width={13} fill="white" />
-					<p>Add another task</p>
+					<p>Add another Project Card</p>
 				</div>
 			)}
 			<AnimatePresence initial={showProjectCardInput}>

@@ -3,18 +3,7 @@ import styles from "../../styles/colorPicker/colorPicker.module.scss";
 import { CirclePicker } from "react-color";
 import { useProjectMutation } from "../../hooks/project";
 import { motion } from "framer-motion";
-
-const colors = [
-	"#D97706",
-	"#3B82F6",
-	"#374151",
-	"rgb(176, 70, 50)",
-	"#8B5CF6",
-	"#DB2777",
-	"#059669",
-	"rgb(75, 191, 107)",
-	"rgb(137, 96, 158)",
-];
+import { colors } from "../../utils/colors";
 
 interface AppProps {
 	projectID: string;

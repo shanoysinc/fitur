@@ -1,8 +1,7 @@
 module.exports = {
-	typescript: {
-		ignoreBuildErrors: true,
-	},
-	future: {
-		webpack5: true,
-	},
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
+  webpack5: true,
 };
